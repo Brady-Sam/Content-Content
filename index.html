@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Content — Content Design &amp; UX Writing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #F5F2EC;
+      --ink: #1A1814;
+      --ink-muted: #6B6660;
+      --accent: #C84B2F;
+      --accent-light: #F0E8E4;
+      --rule: #D9D4CC;
+      --white: #FDFCFA;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .wordmark span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 7rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-body {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-body strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--ink);
+      padding: 0.85rem 1.6rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .cta-arrow { font-size: 1rem; transition: transform 0.2s; }
+    .cta:hover .cta-arrow { transform: translateX(3px); }
+
+    .hero-right {
+      padding-bottom: 0.5rem;
+    }
+
+    .hero-aside {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+    }
+
+    .hero-aside-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-aside p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--rule);
+      margin: 0;
+    }
+
+    /* ── Portfolio ── */
+    .portfolio {
+      padding: 6rem 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .case-study {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 2.5rem 2rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+    }
+
+    .case-study:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .case-study-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .case-study-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
+    .case-study-summary {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      flex: 1;
+    }
+
+    .case-study-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .case-study-stat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .case-study-stat strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
+    .case-study-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Placeholder case studies */
+    .case-study.placeholder {
+      opacity: 0.45;
+      background: transparent;
+      border-style: dashed;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .case-study.placeholder:hover {
+      transform: none;
+      border-color: var(--rule);
+    }
+
+    .placeholder-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: auto;
+    }
+
+    /* ── Services ── */
+    .services {
+      padding: 6rem 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+    }
+
+    .service-card {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--rule);
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:last-child { border-right: none; }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover { background: var(--white); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--ink-muted);
+    }
+
+    .service-list {
+      list-style: none;
+      margin-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .service-list li {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      padding-left: 0.75rem;
+      position: relative;
+    }
+
+    .service-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ── AI note ── */
+    .ai-note {
+      padding: 3rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .ai-note-inner {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .ai-note-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 0.2rem;
+    }
+
+    .ai-note-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 62ch;
+    }
+
+    @media (max-width: 768px) {
+      .ai-note-inner { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    /* ── Philosophy strip ── */
+    .philosophy {
+      background: var(--ink);
+      padding: 5rem 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.7s;
+    }
+
+    .philosophy-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .philosophy-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .philosophy-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--white);
+    }
+
+    .philosophy-quote em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    /* ── About ── */
+    .about {
+      padding: 6rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    .about h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .about p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .about p strong { color: var(--ink); font-weight: 500; }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-muted);
+      background: var(--white);
+    }
+
+    /* ── Contact ── */
+    .contact {
+      background: var(--accent-light);
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      max-width: 44ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .contact-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.1rem;
+      transition: opacity 0.2s;
+    }
+
+    .contact-link:hover { opacity: 0.6; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 4rem 0 3rem; gap: 2.5rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .service-card:last-child { border-bottom: none; }
+      .philosophy-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about { grid-template-columns: 1fr; gap: 3rem; }
+      nav ul { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <div class="container">
+    <nav>
+      <a class="wordmark" href="#">Content <span>Content</span></a>
+      <ul>
+        <li><a href="#portfolio">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <p class="hero-eyebrow">Digital Content &amp; UX Strategy</p>
+        <h1 class="hero-headline">The best content<br>goes unnoticed.<br><em>Getting there takes real craft.</em></h1>
+        <p class="hero-body">
+          Most digital products are full of words that had to be there, not because they were designed. Good content isn't just well-written. It's knowing what to say, when to say it, and how. <strong>I help teams get there.</strong> Writing the copy that moves people forward, building content design into how you work, and figuring out where AI actually helps.
+        </p>
+        <a class="cta" href="#contact">Get in touch <span class="cta-arrow">→</span></a>
+      </div>
+      <div class="hero-right">
+        <div class="hero-aside">
+          <p class="hero-aside-label">The idea</p>
+          <p>Well-designed content becomes invisible. People aren't stopping to read, they're moving through your product because it feels right. That's not an accident.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Portfolio -->
+  <div class="container">
+    <section class="portfolio" id="portfolio">
+      <p class="section-label">Selected work</p>
+      <div class="portfolio-grid">
+
+        <!-- Case study 01: Benivo AI -->
+        <div class="case-study" style="cursor: default;">
+          <p class="case-study-tag">AI &amp; Conversational Design · B2B SaaS</p>
+          <h3 class="case-study-title">Building an AI support chatbot that actually deflects</h3>
+          <p class="case-study-summary">Benivo's support team was drowning in repeat queries. I designed and built the content layer for an AI chatbot — intent mapping, conversation flows, error handling, and the plain language knowledge base that made it useful. Then measured whether it worked.</p>
+          <div class="case-study-meta">
+            <div class="case-study-stat"><strong>75%</strong> of inbound queries handled without human handoff</div>
+            <div class="case-study-stat"><strong>10+ hrs</strong> saved per week via content automation</div>
+            <div class="case-study-stat"><strong>93%</strong> platform satisfaction score</div>
+          </div>
+          <span class="case-study-link">Read the case study →</span>
+        </div>
+
+        <!-- Placeholder 02 -->
+        <div class="case-study placeholder">
+          <p class="case-study-tag">Content Strategy · Charity Sector</p>
+          <h3 class="case-study-title">Content that contributed to an Act of Parliament</h3>
+          <p class="case-study-summary">At Shelter, I led content across advocacy campaigns that fed into the Renters Reform Bill — coordinating across channels, building the content roadmap, and making complex housing policy legible to people who needed it most.</p>
+          <div class="case-study-meta">
+            <div class="case-study-stat">Case study coming soon</div>
+          </div>
+          <span class="placeholder-label">Coming soon</span>
+        </div>
+
+        <!-- Placeholder 03 -->
+        <div class="case-study placeholder">
+          <p class="case-study-tag">UX Writing · Voice &amp; Tone</p>
+          <h3 class="case-study-title">Building a content design practice from the inside</h3>
+          <p class="case-study-summary">How to take a product team from "the copy is whoever's turn it is" to having principles, patterns, and a shared way of working with language. The unglamorous, genuinely useful kind of content design work.</p>
+          <div class="case-study-meta">
+            <div class="case-study-stat">Case study coming soon</div>
+          </div>
+          <span class="placeholder-label">Coming soon</span>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Services -->
+  <div class="container">
+    <section class="services" id="services">
+      <p class="section-label">How I can help</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <p class="service-number">01</p>
+          <h3 class="service-title">The words in your product</h3>
+          <p class="service-desc">Every product makes promises through its words. Button labels, error messages, onboarding flows, empty states. If any of it is confusing, people leave. I write the copy that gets people where they need to go, and makes sure your product keeps its promises.</p>
+          <ul class="service-list">
+            <li>UX writing and microcopy</li>
+            <li>Error and empty states</li>
+            <li>Onboarding and activation flows</li>
+            <li>Conversational and AI interface copy</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <p class="service-number">02</p>
+          <h3 class="service-title">How your team works with content</h3>
+          <p class="service-desc">Content design is more useful as a way of working than as a one-off deliverable. I help teams build it in: the principles, the systems, the habits that make good content the default.</p>
+          <ul class="service-list">
+            <li>Voice and tone guidelines</li>
+            <li>Content principles and frameworks</li>
+            <li>Content modelling</li>
+            <li>Embedded content design practice</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <p class="service-number">03</p>
+          <h3 class="service-title">Visibility and performance</h3>
+          <p class="service-desc">Content that works for people should also work for the business. I connect the craft to the numbers: search visibility, conversion, and copy that earns its place on the page.</p>
+          <ul class="service-list">
+            <li>SEO content and structure</li>
+            <li>Conversion copy</li>
+            <li>A/B testing and iteration</li>
+            <li>Content audits and plain language</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- AI note -->
+  <div class="container">
+    <section class="ai-note">
+      <div class="ai-note-inner">
+        <p class="ai-note-label">A note on AI</p>
+        <p class="ai-note-body">Everyone is being told they need it. Not everyone needs it in the same way. I use AI in my own work and I can help you figure out where it genuinely fits in yours. No hype, no fear, no promise that a chatbot will replace your content team. Just an honest look at what it can and can't do for you right now.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Philosophy -->
+  <section class="philosophy">
+    <div class="container">
+      <div class="philosophy-inner">
+        <p class="philosophy-label">The philosophy</p>
+        <p class="philosophy-quote">
+          Everyone else is promising <em>perfection</em>. I promise content that does its job, so your customers can get on with theirs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <div class="container">
+    <section class="about" id="about">
+      <div>
+        <h2>Ten years of asking the awkward question.</h2>
+      </div>
+      <div>
+        <p>I'm Sam Brady, a senior content designer based in London (shortly, Barcelona). I've spent a decade being the person in the room who asks <strong>"but what does this actually say to the people who have to use it?"</strong> — at a housing charity, at a global relocation platform, and across a range of agency and freelance projects.</p>
+        <p>At Benivo I built an AI support chatbot from scratch — not the technology, the content. The intent architecture, the conversation flows, the plain language knowledge base it draws from, and the feedback loop that keeps it improving. It now handles around 75% of inbound queries without a human. That is what content design as a practice looks like.</p>
+        <p>Before that, at Shelter, I worked on campaigns and content that contributed to the Renters Reform Bill. Good content in the right place can do real things.</p>
+        <p>Content Content is my independent practice. The name is intentional: it's about content, and it's about making content teams feel good about theirs. I work with product and design teams who want the words in their product to be an asset, not an afterthought.</p>
+        <div class="about-tags">
+          <span class="tag">UX Writing</span>
+          <span class="tag">Microcopy</span>
+          <span class="tag">Content Modelling</span>
+          <span class="tag">Voice &amp; Tone</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Conversion Copy</span>
+          <span class="tag">AI Integration</span>
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Figma</span>
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Plain Language</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Not sure what you need? That's a good place to start.</h2>
+      <p>Whether you need hands-on support, help building a content design culture, or just an honest conversation about what AI can and can't do for you.</p>
+      <a class="contact-link" href="mailto:hello@contentcontent.design">hello@contentcontent.design</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="co
