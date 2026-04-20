@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Content Content</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #F5F2EC;
+      --ink: #1A1814;
+      --ink-muted: #6B6660;
+      --accent: #A8401A;
+      --accent-warm: #C9532A;
+      --rule: #D9D4CC;
+      --white: #FDFCFA;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .wordmark span { color: var(--accent-warm); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent-warm); }
+    nav a[aria-current="page"] { color: var(--ink); }
+
+    nav a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .page-header {
+      padding: 6rem 0 4rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      max-width: 52ch;
+      line-height: 1.75;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .coming-soon {
+      padding: 6rem 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.35s;
+    }
+
+    .coming-soon-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .coming-soon-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .case-study-preview {
+      border: 1px solid var(--rule);
+      padding: 3rem 2.5rem;
+      background: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .case-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 1rem;
+    }
+
+    .case-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .case-summary {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink-muted);
+      max-width: 64ch;
+      margin-bottom: 2rem;
+    }
+
+    .case-stats {
+      display: flex;
+      gap: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-item span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+    }
+
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      text-decoration: none;
+      margin-top: 2rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .case-link:hover { border-color: var(--accent-warm); }
+
+    .placeholder-card {
+      border: 1px dashed var(--rule);
+      padding: 3rem 2.5rem;
+      opacity: 0.45;
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .case-stats { flex-direction: column; gap: 1.5rem; }
+      nav ul { gap: 1.5rem; }
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      text-decoration: none;
+      transition: top 0.2s;
+      z-index: 100;
+    }
+
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="container">
+    <nav aria-label="Main navigation">
+      <a class="wordmark" href="/">Content <span>Content</span></a>
+      <ul>
+        <li><a href="/work/" aria-current="page">Work</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+    <div class="container">
+      <header class="page-header">
+        <h1>Selected work</h1>
+        <p>Case studies from a decade of content design across charity, B2B SaaS, and product teams.</p>
+      </header>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="container">
+      <section class="coming-soon">
+        <p class="coming-soon-label">Case studies</p>
+
+        <article class="case-study-preview">
+          <p class="case-tag">AI · B2B SaaS · Conversational Design</p>
+          <h2 class="case-title">Building an AI support chatbot that actually deflects</h2>
+          <p class="case-summary">Benivo's support team was handling a high volume of repeat queries. I designed and built the content layer for an AI chatbot — intent mapping, conversation flows, error handling, and the plain language knowledge base that made it useful. Then measured whether it worked.</p>
+          <div class="case-stats">
+            <div class="stat-item">
+              <strong>75%</strong>
+              <span>of inbound queries handled without human handoff</span>
+            </div>
+            <div class="stat-item">
+              <strong>10+ hrs</strong>
+              <span>saved per week via content automation</span>
+            </div>
+            <div class="stat-item">
+              <strong>93%</strong>
+              <span>platform satisfaction score</span>
+            </div>
+          </div>
+          <a class="case-link" href="#">Read case study →</a>
+        </article>
+
+        <article class="placeholder-card" aria-hidden="true">
+          <p class="case-tag">Content Strategy · Charity</p>
+          <h2 class="case-title">Content that contributed to an Act of Parliament</h2>
+          <p class="case-summary">At Shelter, content across advocacy campaigns that fed into the Renters Reform Bill — coordinating across channels, building the content roadmap, and making complex housing policy legible to the people who needed it most.</p>
+        </article>
+
+        <article class="placeholder-card" aria-hidden="true">
+          <p class="case-tag">UX Writing · Content Systems</p>
+          <h2 class="case-title">Building a content design practice from the inside</h2>
+          <p class="case-summary">Taking a product team from "the copy is whoever's turn it is" to having principles, patterns, and a shared way of working with language. The unglamorous, genuinely useful kind of content design work.</p>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <p>Content Content — Sam Brady</p>
+      <p>Barcelona</p>
+    </div>
+  </footer>
+
+</body>
+</html>
