@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teaching an AI to give the right answer — Content Content</title>
+  <meta name="description" content="How I designed the content layer for an AI support chatbot that increased deflection from ~65% to 93% in six months. B2B SaaS, RAG, content systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #F5F2EC;
+      --ink: #1A1814;
+      --ink-muted: #6B6660;
+      --accent: #A8401A;
+      --accent-warm: #C9532A;
+      --accent-light: #F0E8E4;
+      --rule: #D9D4CC;
+      --white: #FDFCFA;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .content { max-width: 680px; }
+
+    /* Nav */
+    nav {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .wordmark span { color: var(--accent-warm); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent-warm); }
+    nav a[aria-current="page"] { color: var(--ink); }
+
+    nav a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      padding: 2rem 0 0;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent-warm); }
+
+    .back-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Page header */
+    .page-header {
+      padding: 3rem 0 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.15s;
+    }
+
+    .case-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.3rem 0.7rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: var(--ink);
+    }
+
+    .page-lede {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 52ch;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--rule);
+      background: var(--white);
+      margin-bottom: 4rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .metric {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--rule);
+    }
+
+    .metric:last-child { border-right: none; }
+
+    .metric strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      line-height: 1.4;
+    }
+
+    /* Case study body */
+    .case-body {
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.45s;
+      padding-bottom: 6rem;
+    }
+
+    .case-section { margin-bottom: 3.5rem; }
+
+    .case-section h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .case-section h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 4px;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .case-section p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 1.1rem;
+      max-width: 68ch;
+    }
+
+    .callout {
+      border-left: 2px solid var(--accent);
+      background: var(--accent-light);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .callout p {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin: 0;
+      line-height: 1.7;
+      max-width: none;
+    }
+
+    /* Chart */
+    .chart-wrap {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 2rem 2rem 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .chart-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .chart-subtitle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-area {
+      position: relative;
+      height: 220px;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    .legend-swatch.enquiries { background: var(--rule); }
+    .legend-swatch.deflection { background: var(--accent); border-radius: 50%; }
+
+    .divider {
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 3.5rem;
+    }
+
+    .footnote {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--ink);
+      padding: 6rem 0;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .contact p {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      max-width: 44ch;
+      margin: 0 auto 2rem;
+      line-height: 1.75;
+    }
+
+    .contact-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-warm);
+      padding-bottom: 0.1rem;
+      transition: opacity 0.2s;
+    }
+
+    .contact-link:hover { opacity: 0.7; }
+
+    .contact-link:focus-visible {
+      outline: 2px solid var(--accent-warm);
+      outline-offset: 3px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: var(--ink);
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .metrics { grid-template-columns: 1fr; }
+      .metric { border-right: none; border-bottom: 1px solid var(--rule); }
+      .metric:last-child { border-bottom: none; }
+      nav ul { gap: 1.5rem; }
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      text-decoration: none;
+      transition: top 0.2s;
+      z-index: 100;
+    }
+
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="container">
+    <nav aria-label="Main navigation">
+      <a class="wordmark" href="/">Content <span>Content</span></a>
+      <ul>
+        <li><a href="/work/" aria-current="page">Work</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+    <div class="container">
+
+      <a class="back-link" href="/work/">← All work</a>
+
+      <header class="page-header content">
+        <div class="case-tags">
+          <span class="case-tag">AI &amp; chatbot</span>
+          <span class="case-tag">Content systems</span>
+          <span class="case-tag">B2B SaaS</span>
+        </div>
+        <h1>Teaching an AI to give the right answer</h1>
+        <p class="page-lede">The chatbot already existed. So did the AI powering it. What was missing was the content design in between.</p>
+      </header>
+
+    </div>
+
+    <div class="container">
+      <div class="metrics" role="region" aria-label="Project outcomes">
+        <div class="metric">
+          <strong>93%</strong>
+          <span>Peak deflection rate</span>
+        </div>
+        <div class="metric">
+          <strong>~65%</strong>
+          <span>Starting deflection rate</span>
+        </div>
+        <div class="metric">
+          <strong>6 months</strong>
+          <span>Steady improvement over</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="case-body content">
+
+        <div class="case-section">
+          <h2>Situation</h2>
+          <p>A B2B SaaS platform operating across multiple clients, each with their own policies and rules. Their support chatbot had recently had AI bolted onto it, connected directly to OpenAI with no structured content to guide it.</p>
+          <p>The results? As expected. Generic, long-winded responses in a tone that felt nothing like the product. Worse, it was wrong. It would hallucinate answers about client-specific policies that could, if believed, cause a real problem downstream.</p>
+          <div class="callout">
+            <p>An incorrect policy answer doesn't just frustrate a user. It can escalate to the client and undermine trust in the whole platform.</p>
+          </div>
+        </div>
+
+        <div class="divider" role="separator"></div>
+
+        <div class="case-section">
+          <h2>Task</h2>
+          <p>The brief was to monitor the chat and increase deflection. But deflection assumes people are actually using the chatbot willingly. A clunky, untrustworthy experience drives users straight to a ticket regardless of how good the answers are. The numbers weren't the problem. The experience was.</p>
+          <p>That meant taking ownership of the content layer that sits between a user's question and the AI's answer, and making sure the output was accurate, on-brand, and actually useful.</p>
+        </div>
+
+        <div class="divider" role="separator"></div>
+
+        <div class="case-section">
+          <h2>Action</h2>
+
+          <h3>Discovery</h3>
+          <p>I started where the evidence was: user queries. By analysing what people were actually asking, I mapped the most common questions, recurring themes, and the gaps where the chatbot was falling short. That analysis shaped everything that followed.</p>
+
+          <h3>Structure</h3>
+          <p>Before any AI could be useful, the content needed a home. I built a structured knowledge base in a simple sheet, organised so the support team and SMEs could review and update it, and the AI could read it reliably.</p>
+          <div class="callout">
+            <p>AI doesn't interpret messy content well. Give it clear structure and consistent formatting and you get accurate, on-brand outputs. Leave it to figure things out for itself and it will certainly try.</p>
+          </div>
+
+          <h3>RAG</h3>
+          <p>Structure shapes the content. RAG is how the AI uses it. Retrieval-Augmented Generation means the AI draws from specific, curated content rather than generating answers from scratch. Instead of improvising, it now had accurate, structured source material to work from. The difference in output quality was immediate.</p>
+
+          <h3>Voice and UX</h3>
+          <p>I audited the end-to-end chatbot experience: the intro copy, the conversation flow, the tone. The previous version read like a generic support bot, because it was. I rewrote it to sound like the product it lived in, with clearer signposting, less waffle, and a tone that built trust rather than eroding it.</p>
+
+          <h3>Prompt design</h3>
+          <p>The system prompt is the instruction set that tells the AI how to behave: what it should answer, how it should answer, and where it should stop. Working collaboratively with the development team, I shaped those rules to reflect both the product's voice and the limits of what the AI should be doing. Getting this right is the difference between an AI that knows its job and one that wings it.</p>
+
+          <h3>Iteration</h3>
+          <p>None of this was a one-time fix. User queries flagged gaps. Policy updates changed answers. The knowledge base evolved continuously, and so did the results. The deflection rate didn't jump overnight. It climbed steadily because the content did too.</p>
+        </div>
+
+        <div class="divider" role="separator"></div>
+
+        <div class="case-section">
+          <h2>Result</h2>
+          <p>Deflection rate climbed steadily from around 65% to 93% over six months. Enquiry volume grew significantly over the same period — at peak, the chatbot was handling over 400 queries a week. The deflection rate held up throughout. The support team got meaningful time back. The risk of policy misinformation dropped significantly.</p>
+
+          <div class="chart-wrap" role="img" aria-label="Chart showing weekly enquiry volume and deflection rate from weeks 01 to 19. Enquiry volume grows from around 80 per week to over 400 at peak. Deflection rate climbs from 69% to 93%.">
+            <p class="chart-title">Chatbot performance — weekly</p>
+            <p class="chart-subtitle">Enquiry volume vs deflection rate, weeks 01–19</p>
+            <div class="chart-area">
+              <canvas id="perfChart"></canvas>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="legend-swatch enquiries"></div>
+                Total enquiries
+              </div>
+              <div class="legend-item">
+                <div class="legend-swatch deflection"></div>
+                Deflection rate
+              </div>
+            </div>
+          </div>
+
+          <p>The content system has since grown beyond a static knowledge base. When a support ticket is raised, the system now checks the query against existing answers and the support team's resolution, then drafts a new answer in the correct format and tone. That draft is flagged for content review before it goes anywhere near the chatbot. The knowledge base updates itself. The content team stays in control.</p>
+          <p>That's what a content system looks like at scale.</p>
+        </div>
+
+        <p class="footnote"></p>
+
+      </div>
+    </div>
+  </main>
+
+  <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <h2 id="contact-heading">Based in Barcelona. Open to full-time roles and contract work.</h2>
+      <p>If you think there might be a fit, I'd like to hear about it.</p>
+      <a class="contact-link" href="mailto:hello@contentcontent.design">hello@contentcontent.design</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <p>Content Content — Sam Brady</p>
+      <p>Barcelona</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script>
+    const ctx = document.getElementById('perfChart').getContext('2d');
+    new Chart(ctx, {
+      data: {
+        labels: ['W01','W02','W03','W04','W05','W06','W07','W08','W09','W10','W11','W12','W13','W14','W15','W16','W17','W18','W19'],
+        datasets: [
+          {
+            type: 'bar',
+            label: 'Total enquiries',
+            data: [88,68,81,80,76,83,69,92,121,113,119,149,191,359,416,344,339,333,249],
+            backgroundColor: '#D9D4CC',
+            borderColor: '#C8C3BB',
+            borderWidth: 1,
+            yAxisID: 'yEnquiries',
+            order: 2
+          },
+          {
+            type: 'line',
+            label: 'Deflection rate',
+            data: [69,79,73,74,78,84,75,80,79,84,82,87,75,87,85,88,86,88,93],
+            borderColor: '#A8401A',
+            backgroundColor: '#A8401A',
+            borderWidth: 2,
+            pointBackgroundColor: '#A8401A',
+            pointBorderColor: '#FDFCFA',
+            pointBorderWidth: 2,
+            pointRadius: 4,
+            tension: 0.3,
+            yAxisID: 'yDeflection',
+            order: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1A1814',
+            titleColor: '#FDFCFA',
+            bodyColor: '#D9D4CC',
+            titleFont: { family: 'DM Sans', size: 12 },
+            bodyFont: { family: 'DM Mono', size: 11 },
+            padding: 10,
+            callbacks: {
+              label: function(ctx) {
+                if (ctx.datasetIndex === 1) return ' Deflection: ' + ctx.raw + '%';
+                return ' Enquiries: ' + ctx.raw;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            border: { color: '#D9D4CC' },
+            ticks: { font: { family: 'DM Mono', size: 10 }, color: '#6B6660', maxRotation: 0 }
+          },
+          yEnquiries: {
+            position: 'left',
+            grid: { color: '#EDE9E3', lineWidth: 1 },
+            border: { display: false },
+            ticks: { font: { family: 'DM Mono', size: 10 }, color: '#6B6660', maxTicksLimit: 5 }
+          },
+          yDeflection: {
+            position: 'right',
+            min: 0,
+            max: 100,
+            grid: { display: false },
+            border: { display: false },
+            ticks: {
+              font: { family: 'DM Mono', size: 10 },
+              color: '#A8401A',
+              callback: val => val + '%',
+              maxTicksLimit: 5
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
