@@ -81,7 +81,7 @@
       transition: color 0.2s;
     }
 
-    nav a:hover { color: var(--accent-warm); }
+    nav a:not(.wordmark):hover { color: var(--accent-warm); }
     nav a[aria-current="page"] { color: var(--ink); }
 
     nav a:focus-visible {
