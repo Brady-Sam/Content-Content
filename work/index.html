@@ -54,7 +54,9 @@
       text-decoration: none;
     }
 
-    .wordmark span { color: var(--accent-warm); }
+    .wordmark span { color: var(--accent-warm); transition: color 0.2s; }
+    .wordmark:hover { color: var(--accent-warm); }
+    .wordmark:hover span { color: var(--ink); }
 
     nav ul {
       list-style: none;
