@@ -45,18 +45,19 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .wordmark {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--ink);
-      text-decoration: none;
-    }
+.wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s;
+}
 
-    .wordmark span { color: var(--accent-warm); transition: color 0.2s; }
-    .wordmark:hover { color: var(--accent-warm); }
-    .wordmark:hover span { color: var(--ink); }
+.wordmark span { color: var(--accent-warm); transition: color 0.2s; }
+.wordmark:hover { color: var(--accent-warm); }
+.wordmark:hover span { color: var(--ink); }
 
     nav ul {
       list-style: none;
