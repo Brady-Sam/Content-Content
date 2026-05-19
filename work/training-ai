@@ -497,8 +497,8 @@
           <h2>Result</h2>
           <p>Deflection rate climbed steadily from around 65% to 93% over six months. Enquiry volume grew significantly over the same period — at peak, the chatbot was handling over 400 queries a week. The deflection rate held up throughout. The support team got meaningful time back. The risk of policy misinformation dropped significantly.</p>
 
-          <div class="chart-wrap" role="img" aria-label="Chart showing weekly enquiry volume and deflection rate from weeks 01 to 19. Enquiry volume grows from around 80 per week to over 400 at peak. Deflection rate climbs from 69% to 93%.">
-            <p class="chart-title">Chatbot performance — weekly</p>
+          <div class="chart-wrap" role="img" aria-label="Chart showing weekly enquiry volume and deflection rate from weeks 01 to 19 (2026). Enquiry volume grows from around 80 per week to over 400 at peak. Deflection rate climbs from 69% to 93%.">
+            <p class="chart-title">Chatbot performance — weekly '26</p>
             <p class="chart-subtitle">Enquiry volume vs deflection rate, weeks 01–19</p>
             <div class="chart-area">
               <canvas id="perfChart"></canvas>
