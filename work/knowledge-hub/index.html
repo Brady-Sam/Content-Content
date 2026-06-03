@@ -140,7 +140,7 @@
       max-width: 52ch;
     }
 
-    /* Metrics */
+    /* Metrics — full container width, no .content constraint */
     .metrics {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -206,8 +206,6 @@
     /* Images */
     .case-image {
       margin: 2rem 0;
-      border: 1px solid var(--rule);
-      background: var(--white);
       overflow: hidden;
     }
 
@@ -215,16 +213,12 @@
       width: 100%;
       height: auto;
       display: block;
+      border: 1px solid var(--rule);
+      border-bottom: none;
     }
 
-    /* IA diagram: show top third only */
-    .case-image.ia-crop {
-      position: relative;
-    }
-
+    /* IA diagram: show top portion only */
     .case-image.ia-crop img {
-      /* Image is 1222×3272. Top third = ~1090px tall.
-         We show it at full width, then clip to roughly 35% of its natural height. */
       max-height: 420px;
       object-fit: cover;
       object-position: top center;
@@ -236,14 +230,19 @@
       letter-spacing: 0.06em;
       color: var(--ink-muted);
       padding: 0.75rem 1rem;
-      border-top: 1px solid var(--rule);
+      border: 1px solid var(--rule);
+      border-top: none;
+      background: var(--white);
     }
 
+    /* Image pair — breaks out of .content width to run full container */
     .image-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       margin: 2rem 0;
+      width: 100%;
+      max-width: calc(1080px - 4rem);
     }
 
     .image-pair .case-image { margin: 0; }
@@ -363,9 +362,7 @@
 
   <main id="main">
     <div class="container">
-
       <a class="back-link" href="/work/">← All work</a>
-
       <header class="page-header content">
         <div class="case-tags">
           <span class="case-tag">Content systems</span>
@@ -376,7 +373,6 @@
         <h1>Building a knowledge hub from the inside out</h1>
         <p class="page-lede">The brief was to turn Benivo's product documentation into a client-facing knowledge hub in Gitbook. The source material: messy.</p>
       </header>
-
     </div>
 
     <div class="container">
@@ -401,7 +397,7 @@
           <p>The business needed something clients could actually use: a structured, navigable hub, organised around how people actually work rather than how the product is built.</p>
 
           <figure class="case-image">
-            <img src="before-google-drive.png" alt="A Google Drive folder containing scattered, inconsistently named product documentation files" />
+            <img src="before-google-drive.png" alt="A Google Drive folder containing product documentation files at varying stages of completion" />
             <figcaption>A Google Drive folder containing product documentation files at varying stages of completion.</figcaption>
           </figure>
         </div>
