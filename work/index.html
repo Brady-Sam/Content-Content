@@ -211,13 +211,6 @@
 
     .case-link:hover { border-color: var(--accent-warm); }
 
-    .placeholder-card {
-      border: 1px dashed var(--rule);
-      padding: 3rem 2.5rem;
-      opacity: 0.45;
-      margin-bottom: 2rem;
-    }
-
     footer {
       padding: 2rem 0;
       border-top: 1px solid var(--rule);
@@ -286,8 +279,8 @@
     <div class="divider"></div>
 
     <div class="container">
-      <section class="coming-soon">
-        <p class="coming-soon-label">Case studies</p>
+      <section class="coming-soon" aria-labelledby="case-studies-label">
+        <p class="coming-soon-label" id="case-studies-label">Case studies</p>
 
         <article class="case-study-preview">
           <p class="case-tag">AI · B2B SaaS · Conversational Design</p>
@@ -296,30 +289,56 @@
           <div class="case-stats">
             <div class="stat-item">
               <strong>93%</strong>
-              <span>of inbound queries handled without human handoff</span>
+              <span>Peak deflection rate</span>
             </div>
             <div class="stat-item">
               <strong>~65%</strong>
-              <span>intial deflection rate</span>
+              <span>Starting deflection rate</span>
             </div>
             <div class="stat-item">
-              <strong><6 months</strong>
-              <span>Time taken to improvements</span>
+              <strong>6 months</strong>
+              <span>Steady improvement over</span>
             </div>
           </div>
-          <a class="case-link" href="https://www.contentcontent.design/work/training-ai">Read case study →</a>
+          <a class="case-link" href="/work/training-ai/">Read case study →</a>
         </article>
 
-        <article class="placeholder-card" aria-hidden="true">
-          <p class="case-tag">Content Strategy · Charity</p>
+        <article class="case-study-preview">
+          <p class="case-tag">Content Strategy · Information Architecture · Charity</p>
           <h2 class="case-title">Content that contributed to an Act of Parliament</h2>
-          <p class="case-summary">At Shelter, content across advocacy campaigns that fed into the Renters Reform Bill — coordinating across channels, building the content roadmap, and making complex housing policy legible to the people who needed it most.</p>
+          <p class="case-summary">Shelter's Renters Reform Bill campaign was delivering real change. The problem was that supporters didn't know about it. I restructured the campaign page around audience needs, turning a static petition page into a campaign hub that gave people context, showed progress, and offered more than one way to act.</p>
+          <div class="case-stats">
+            <div class="stat-item">
+              <strong>~55%</strong>
+              <span>Increase in campaign page traffic</span>
+            </div>
+            <div class="stat-item">
+              <strong>~40%</strong>
+              <span>Growth in petition engagement</span>
+            </div>
+            <div class="stat-item">
+              <strong>2025</strong>
+              <span>The Renters' Rights Act passed</span>
+            </div>
+          </div>
+          <a class="case-link" href="/work/shelter/">Read case study →</a>
         </article>
 
-        <article class="placeholder-card" aria-hidden="true">
-          <p class="case-tag">UX Writing · Content Systems</p>
-          <h2 class="case-title">Building a content design practice from the inside</h2>
-          <p class="case-summary">Taking a product team from "the copy is whoever's turn it is" to having principles, patterns, and a shared way of working with language. The unglamorous, genuinely useful kind of content design work.</p>
+        <article class="case-study-preview">
+          <p class="case-tag">Content Systems · IA · Knowledge Management · B2B SaaS</p>
+          <h2 class="case-title">Building a knowledge hub from the inside out</h2>
+          <p class="case-summary">Benivo's product knowledge was scattered across Google Docs, poorly migrated Notion pages, and people's heads. I designed and built a structured, client-facing Gitbook hub organised around how clients actually work, not how the product is built, and used AI to scale production without compromising editorial quality.</p>
+          <div class="case-stats">
+            <div class="stat-item">
+              <strong>70+</strong>
+              <span>Feature guide pages published</span>
+            </div>
+            <div class="stat-item">
+              <strong>Live</strong>
+              <span>Across Benivo's entire client base</span>
+            </div>
+          </div>
+          <a class="case-link" href="/work/knowledge-hub/">Read case study →</a>
         </article>
 
       </section>
