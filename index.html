@@ -49,19 +49,19 @@
       border-bottom: 1px solid var(--rule);
     }
 
-   .wordmark {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  text-decoration: none;
-  transition: color 0.2s;
-}
+    .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-.wordmark span { color: var(--accent-warm); transition: color 0.2s; }
-.wordmark:hover { color: var(--accent-warm); }
-.wordmark:hover span { color: var(--ink); }
+    .wordmark span { color: var(--accent-warm); transition: color 0.2s; }
+    .wordmark:hover { color: var(--accent-warm); }
+    .wordmark:hover span { color: var(--ink); }
 
     nav ul {
       list-style: none;
@@ -116,6 +116,15 @@
       line-height: 1.8;
       color: var(--ink-muted);
       max-width: 52ch;
+      margin-bottom: 1rem;
+    }
+
+    .hero-cred {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      max-width: 52ch;
       margin-bottom: 2.5rem;
     }
 
@@ -153,6 +162,62 @@
       background: var(--rule);
     }
 
+    /* Credibility strip */
+    .cred {
+      padding: 3.5rem 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.35s;
+    }
+
+    .cred-body {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 4rem;
+    }
+
+    .cred-text p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink-muted);
+      max-width: 52ch;
+    }
+
+    .cred-text p + p {
+      margin-top: 0.25rem;
+    }
+
+    .cred-text .cred-domains {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+    }
+
+    .cred-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .cred-link:hover { border-color: var(--accent-warm); }
+
+    .cred-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     /* Section label */
     .section-label {
       font-family: 'DM Mono', monospace;
@@ -171,109 +236,6 @@
       flex: 1;
       height: 1px;
       background: var(--rule);
-    }
-
-    /* Work cards */
-    .work {
-      padding: 6rem 0;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
-      animation-delay: 0.35s;
-    }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .work-card {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      padding: 2.5rem 2rem;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-
-    .work-card:hover {
-      border-color: var(--accent-warm);
-      transform: translateY(-2px);
-    }
-
-    .work-card:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .work-card.placeholder {
-      opacity: 0.45;
-      border-style: dashed;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .card-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-    }
-
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      line-height: 1.3;
-      color: var(--ink);
-    }
-
-    .card-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      margin-top: auto;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--rule);
-    }
-
-    .card-stat {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-
-    .card-stat strong {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: 0;
-    }
-
-    .card-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-    }
-
-    .placeholder-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-top: auto;
     }
 
     /* Services */
@@ -373,6 +335,41 @@
       color: var(--accent-warm);
     }
 
+    /* About strip */
+    .about-strip {
+      padding: 5rem 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    .about-strip-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding-top: 0.25rem;
+    }
+
+    .about-body p {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--ink-muted);
+    }
+
+    .about-body p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
     /* Contact */
     .contact {
       background: var(--ink);
@@ -421,9 +418,6 @@
       padding: 2rem 0;
       border-top: 1px solid rgba(255,255,255,0.08);
       background: var(--ink);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
     footer p {
@@ -442,14 +436,15 @@
     /* Responsive */
     @media (max-width: 768px) {
       .hero { padding: 4rem 0 3rem; }
-      .work-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none; border-bottom: 1px solid var(--rule); }
       .service-card:last-child { border-bottom: none; }
+      .cred-body { flex-direction: column; gap: 1.5rem; }
+      .about-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
       nav ul { gap: 1.5rem; }
     }
 
-    /* Skip link for accessibility */
+    /* Skip link */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -476,7 +471,6 @@
       <a class="wordmark" href="/">Content <span>Content</span></a>
       <ul>
         <li><a href="/work/">Work</a></li>
-        <li><a href="/about/">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -488,49 +482,9 @@
     <div class="container">
       <section class="hero" aria-labelledby="hero-heading">
         <h1 class="hero-headline" id="hero-heading">Content, <em>designed.</em></h1>
-        <p class="hero-body">I build the systems that give products a consistent voice across every screen, state, and situation. Delivering the right information, in the right format, at the right time. Thinking beyond just words (but mainly words).</p>
+        <p class="hero-body">I build the systems that give products a consistent voice across every screen, state, and situation. Structure, language, and logic working together, so the right thing reaches the right person. Mainly words, but never just words.</p>
+        <p class="hero-cred">A decade of UX and content design across B2B SaaS, charity, and agency work. Strategy, systems, and writing.</p>
         <a class="cta" href="/work/">See my work <span class="cta-arrow" aria-hidden="true">→</span></a>
-      </section>
-    </div>
-
-    <div class="divider" role="separator"></div>
-
-    <!-- Selected work -->
-    <div class="container">
-      <section class="work" aria-labelledby="work-heading">
-        <p class="section-label" id="work-heading">Selected work</p>
-        <div class="work-grid">
-
-          <a class="work-card" href="https://www.contentcontent.design/work/training-ai">
-            <p class="card-tag">AI · B2B SaaS</p>
-            <h2 class="card-title">Building an AI support chatbot that actually deflects</h2>
-            <div class="card-meta">
-              <div class="card-stat"><strong>75%</strong> of queries handled without human handoff</div>
-              <div class="card-stat"><strong>10+ hrs</strong> saved per week</div>
-              <div class="card-stat"><strong>93%</strong> platform satisfaction score</div>
-            </div>
-            <span class="card-link">Read case study →</span>
-          </a>
-
-          <div class="work-card placeholder" aria-hidden="true">
-            <p class="card-tag">Content Strategy · Charity</p>
-            <h2 class="card-title">Content that contributed to an Act of Parliament</h2>
-            <div class="card-meta">
-              <div class="card-stat">Case study coming soon</div>
-            </div>
-            <span class="placeholder-label">Coming soon</span>
-          </div>
-
-          <div class="work-card placeholder" aria-hidden="true">
-            <p class="card-tag">UX Writing · Content Systems</p>
-            <h2 class="card-title">Building a content design practice from the inside</h2>
-            <div class="card-meta">
-              <div class="card-stat">Case study coming soon</div>
-            </div>
-            <span class="placeholder-label">Coming soon</span>
-          </div>
-
-        </div>
       </section>
     </div>
 
@@ -572,7 +526,7 @@
             <p class="service-number">03</p>
             <h2 class="service-title">Strategy</h2>
             <p class="service-subtitle">The decisions that make content worth making</p>
-            <p class="service-desc">Understanding what users need, aligning it with what the business is trying to achieve, and turning that into a plan worth committing to.</p>
+            <p class="service-desc">Understanding what people need, aligning it with what the business is trying to achieve, and turning that into a plan worth committing to.</p>
             <ul class="service-list" aria-label="Strategy services">
               <li>Content audits and gap analysis</li>
               <li>IA and content structure</li>
@@ -585,12 +539,28 @@
       </section>
     </div>
 
+    <div class="divider" role="separator"></div>
+
+    <!-- About strip -->
+    <div class="container">
+      <section class="about-strip" aria-labelledby="about-heading">
+        <div class="about-strip-inner">
+          <p class="about-label" id="about-heading">About</p>
+          <div class="about-body">
+            <p>I'm Sam. I've spent most of my career in product and tech, writing on the side, until content design let me combine the two. Whether it's a complex AI system or a simple webpage, I want to help you feel <em>content</em> with your content.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="divider" role="separator"></div>
+
   </main>
 
   <!-- Contact -->
   <section class="contact" id="contact" aria-labelledby="contact-heading">
     <div class="container">
-      <h2 id="contact-heading">Based in Barcelona. Open to full-time roles and contract work.</h2>
+      <h2 id="contact-heading">Based in Barcelona. Open to contract and freelance work.</h2>
       <p>If you think there might be a fit, I'd like to hear about it.</p>
       <a class="contact-link" href="mailto:hello@contentcontent.design">hello@contentcontent.design</a>
     </div>
