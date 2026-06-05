@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Teaching an AI to give the right answer — Content Content</title>
   <meta name="description" content="How I designed the content layer for an AI support chatbot that increased deflection from ~65% to 93% in six months. B2B SaaS, RAG, content systems." />
+  <link rel="icon" type="image/svg+xml" href="/CC_favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
