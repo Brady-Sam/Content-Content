@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giving employees what they needed to choose — Content Content</title>
+  <meta name="description" content="How I redesigned Benivo's benefits selection flow around how employees actually make decisions, using a content-first approach and an ecommerce mental model." />
+  <link rel="icon" type="image/svg+xml" href="/CC_favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #F5F2EC;
+      --ink: #1A1814;
+      --ink-muted: #6B6660;
+      --accent: #A8401A;
+      --accent-warm: #C9532A;
+      --accent-light: #F0E8E4;
+      --rule: #D9D4CC;
+      --white: #FDFCFA;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .content { max-width: 680px; }
+
+    nav {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .wordmark span { color: var(--accent-warm); transition: color 0.2s; }
+    .wordmark:hover { color: var(--accent-warm); }
+    .wordmark:hover span { color: var(--ink); }
+
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:not(.wordmark):hover { color: var(--accent-warm); }
+    nav a[aria-current="page"] { color: var(--ink); }
+    nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      padding: 2rem 0 0;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent-warm); }
+    .back-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .page-header {
+      padding: 3rem 0 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.15s;
+    }
+
+    .case-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.3rem 0.7rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: var(--ink);
+    }
+
+    .page-lede {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 52ch;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--rule);
+      background: var(--white);
+      margin-bottom: 4rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .metric {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--rule);
+    }
+
+    .metric:last-child { border-right: none; }
+
+    .metric strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      line-height: 1.4;
+    }
+
+    .case-body {
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.45s;
+      padding-bottom: 6rem;
+    }
+
+    .case-section { margin-bottom: 3.5rem; }
+
+    .case-section h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .case-section h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 4px;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .case-section p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 1.1rem;
+      max-width: 68ch;
+    }
+
+    .callout {
+      border-left: 2px solid var(--accent);
+      background: var(--accent-light);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .callout p {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin: 0;
+      line-height: 1.7;
+      max-width: none;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 3.5rem;
+    }
+
+    /* Before/after comparisons */
+    .comparison-row {
+      margin: 2.5rem 0;
+    }
+
+    .comparison-row-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .comparison-row-label.is-after {
+      color: var(--accent);
+      border-bottom-color: var(--accent-light);
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .screenshot-item { display: flex; flex-direction: column; }
+
+    .screenshot-frame {
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .screenshot-frame.is-after { border-color: var(--accent); }
+
+    .screenshot-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .screenshot-item figcaption {
+      padding: 0.75rem 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* Full-width image pair (outside .content) */
+    .image-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0 0 3.5rem;
+    }
+
+    .case-image { overflow: hidden; }
+
+    .case-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--rule);
+      border-bottom: none;
+    }
+
+    .case-image.is-after img { border-color: var(--accent); }
+
+    .case-image figcaption {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-top: none;
+      background: var(--white);
+    }
+
+    .case-image.is-after figcaption {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .footnote {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      line-height: 1.7;
+    }
+
+    .contact {
+      background: var(--ink);
+      padding: 6rem 0;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .contact p {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      max-width: 44ch;
+      margin: 0 auto 2rem;
+      line-height: 1.75;
+    }
+
+    .contact-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-warm);
+      padding-bottom: 0.1rem;
+      transition: opacity 0.2s;
+    }
+
+    .contact-link:hover { opacity: 0.7; }
+    .contact-link:focus-visible { outline: 2px solid var(--accent-warm); outline-offset: 3px; }
+
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: var(--ink);
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .metrics { grid-template-columns: 1fr; }
+      .metric { border-right: none; border-bottom: 1px solid var(--rule); }
+      .metric:last-child { border-bottom: none; }
+      .screenshot-grid { grid-template-columns: 1fr; }
+      .image-pair { grid-template-columns: 1fr; }
+      nav ul { gap: 1.5rem; }
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      text-decoration: none;
+      transition: top 0.2s;
+      z-index: 100;
+    }
+
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="container">
+    <nav aria-label="Main navigation">
+      <a class="wordmark" href="/">Content <span>Content</span></a>
+      <ul>
+        <li><a href="/work/" aria-current="page">Work</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+    <div class="container">
+
+      <a class="back-link" href="/work/">&#8592; All work</a>
+
+      <header class="page-header content">
+        <div class="case-tags">
+          <span class="case-tag">UX Writing</span>
+          <span class="case-tag">Product design</span>
+          <span class="case-tag">B2B SaaS</span>
+        </div>
+        <h1>Giving employees what they needed to choose</h1>
+        <p class="page-lede">Benivo's benefits platform had the services configured and the budget allocated. What it didn't have was any way to give users enough information to make a confident decision.</p>
+      </header>
+
+    </div>
+
+    <div class="container">
+      <div class="metrics" role="region" aria-label="Project outcomes">
+        <div class="metric">
+          <strong>6.4 / 7</strong>
+          <span>Ease of benefit selection post-launch, up from 5.7 before the redesign</span>
+        </div>
+        <div class="metric">
+          <strong>~3%</strong>
+          <span>Average service enquiry rate post-launch, a positive indicator that the platform and its content are clear and intuitive for employees</span>
+        </div>
+        <div class="metric">
+          <strong>New</strong>
+          <span>Service surface created for users outside standard employer policy, through the Benivo supply partner network</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="case-body content">
+
+        <div class="case-section">
+          <h2>Situation</h2>
+          <p>Benivo's employee platform gives relocating employees access to services funded by their employer, such as home search, household goods shipping, temporary accommodation, visa support. Where a policy allows it, employees can also allocate a managed budget across services that fit their specific move.</p>
+          <p>Analytics showed users visiting the benefits selection page repeatedly, without committing. When they finally selected, most confirmed everything in a single session that came after multiple earlier research visits. Clients were fielding the same questions from employees over and over: what do I have access to, how much can I spend, what happens when I choose something.</p>
+          <p>The product had been built to satisfy system requirements. It hadn't been built to support a decision.</p>
+        </div>
+
+        <div class="divider" role="separator"></div>
+
+        <div class="case-section">
+          <h2>Task</h2>
+          <p>Users were planning, not lost. The data showed them coming back to look and compare before making their decision. The brief was to fix a confusing flow; the actual problem was that the product wasn't supporting the behaviour users were already in.</p>
+          <p>That meant filling the information gap, not simplifying the experience. Users needed to understand what they had, what it would cost, and what would happen when they chose something. None of that was on the screen.</p>
+        </div>
+
+        <div class="divider" role="separator"></div>
+
+        <div class="case-section">
+          <h2>Action</h2>
+
+          <h3>Discovery</h3>
+          <p>Most users confirmed their benefits in a dedicated second session, after multiple research visits. The product had no concept of that distinction. It treated every visit as a selection moment when most were actually research moments.</p>
+          <p>I mapped the user journey across three stages: onboarding (excited but anxious, wanting to understand what was available), planning (comparing services, uncertain about costs, looking for reassurance), and arrival (ready to finalise, needing a clear path). A competitor review confirmed the gap: the better products showed status clearly, but none gave users enough to decide without calling someone. That was the gap.</p>
+
+          <div class="callout">
+            <p>The problem wasn't complexity. Users were uncertain because the product wasn't giving them what they needed to decide.</p>
+          </div>
+
+          <h3>Reframe</h3>
+          <p>The key decision was treating this as an ecommerce problem. Relocating employees were already behaving like shoppers: browsing, comparing, and returning before committing. The product needed to work the same way. Categories, transparent pricing, descriptions that explained value, social proof, and a detail page that completed a decision rather than restated one.</p>
+
+          <h3>Structure</h3>
+          <p>Working with the designer, I defined two distinct modes for the overview: Select for benefits requiring a choice, and Track for benefits already active. The old design mixed these states with no visual logic. Budget moved to a persistent display at the top of the page, broken into what was available for services and for allowance separately. Users had been navigating a spending decision without knowing what they were spending.</p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Before/after: overview -->
+    <div class="container">
+      <div class="image-pair" role="region" aria-label="Benefits overview before and after redesign">
+        <figure class="case-image">
+          <!-- Replace src with: before-overview.png -->
+          <img src="before-overview.png" alt="The old benefits overview: service cards showing only a name and stock photo, with actions hidden behind a three-dot menu and no budget information visible anywhere on the page." loading="lazy" />
+          <figcaption>Before: no budget, mixed states, actions buried in overflow menus.</figcaption>
+        </figure>
+        <figure class="case-image is-after">
+          <!-- Replace src with: after-overview.png -->
+          <img src="after-overview.png" alt="The redesigned benefits overview: persistent budget display at top, Select and Track tabs, service cards with category labels, descriptions, and pricing." loading="lazy" />
+          <figcaption>After: budget visible at all times, clear Select / Track split, scannable cards with pricing and descriptions.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="case-body content">
+
+        <div class="case-section">
+
+          <h3>The service detail page</h3>
+          <p>This was the screen that needed to do the most work, and it was designed content-first. Rather than fitting copy to a layout, I mapped everything a user would need to make a confident decision, in the order they would need it: what the service is, who provides it, what other users thought of it, what it costs against their remaining budget, and what they need to provide to initiate it. That document went to the designer as a brief before any interface work began.</p>
+
+          <div class="callout">
+            <p>The equivalent screen in the old product was two sentences floating in a white page with no visible call to action. Some users visited the benefits section more than fifty times because the page they needed to feel confident simply didn't exist.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Before/after: detail page -->
+    <div class="container">
+      <div class="image-pair" role="region" aria-label="Service detail page before and after redesign">
+        <figure class="case-image">
+          <!-- Replace src with: before-detail.png -->
+          <img src="before-detail.png" alt="The old service detail page: two sentences of description on an otherwise empty white page, with no call to action visible." loading="lazy" />
+          <figcaption>Before: two sentences, no pricing, no vendor, no CTA. Nothing to decide from.</figcaption>
+        </figure>
+        <figure class="case-image is-after">
+          <!-- Replace src with: after-detail.png -->
+          <img src="after-detail.png" alt="The redesigned service detail page: service description, vendor name and star rating, peer reviews, available budget, service cost, requirements form, and a Select benefit button." loading="lazy" />
+          <figcaption>After: vendor, reviews, cost, requirements, and a clear action. Content-first, designed to convert.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="case-body content">
+
+        <div class="case-section">
+
+          <h3>A new surface</h3>
+          <p>For users whose employers had configured few or no benefits, the platform could now surface Benivo's own supply partner network as an option. Previously, those users landed on a near-empty screen with nowhere to go. The redesign gave them a starting point, and extended the product's reach beyond users with fully configured employer policies.</p>
+
+        </div>
+
+        <div class="divider" role="separator"></div>
+
+        <div class="case-section">
+          <h2>Result</h2>
+          <p>The CES score for ease of benefit selection improved from 5.7 to 6.4 out of 7 following the redesign, across 86 post-launch responses. That's the direct measure of what the work set out to do: make it easier for employees to understand what they had and act on it.</p>
+          <p>Support enquiry volume averaged around 3% of sessions post-launch. Low enquiry rates suggest the platform, its content, and the service offering are clear and intuitive for employees. The supply partner surface extended the product's reach to users who would previously have had nothing to engage with at all.</p>
+          <p>The redesign primarily serves Managed Budget policies, where employees actively choose from a pool of services. Managed Services, where benefits are pre-configured by the employer, remains the dominant delivery model across the current client base. Volume reflects that mix, and is driven more by assignment and internship start dates than by any interface change.</p>
+        </div>
+
+        <p class="footnote">Benivo is a global mobility and relocation platform. CES figures reflect survey responses collected after the V2 release in August. Other outcomes reflect post-launch data and client feedback from the months following launch.</p>
+
+      </div>
+    </div>
+
+  </main>
+
+  <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <h2 id="contact-heading">Based in Barcelona. Open to full-time roles and contract work.</h2>
+      <p>If you think there might be a fit, I'd like to hear about it.</p>
+      <a class="contact-link" href="mailto:hello@contentcontent.design">hello@contentcontent.design</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <p>Content Content — Sam Brady</p>
+      <p>Barcelona</p>
+    </div>
+  </footer>
+
+</body>
+</html>
