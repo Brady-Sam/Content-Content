@@ -1,577 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Content — Sam Brady</title>
-  <meta name="description" content="Sam Brady — Content designer building the systems that give products a consistent voice. Based in Barcelona." />
-  <link rel="icon" type="image/svg+xml" href="/CC_favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content Content — Content design practice in Barcelona</title>
+  <meta name="description" content="An independent content design practice helping startups spot content problems and fix them. Barcelona based, working with startups everywhere.">
+  <link rel="icon" type="image/svg+xml" href="/brand/CC_favicon.svg">
+  <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #F5F2EC;
-      --ink: #1A1814;
-      --ink-muted: #6B6660;
-      --accent: #A8401A;
-      --accent-warm: #C9532A;
-      --accent-light: #F0E8E4;
-      --rule: #D9D4CC;
-      --white: #FDFCFA;
-    }
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    ::selection{background:#B23A2E;color:#F6F5F3;}
+    a{color:#B23A2E;text-decoration:underline;text-underline-offset:2px;}
+    a:hover{color:#8F2E24;}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Nav */
-    nav {
-      padding: 2rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .wordmark {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--ink);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .wordmark span { color: var(--accent-warm); transition: color 0.2s; }
-    .wordmark:hover { color: var(--accent-warm); }
-    .wordmark:hover span { color: var(--ink); }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    nav a {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--accent-warm); }
-
-    nav a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 7rem 0 5rem;
-      max-width: 680px;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
-      animation-delay: 0.2s;
-    }
-
-    .hero-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 5vw, 4rem);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      margin-bottom: 2rem;
-    }
-
-    .hero-headline em {
-      font-style: italic;
-      color: var(--accent-warm);
-    }
-
-    .hero-body {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--ink-muted);
-      max-width: 52ch;
-      margin-bottom: 1rem;
-    }
-
-    .hero-cred {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
-      max-width: 52ch;
-      margin-bottom: 2.5rem;
-    }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--ink);
-      padding: 0.85rem 1.6rem;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .cta:hover {
-      background: var(--accent-warm);
-      transform: translateY(-1px);
-    }
-
-    .cta:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .cta-arrow { font-size: 1rem; transition: transform 0.2s; }
-    .cta:hover .cta-arrow { transform: translateX(3px); }
-
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: var(--rule);
-    }
-
-    /* Credibility strip */
-    .cred {
-      padding: 3.5rem 0;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
-      animation-delay: 0.35s;
-    }
-
-    .cred-body {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 4rem;
-    }
-
-    .cred-text p {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--ink-muted);
-      max-width: 52ch;
-    }
-
-    .cred-text p + p {
-      margin-top: 0.25rem;
-    }
-
-    .cred-text .cred-domains {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
-    }
-
-    .cred-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-      text-decoration: none;
-      white-space: nowrap;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-      flex-shrink: 0;
-    }
-
-    .cred-link:hover { border-color: var(--accent-warm); }
-
-    .cred-link:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    /* Section label */
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 3.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
-
-    /* Services */
-    .services {
-      padding: 6rem 0;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
-      animation-delay: 0.5s;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid var(--rule);
-    }
-
-    .service-card {
-      padding: 2.5rem 2rem;
-      border-right: 1px solid var(--rule);
-      transition: background 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card:last-child { border-right: none; }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent-warm);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-
-    .service-card:hover { background: var(--white); }
-    .service-card:hover::before { transform: scaleX(1); }
-
-    .service-number {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--accent-warm);
-      letter-spacing: 0.1em;
-      margin-bottom: 1.25rem;
-    }
-
-    .service-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-      color: var(--ink);
-    }
-
-    .service-subtitle {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      font-style: italic;
-      color: var(--ink-muted);
-      margin-bottom: 1.25rem;
-      line-height: 1.45;
-    }
-
-    .service-desc {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: var(--ink-muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .service-list {
-      list-style: none;
-      border-top: 1px solid var(--rule);
-      padding-top: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .service-list li {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
-      padding-left: 0.75rem;
-      position: relative;
-    }
-
-    .service-list li::before {
-      content: '·';
-      position: absolute;
-      left: 0;
-      color: var(--accent-warm);
-    }
-
-    /* About strip */
-    .about-strip {
-      padding: 5rem 0;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
-      animation-delay: 0.6s;
-    }
-
-    .about-strip-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .about-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      padding-top: 0.25rem;
-    }
-
-    .about-body p {
-      font-size: 0.95rem;
-      line-height: 1.85;
-      color: var(--ink-muted);
-    }
-
-    .about-body p strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    /* Contact */
-    .contact {
-      background: var(--ink);
-      padding: 6rem 0;
-      text-align: center;
-    }
-
-    .contact h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 1rem;
-      line-height: 1.25;
-    }
-
-    .contact p {
-      font-size: 0.95rem;
-      color: var(--ink-muted);
-      max-width: 44ch;
-      margin: 0 auto 2rem;
-      line-height: 1.75;
-    }
-
-    .contact-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-warm);
-      padding-bottom: 0.1rem;
-      transition: opacity 0.2s;
-    }
-
-    .contact-link:hover { opacity: 0.7; }
-
-    .contact-link:focus-visible {
-      outline: 2px solid var(--accent-warm);
-      outline-offset: 3px;
-    }
-
-    /* Footer */
-    footer {
-      padding: 2rem 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      background: var(--ink);
-    }
-
-    footer p {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--ink-muted);
-      letter-spacing: 0.06em;
-    }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero { padding: 4rem 0 3rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { border-right: none; border-bottom: 1px solid var(--rule); }
-      .service-card:last-child { border-bottom: none; }
-      .cred-body { flex-direction: column; gap: 1.5rem; }
-      .about-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-      nav ul { gap: 1.5rem; }
-    }
+    /* Visible focus (DESIGN.md focus ring) */
+    a:focus-visible,button:focus-visible{outline:3px solid #46809B;outline-offset:2px;border-radius:2px;}
 
     /* Skip link */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--accent);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      text-decoration: none;
-      transition: top 0.2s;
-      z-index: 100;
-    }
+    .skip-link{position:absolute;left:-999px;top:0;background:#003262;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 20px;text-decoration:none;z-index:100;}
+    .skip-link:focus{left:0;}
 
-    .skip-link:focus { top: 0; }
+    /* Nav layout */
+    .nav-inner{max-width:1080px;margin:0 auto;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+    .nav-links{display:flex;gap:26px;align-items:center;}
+    .nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;padding:0;background:transparent;border:1.5px solid #D3D9DD;border-radius:6px;cursor:pointer;}
+    .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{content:'';display:block;width:20px;height:2px;background:#003262;transition:transform .2s,background .2s;}
+    .nav-toggle-bars{position:relative;}
+    .nav-toggle-bars::before{position:absolute;left:0;top:-6px;}
+    .nav-toggle-bars::after{position:absolute;left:0;top:6px;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars{background:transparent;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before{transform:translateY(6px) rotate(45deg);}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after{transform:translateY(-6px) rotate(-45deg);}
+
+    /* Wordmark — two-tone, colours swap on hover */
+    .wordmark{font-family:'Fugaz One',cursive;font-size:22px;line-height:1;text-decoration:none;}
+    .wordmark .w1{color:#003262;transition:color .18s;}
+    .wordmark .w2{color:#46809B;transition:color .18s;}
+    .wordmark:hover .w1{color:#46809B;}
+    .wordmark:hover .w2{color:#003262;}
+
+    /* Nav links */
+    .nav-link{font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#12222B;text-decoration:none;transition:color .18s;}
+    .nav-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:4px;}
+
+    /* Nav Contact button */
+    .nav-contact{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;border:1.5px solid #B23A2E;padding:7px 16px;border-radius:6px;background:transparent;transition:background .18s,color .18s;}
+    .nav-contact:hover{background:#B23A2E;color:#F6F5F3;}
+
+    /* Primary CTA — colour/background via class so :hover can win */
+    .btn-primary{display:inline-block;background:#B23A2E;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;text-decoration:none;border-radius:6px;transition:background .18s;}
+    .btn-primary:hover{background:#8F2E24;color:#F6F5F3;}
+
+    /* Footer links */
+    .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
+    .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
+
+    @media (max-width:768px){
+      .nav-toggle{display:inline-flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:flex-start;gap:0;background:#F6F5F3;border-bottom:1px solid #D3D9DD;padding:8px 24px 18px;box-shadow:0 8px 16px rgba(0,50,98,0.06);}
+      .nav-links.open{display:flex;}
+      .nav-links .nav-link{padding:14px 0;width:100%;}
+      .nav-links .nav-contact{margin-top:12px;}
+      .hero{padding:56px 24px 64px !important;}
+      .hero h1{font-size:clamp(2.5rem,14vw,4rem) !important;}
+      .section-pad{padding:56px 24px !important;}
+      .two-col{grid-template-columns:1fr !important;gap:32px !important;}
+      .footer-inner{padding:56px 24px 48px !important;}
+      .footer-big{font-size:34px !important;}
+    }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-  <a class="skip-link" href="#main">Skip to main content</a>
+<div style="background:#F6F5F3;color:#12222B;font-family:'Work Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;">
 
-  <div class="container">
-    <nav aria-label="Main navigation">
-      <a class="wordmark" href="/">Content <span>Content</span></a>
-      <ul>
-        <li><a href="/work/">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+  <!-- NAV -->
+  <nav aria-label="Main navigation" style="border-bottom:1px solid #D3D9DD;background:#F6F5F3;position:sticky;top:0;z-index:10;">
+    <div class="nav-inner">
+      <a class="wordmark" href="/"><span class="w1">Content</span> <span class="w2">Content</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="nav-menu">
+        <a class="nav-link" href="/services/">Services</a>
+        <a class="nav-link" href="/field-notes/">Field notes</a>
+        <a class="nav-link" href="/work/">Work</a>
+        <a class="nav-link" href="/about/">About</a>
+        <a class="nav-contact" href="/contact/">Contact</a>
+      </div>
+    </div>
+  </nav>
 
   <main id="main">
 
-    <!-- Hero -->
-    <div class="container">
-      <section class="hero" aria-labelledby="hero-heading">
-        <h1 class="hero-headline" id="hero-heading">Content, <em>designed.</em></h1>
-        <p class="hero-body">I build the systems that give products a consistent voice across every screen, state, and situation. Structure, language, and logic working together, so the right thing reaches the right person. Mainly words, but never just words.</p>
-        <p class="hero-cred">A decade of UX and content design across B2B SaaS, charity, and agency work. Strategy, systems, and writing.</p>
-        <a class="cta" href="/work/">See my work <span class="cta-arrow" aria-hidden="true">→</span></a>
-      </section>
-    </div>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 104px;">
+      <h1 id="hero-heading" style="font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;">Content,<br>designed.</h1>
+      <p style="max-width:600px;margin:36px 0 40px;font-size:22px;line-height:1.45;color:#12222B;">An independent content design practice helping startups spot content problems and fix them.</p>
+      <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Get in touch</a>
+    </section>
 
-    <div class="divider" role="separator"></div>
-
-    <!-- Services -->
-    <div class="container">
-      <section class="services" aria-labelledby="services-heading">
-        <p class="section-label" id="services-heading">How I work</p>
-        <div class="services-grid">
-
-          <div class="service-card">
-            <p class="service-number">01</p>
-            <h2 class="service-title">Craft</h2>
-            <p class="service-subtitle">The content that makes products work</p>
-            <p class="service-desc">Every screen, every state, every message. All of it designed to move people forward without getting in the way.</p>
-            <ul class="service-list" aria-label="Craft services">
-              <li>UX writing and microcopy</li>
-              <li>Onboarding and activation flows</li>
-              <li>Error, empty, and edge case states</li>
-              <li>Conversational and AI interface copy</li>
-            </ul>
+    <!-- HOW CAN I HELP -->
+    <section aria-labelledby="help-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+      <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+      <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
+        <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
+          <div>
+            <h2 id="help-heading" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;">How I can help</h2>
           </div>
-
-          <div class="service-card">
-            <p class="service-number">02</p>
-            <h2 class="service-title">Systems</h2>
-            <p class="service-subtitle">The environment that makes content scale</p>
-            <p class="service-desc">Processes, shared language, and ways of working that mean quality doesn't depend on one person getting it right.</p>
-            <ul class="service-list" aria-label="Systems services">
-              <li>Voice and tone guidelines</li>
-              <li>Content principles and frameworks</li>
-              <li>Content modelling and structure</li>
-              <li>Design system and AI workflow contribution</li>
-            </ul>
-          </div>
-
-          <div class="service-card">
-            <p class="service-number">03</p>
-            <h2 class="service-title">Strategy</h2>
-            <p class="service-subtitle">The decisions that make content worth making</p>
-            <p class="service-desc">Understanding what people need, aligning it with what the business is trying to achieve, and turning that into a plan worth committing to.</p>
-            <ul class="service-list" aria-label="Strategy services">
-              <li>Content audits and gap analysis</li>
-              <li>IA and content structure</li>
-              <li>A/B testing and iteration</li>
-              <li>Content planning and roadmapping</li>
-            </ul>
-          </div>
-
-        </div>
-      </section>
-    </div>
-
-    <div class="divider" role="separator"></div>
-
-    <!-- About strip -->
-    <div class="container">
-      <section class="about-strip" aria-labelledby="about-heading">
-        <div class="about-strip-inner">
-          <p class="about-label" id="about-heading">About</p>
-          <div class="about-body">
-            <p>I'm Sam. I've spent most of my career in product and tech, writing on the side, until content design let me combine the two. Whether it's a complex AI system or a simple webpage, I want to help you feel <em>content</em> with your content.</p>
+          <div>
+            <p style="margin:0 0 32px;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">I look at your product end-to-end to make sure that every bit of information is helping your audience achieve their goals and meet your business needs.</p>
+            <a class="btn-primary" href="/services/" style="font-size:16px;padding:13px 26px;">View content services</a>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
-    <div class="divider" role="separator"></div>
+    <!-- ABOUT / CREDIBILITY (Personal callout) -->
+    <section class="section-pad" aria-label="About Sam Brady" style="max-width:1080px;margin:0 auto;padding:72px 24px;">
+      <div style="max-width:680px;">
+        <div style="width:32px;height:2px;background:#B23A2E;margin-bottom:22px;"></div>
+        <p style="margin:0;font-family:'Spectral',serif;font-size:19px;line-height:1.6;color:#12222B;">I'm Sam. Over a decade in tech, focused on designing content for organisations big and small, from charities to SaaS platforms. I started Content Content to help startups get every angle of their UX working.</p>
+      </div>
+    </section>
 
   </main>
 
-  <!-- Contact -->
-  <section class="contact" id="contact" aria-labelledby="contact-heading">
-    <div class="container">
-      <h2 id="contact-heading">Based in Barcelona. Open to contract and freelance work.</h2>
-      <p>If you think there might be a fit, I'd like to hear about it.</p>
-      <a class="contact-link" href="mailto:hello@contentcontent.design">hello@contentcontent.design</a>
-    </div>
-  </section>
-
+  <!-- FOOTER -->
   <footer>
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-      <p>Content Content — Sam Brady</p>
-      <p>Barcelona</p>
+    <div class="mosaic-strip" data-seed="91827364" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+    <div style="background:#003262;">
+      <div class="footer-inner" style="max-width:1080px;margin:0 auto;padding:80px 24px 56px;">
+        <p class="footer-big" style="font-family:'Fugaz One',cursive;font-size:44px;line-height:1.05;color:#F6F5F3;max-width:640px;margin:0;">To feel content with your content.</p>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:56px;border-top:1px solid #2A527A;padding-top:36px;">
+          <div>
+            <p style="margin:0 0 14px;font-size:17px;line-height:1.5;color:#F6F5F3;max-width:360px;">Barcelona based, working with startups everywhere.</p>
+            <a class="footer-link" href="mailto:hello@contentcontent.design" style="font-family:'IBM Plex Mono',monospace;font-size:16px;text-decoration:underline;text-underline-offset:3px;">hello@contentcontent.design</a>
+          </div>
+          <nav aria-label="Footer navigation" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
+            <a class="footer-link" href="/services/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Services</a>
+            <a class="footer-link" href="/field-notes/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Field notes</a>
+            <a class="footer-link" href="/work/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Work</a>
+            <a class="footer-link" href="/about/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">About</a>
+          </nav>
+        </div>
+      </div>
     </div>
   </footer>
+
+</div>
+
+<script>
+  /* Mosaic strip (DESIGN.md §5): seeded trencadís generator.
+     Fills the full viewport width and tops up on resize so it never runs short.
+     Same locked rules — muted cool palette, exactly one coral tile — with a
+     different seed per strip so the two read as different tile segments. */
+  (function () {
+    var TILE = 20, GAP = 1.5, ADVANCE = TILE + GAP;
+    var BASE = ['#003262','#003262','#003262','#46809B','#46809B','#E4ECF0','#F6F5F3','#12222B','#8FB0C1'];
+
+    function makeRng(seed) {
+      var s = seed >>> 0;
+      return function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; };
+    }
+    function clamp(v) { return Math.min(100, Math.max(0, Math.round(v))); }
+
+    function build(el) {
+      var seed = parseInt(el.getAttribute('data-seed'), 10) || 1;
+      var st = el._strip || (el._strip = { rnd: makeRng(seed), count: 0, coral: false });
+      var rnd = st.rnd;
+      var jx = function (b, a) { return clamp(b + (rnd() * 2 - 1) * a); };
+      var clip = function () {
+        var pts = [[jx(2,15),jx(4,15)],[jx(98,15),jx(3,13)],[jx(97,13),jx(98,15)],[jx(3,15),jx(97,15)]];
+        if (rnd() > 0.45) {
+          var i = Math.floor(rnd() * 4), a = pts[i], b = pts[(i + 1) % 4];
+          pts.splice(i + 1, 0, [clamp((a[0]+b[0])/2 + (rnd()*2-1)*13), clamp((a[1]+b[1])/2 + (rnd()*2-1)*13)]);
+        }
+        return 'polygon(' + pts.map(function (p) { return p[0] + '% ' + p[1] + '%'; }).join(',') + ')';
+      };
+
+      var need = Math.ceil((window.innerWidth + 60) / ADVANCE);
+      if (need <= st.count) return;
+      var frag = document.createDocumentFragment();
+      for (var i = st.count; i < need; i++) {
+        var d = document.createElement('div');
+        d.style.background = BASE[Math.floor(rnd() * BASE.length)];
+        d.style.clipPath = clip();
+        frag.appendChild(d);
+      }
+      el.appendChild(frag);
+      st.count = need;
+      if (!st.coral) {
+        var idx = 5 + Math.floor(rnd() * 4);
+        if (el.children[idx]) el.children[idx].style.background = '#B23A2E';
+        st.coral = true;
+      }
+    }
+
+    var strips = [].slice.call(document.querySelectorAll('.mosaic-strip'));
+    function run() { strips.forEach(build); }
+    run();
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+  })();
+</script>
+
+<script>
+  /* Mobile nav toggle */
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', function () {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) setOpen(false);
+    });
+  })();
+</script>
 
 </body>
 </html>
