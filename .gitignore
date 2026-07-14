@@ -1,0 +1,5 @@
+# Internal drafts — not for publishing
+dafts/
+
+# macOS
+.DS_Store
