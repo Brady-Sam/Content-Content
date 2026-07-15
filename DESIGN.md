@@ -4,7 +4,7 @@ Visual and technical reference only. Copy, voice, positioning, and content rules
 
 Status: fully locked. Do not regenerate or reinterpret anything below.
 
-Last updated: 2026-07-14 — added the two-tone wordmark rule (decision 4), rewrote the mosaic strip for full-width fill with per-placement seeds, documented the mobile hamburger nav, and added the hover/focus-in-classes note.
+Last updated: 2026-07-15. Retired coral-fill callouts (they read as error states); the Principle callout and Standard note now use a white card with an Air Force Blue left edge.
 
 ---
 
@@ -33,8 +33,8 @@ Last updated: 2026-07-14 — added the two-tone wordmark rule (decision 4), rewr
 | Coral | `#B23A2E` | Links, CTAs, hover accents, the single mosaic spark |
 | Coral hover | `#8F2E24` | Hover/darken state for coral |
 | Blue tint | `#E4ECF0` | Tags, neutral callouts |
-| Coral tint | `#FBE6E0` | Accent callouts |
-| Coral tint border | `#F0CFC6` | Border for coral-tint blocks (decorative, not a contrast-critical UI boundary) |
+| Coral tint | `#FBE6E0` | Accent fill (retired for callouts, see Callout family) |
+| Coral tint border | `#F0CFC6` | Border for coral-tint blocks (retired for callouts, see Callout family) |
 | Blue tint border | `#C9E4DF` | Reserved border for teal/tint blocks |
 | Border grey | `#D3D9DD` | Dividers, hairlines, card borders (decorative) |
 | Muted slate | `#46545C` | Secondary text, metadata, mono labels, 7.2:1 on White Smoke, safe for small text |
@@ -230,6 +230,8 @@ Four distinct treatments, each doing a different job. Don't substitute one for a
 | Standard note | General tip or aside, not persuasive, not personal | FAQ asides, in-page tips |
 | Neutral note | Informational, explicitly not trying to persuade | Caveats, disclaimers, process notes |
 
+Callout fills never use coral: a coral/red fill reads as an error or alert state at a glance. Coral stays for links, CTAs, the mosaic spark, and the personal callout's thin rule, but never as a callout background. The Principle callout and Standard note use a white card with an Air Force Blue left edge; the Neutral note uses the blue tint.
+
 **Personal callout**
 For first-person text written by Sam, not the practice voice. Lower visual priority than primary sections. Spectral serif and the coral rule are the signature, this is what makes it read as a person speaking rather than the practice.
 ```html
@@ -245,19 +247,19 @@ For first-person text written by Sam, not the practice voice. Lower visual prior
 Props: `heading` (optional), `body`, `byline` (optional). Multiple paragraphs allowed for longer notes.
 
 **Principle callout**
-Coral tint, larger Work Sans (19px), used sparingly for one standalone insight, not general commentary.
+White card with an Air Force Blue left edge, larger Work Sans (19px), used sparingly for one standalone insight, not general commentary.
 ```html
-<div style="background:#FBE6E0;border:1px solid #F0CFC6;border-radius:10px;padding:28px;">
-  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#B23A2E;margin-bottom:14px;">Principle</div>
+<div style="background:#FFFFFF;border:1px solid #D3D9DD;border-left:4px solid #46809B;border-radius:10px;padding:28px;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;margin-bottom:14px;">Principle</div>
   <p style="font-family:'Work Sans',sans-serif;font-size:19px;line-height:1.45;color:#12222B;margin:0;">Text.</p>
 </div>
 ```
 
 **Standard note**
-Coral tint, body-size Work Sans (16px), mono kicker. The default for a general aside that isn't personal and isn't a headline insight.
+White card with an Air Force Blue left edge, body-size Work Sans (16px), mono kicker. The default for a general aside that isn't personal and isn't a headline insight.
 ```html
-<div style="background:#FBE6E0;border:1px solid #F0CFC6;border-radius:10px;padding:24px 26px;">
-  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#B23A2E;margin-bottom:14px;">Kicker label</div>
+<div style="background:#FFFFFF;border:1px solid #D3D9DD;border-left:4px solid #46809B;border-radius:10px;padding:24px 26px;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#46545C;margin-bottom:14px;">Kicker label</div>
   <p style="margin:0;font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.65;color:#12222B;">Body.</p>
 </div>
 ```
