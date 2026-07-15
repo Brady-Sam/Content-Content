@@ -4,7 +4,7 @@ Visual and technical reference only. Copy, voice, positioning, and content rules
 
 Status: fully locked. Do not regenerate or reinterpret anything below.
 
-Last updated: 2026-07-15. Retired coral-fill callouts (they read as error states); the Principle callout and Standard note now use a white card with an Air Force Blue left edge.
+Last updated: 2026-07-15. Added the standard page hero pattern (Fugaz page title, Work Sans navy subheader, optional standard line; homepage exempt). Earlier the same day, retired coral-fill callouts for a white card with an Air Force Blue left edge.
 
 ---
 
@@ -186,6 +186,16 @@ The reference generator loops a fixed `60` tiles; the production build instead d
 ## 6. Components
 
 Interactive components carry their base and `:hover`/`:focus` styles in CSS classes, never inline `style` attributes — an inline style overrides a class-level `:hover` and silently disables the hover/focus state.
+
+### Page hero
+
+Every interior page opens with the same three-part hero, top to bottom:
+
+1. **Page title** — the page's nav label (Services, Work, Field notes, About, Contact) in Fugaz One, `clamp(2.5rem, 8vw, 6.5rem)` / 0.95, Oxford Navy. This is the page's one Fugaz line and its `<h1>`.
+2. **Subheader** — the descriptive line in Work Sans 600, `clamp(1.5rem, 3vw, 1.9rem)` / 1.2, Oxford Navy. A `<p>`, not a heading, so it leaves the `h1 → h2` order intact.
+3. **Standard line** (optional) — supporting Work Sans 400, 20px, Ink, for a longer sentence or lede. Include only when needed.
+
+The homepage is the exception: its hero is the brand statement ("Content, designed.") in Fugaz, not a page title, with no navy subheader.
 
 ### CTA button (primary)
 ```html
