@@ -1,378 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/CC_favicon.svg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Work · Content Content</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
+  <meta name="description" content="Case studies from Content Content showing the impact of good content design, from an AI support chatbot to a charity campaign.">
+  <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #F5F2EC;
-      --ink: #1A1814;
-      --ink-muted: #6B6660;
-      --accent: #A8401A;
-      --accent-warm: #C9532A;
-      --rule: #D9D4CC;
-      --white: #FDFCFA;
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    ::selection{background:#B23A2E;color:#F6F5F3;}
+    a{color:#B23A2E;text-decoration:underline;text-underline-offset:2px;}
+    a:hover{color:#8F2E24;}
+
+    a:focus-visible,button:focus-visible{outline:3px solid #46809B;outline-offset:2px;border-radius:2px;}
+
+    .skip-link{position:absolute;left:-999px;top:0;background:#003262;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 20px;text-decoration:none;z-index:100;}
+    .skip-link:focus{left:0;}
+
+    /* Nav layout */
+    .nav-inner{max-width:1080px;margin:0 auto;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+    .nav-links{display:flex;gap:26px;align-items:center;}
+    .nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;padding:0;background:transparent;border:1.5px solid #D3D9DD;border-radius:6px;cursor:pointer;}
+    .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{content:'';display:block;width:20px;height:2px;background:#003262;transition:transform .2s,background .2s;}
+    .nav-toggle-bars{position:relative;}
+    .nav-toggle-bars::before{position:absolute;left:0;top:-6px;}
+    .nav-toggle-bars::after{position:absolute;left:0;top:6px;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars{background:transparent;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before{transform:translateY(6px) rotate(45deg);}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after{transform:translateY(-6px) rotate(-45deg);}
+
+    .wordmark{font-family:'Fugaz One',cursive;font-size:22px;line-height:1;text-decoration:none;}
+    .wordmark .w1{color:#003262;transition:color .18s;}
+    .wordmark .w2{color:#46809B;transition:color .18s;}
+    .wordmark:hover .w1{color:#46809B;}
+    .wordmark:hover .w2{color:#003262;}
+
+    .nav-link{font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#12222B;text-decoration:none;transition:color .18s;}
+    .nav-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:4px;}
+    .nav-link[aria-current="page"]{color:#B23A2E;font-weight:600;}
+
+    .nav-contact{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;border:1.5px solid #B23A2E;padding:7px 16px;border-radius:6px;background:transparent;transition:background .18s,color .18s;}
+    .nav-contact:hover{background:#B23A2E;color:#F6F5F3;}
+
+    .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
+    .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
+    .footer-link[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;}
+
+    .section-pad{max-width:1080px;margin:0 auto;padding:72px 24px 88px;}
+    .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
+    .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
+    .hero .hero-text{font-size:20px;line-height:1.5;color:#12222B;margin:16px 0 0;max-width:600px;}
+
+    /* Case study cards */
+    .cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+    .card{background:#FFFFFF;border:1px solid #D3D9DD;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+    .card-body{display:flex;flex-direction:column;flex:1;padding:28px;}
+    .card-tags{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;margin:0 0 16px;}
+    .card-title{font-family:'Work Sans',sans-serif;font-weight:600;font-size:22px;line-height:1.25;color:#003262;margin:0 0 14px;}
+    .card-bridge{font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;color:#46545C;margin:0 0 24px;}
+    .card-stat{margin-top:auto;padding-top:20px;border-top:1px solid #D3D9DD;margin-bottom:22px;}
+    .stat-num{display:block;font-family:'Fugaz One',cursive;font-size:44px;line-height:1;color:#003262;}
+    .stat-label{display:block;font-family:'Work Sans',sans-serif;font-size:14px;line-height:1.4;color:#46545C;margin-top:8px;}
+    .card-link{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;align-self:flex-start;}
+    .card-link:hover{color:#8F2E24;text-decoration:underline;text-underline-offset:3px;}
+
+    /* Empty state */
+    .empty-state{margin-top:48px;}
+    .empty-state .rule{width:32px;height:2px;background:#B23A2E;margin-bottom:22px;}
+    .empty-state p{font-size:20px;line-height:1.5;color:#46545C;margin:0;}
+
+    @media (max-width:768px){
+      .nav-toggle{display:inline-flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:flex-start;gap:0;background:#F6F5F3;border-bottom:1px solid #D3D9DD;padding:8px 24px 18px;box-shadow:0 8px 16px rgba(0,50,98,0.06);}
+      .nav-links.open{display:flex;}
+      .nav-links .nav-link{padding:14px 0;width:100%;}
+      .nav-links .nav-contact{margin-top:12px;}
+      .hero-pad{padding:56px 24px 40px !important;}
+      .section-pad{padding:8px 24px 56px !important;}
+      .cards-grid{grid-template-columns:1fr;}
+      .footer-inner{padding:56px 24px 48px !important;}
+      .footer-big{font-size:34px !important;}
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    nav {
-      padding: 2rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--rule);
-    }
-
-.wordmark {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.wordmark span { color: var(--accent-warm); transition: color 0.2s; }
-.wordmark:hover { color: var(--accent-warm); }
-.wordmark:hover span { color: var(--ink); }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    nav a {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--accent-warm); }
-    nav a[aria-current="page"] { color: var(--ink); }
-
-    nav a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .page-header {
-      padding: 6rem 0 4rem;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
-      animation-delay: 0.2s;
-    }
-
-    .page-header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-    }
-
-    .page-header p {
-      font-size: 1rem;
-      color: var(--ink-muted);
-      max-width: 52ch;
-      line-height: 1.75;
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--rule);
-    }
-
-    .coming-soon {
-      padding: 6rem 0;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
-      animation-delay: 0.35s;
-    }
-
-    .coming-soon-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 3.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .coming-soon-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
-
-    .case-study-preview {
-      border: 1px solid var(--rule);
-      padding: 3rem 2.5rem;
-      background: var(--white);
-      margin-bottom: 2rem;
-    }
-
-    .case-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-      margin-bottom: 1rem;
-    }
-
-    .case-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      line-height: 1.25;
-      margin-bottom: 1rem;
-      color: var(--ink);
-    }
-
-    .case-summary {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--ink-muted);
-      max-width: 64ch;
-      margin-bottom: 2rem;
-    }
-
-    .case-stats {
-      display: flex;
-      gap: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--rule);
-    }
-
-    .stat-item strong {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 0.35rem;
-    }
-
-    .stat-item span {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
-    }
-
-    .case-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-      text-decoration: none;
-      margin-top: 2rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    .case-link:hover { border-color: var(--accent-warm); }
-
-    footer {
-      padding: 2rem 0;
-      border-top: 1px solid var(--rule);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    footer p {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--ink-muted);
-      letter-spacing: 0.06em;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      .case-stats { flex-direction: column; gap: 1.5rem; }
-      nav ul { gap: 1.5rem; }
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--accent);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      text-decoration: none;
-      transition: top 0.2s;
-      z-index: 100;
-    }
-
-    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-  <a class="skip-link" href="#main">Skip to main content</a>
+<div style="background:#F6F5F3;color:#12222B;font-family:'Work Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;">
 
-  <div class="container">
-    <nav aria-label="Main navigation">
-      <a class="wordmark" href="/">Content <span>Content</span></a>
-      <ul>
-        <li><a href="/work/" aria-current="page">Work</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+  <!-- NAV -->
+  <nav aria-label="Main navigation" style="border-bottom:1px solid #D3D9DD;background:#F6F5F3;position:sticky;top:0;z-index:10;">
+    <div class="nav-inner">
+      <a class="wordmark" href="/"><span class="w1">Content</span> <span class="w2">Content</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="nav-menu">
+        <a class="nav-link" href="/services/">Services</a>
+        <a class="nav-link" href="/field-notes/">Field notes</a>
+        <a class="nav-link" href="/work/" aria-current="page">Work</a>
+        <a class="nav-link" href="/about/">About</a>
+        <a class="nav-contact" href="/contact/">Contact</a>
+      </div>
+    </div>
+  </nav>
 
   <main id="main">
-    <div class="container">
-      <header class="page-header">
-        <h1>Selected work</h1>
-        <p>See the story and thinking behind each one.</p>
-      </header>
-    </div>
 
-    <div class="divider"></div>
+    <!-- HERO -->
+    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 56px;">
+      <h1 id="page-heading">Work</h1>
+      <p class="hero-subhead">Content design in action</p>
+      <p class="hero-text">A selection of projects to show the impact good content work can have.</p>
+    </section>
 
-    <div class="container">
-      <section class="coming-soon" aria-labelledby="case-studies-label">
-        <p class="coming-soon-label" id="case-studies-label">Case studies</p>
+    <!-- CASE STUDIES -->
+    <section class="section-pad" aria-label="Case studies">
+      <div class="cards-grid">
 
-        <article class="case-study-preview">
-          <p class="case-tag">AI · B2B SaaS · Conversational Design</p>
-          <h2 class="case-title">Building an AI support chatbot that actually deflects</h2>
-          <p class="case-summary">A B2B SaaS platform had AI bolted onto their support chatbot with no content design behind it. The responses were generic, the answers were wrong, nobody trusted it, and worst of all the support team were drowning in tickets. I built the content layer that fixed that, and redesigned the experience nobody had thought to question.</p>
-          <div class="case-stats">
-            <div class="stat-item">
-              <strong>93%</strong>
-              <span>Peak deflection rate</span>
+        <article class="card">
+          <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+          <div class="card-body">
+            <p class="card-tags">AI &amp; Chatbot · B2B SaaS</p>
+            <h2 class="card-title">Turning an AI chatbot into a trusted support channel</h2>
+            <p class="card-bridge">What happens when an AI feature gets a proper content foundation.</p>
+            <div class="card-stat">
+              <span class="stat-num">93%</span>
+              <span class="stat-label">Peak deflection rate</span>
             </div>
-            <div class="stat-item">
-              <strong>~65%</strong>
-              <span>Starting deflection rate</span>
-            </div>
-            <div class="stat-item">
-              <strong>6 months</strong>
-              <span>Steady improvement over</span>
-            </div>
+            <a class="card-link" href="/work/training-ai/">Read the AI chatbot case study →</a>
           </div>
-          <a class="case-link" href="/work/training-ai">Read case study →</a>
         </article>
 
-        <article class="case-study-preview">
-          <p class="case-tag">Content Strategy · Information Architecture · Charity</p>
-          <h2 class="case-title">Content that contributed to an Act of Parliament</h2>
-          <p class="case-summary">Shelter's Renters Reform Bill campaign was delivering real change. The problem was that supporters didn't know about it. I restructured the campaign page around audience needs, turning a static petition page into a campaign hub that gave people context, showed progress, and offered more than one way to act.</p>
-          <div class="case-stats">
-            <div class="stat-item">
-              <strong>~55%</strong>
-              <span>Increase in campaign page traffic</span>
+        <article class="card">
+          <div class="mosaic-strip" data-seed="30581947" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+          <div class="card-body">
+            <p class="card-tags">Content Strategy · Charity</p>
+            <h2 class="card-title">Creating content governance to drive a campaign</h2>
+            <p class="card-bridge">Shelter's Renters Reform Bill campaign was delivering real change, but supporters couldn't follow the progress.</p>
+            <div class="card-stat">
+              <span class="stat-num">~55%</span>
+              <span class="stat-label">Traffic increase</span>
             </div>
-            <div class="stat-item">
-              <strong>~40%</strong>
-              <span>Growth in petition engagement</span>
-            </div>
-            <div class="stat-item">
-              <strong>2025</strong>
-              <span>The Renters' Rights Act passed</span>
-            </div>
+            <a class="card-link" href="/work/shelter/">Read the Shelter case study →</a>
           </div>
-          <a class="case-link" href="/work/shelter/">Read case study →</a>
         </article>
 
-        <article class="case-study-preview">
-          <p class="case-tag">Content Systems · IA · Knowledge Management · B2B SaaS</p>
-          <h2 class="case-title">Building a knowledge hub from the inside out</h2>
-          <p class="case-summary">Benivo's product knowledge was scattered across Google Docs, poorly migrated Notion pages, and people's heads. I designed and built a structured, client-facing Gitbook hub organised around how clients actually work, not how the product is built, and used AI to scale production without compromising editorial quality.</p>
-          <div class="case-stats">
-            <div class="stat-item">
-              <strong>70+</strong>
-              <span>Feature guide pages published</span>
-            </div>
-            <div class="stat-item">
-              <strong>Live</strong>
-              <span>Across Benivo's entire client base</span>
-            </div>
-          </div>
-          <a class="case-link" href="/work/knowledge-hub/">Read case study →</a>
-        </article>
+      </div>
 
-        <article class="case-study-preview">
-          <p class="case-tag">UX Writing · Product Design · B2B SaaS</p>
-          <h2 class="case-title">Giving employees what they needed to choose</h2>
-          <p class="case-summary">Benivo's benefits platform was built around system logic, not how employees actually make decisions. I redesigned the flow for users who kept coming back to browse without committing, and gave them the information they needed to choose.</p>
-          <div class="case-stats">
-            <div class="stat-item">
-              <strong>6.4 / 7</strong>
-              <span>Ease of benefit selection</span>
-            </div>
-            <div class="stat-item">
-              <strong>~3%</strong>
-              <span>Average post-launch enquiry rate</span>
-            </div>
-            <div class="stat-item">
-              <strong>New</strong>
-              <span>Supply partner surface created</span>
-            </div>
-          </div>
-          <a class="case-link" href="/work/benefits/">Read case study →</a>
-        </article>
+      <div class="empty-state">
+        <div class="rule"></div>
+        <p>More on the way...</p>
+      </div>
+    </section>
 
-      </section>
-    </div>
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-      <p>Content Content — Sam Brady</p>
-      <p>Barcelona</p>
+    <div class="mosaic-strip" data-seed="91827364" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+    <div style="background:#003262;">
+      <div class="footer-inner" style="max-width:1080px;margin:0 auto;padding:80px 24px 56px;">
+        <p class="footer-big" style="font-family:'Fugaz One',cursive;font-size:44px;line-height:1.05;color:#F6F5F3;max-width:640px;margin:0;">To feel content with your content.</p>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:56px;border-top:1px solid #2A527A;padding-top:36px;">
+          <div>
+            <p style="margin:0 0 14px;font-size:17px;line-height:1.5;color:#F6F5F3;max-width:360px;">Barcelona based, working with startups everywhere.</p>
+            <a class="footer-link" href="mailto:hello@contentcontent.design" style="font-family:'IBM Plex Mono',monospace;font-size:16px;text-decoration:underline;text-underline-offset:3px;">hello@contentcontent.design</a>
+          </div>
+          <nav aria-label="Footer navigation" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
+            <a class="footer-link" href="/services/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Services</a>
+            <a class="footer-link" href="/field-notes/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Field notes</a>
+            <a class="footer-link" href="/work/" aria-current="page" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Work</a>
+            <a class="footer-link" href="/about/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">About</a>
+          </nav>
+        </div>
+      </div>
     </div>
   </footer>
+
+</div>
+
+<script>
+  /* Mosaic strip (DESIGN.md §5): seeded trencadis generator, fills its edge. */
+  (function () {
+    var TILE = 20, GAP = 1.5, ADVANCE = TILE + GAP;
+    var BASE = ['#003262','#003262','#003262','#46809B','#46809B','#E4ECF0','#F6F5F3','#12222B','#8FB0C1'];
+    function makeRng(seed) { var s = seed >>> 0; return function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+    function clamp(v) { return Math.min(100, Math.max(0, Math.round(v))); }
+    function build(el) {
+      var seed = parseInt(el.getAttribute('data-seed'), 10) || 1;
+      var st = el._strip || (el._strip = { rnd: makeRng(seed), count: 0, coral: false });
+      var rnd = st.rnd;
+      var jx = function (b, a) { return clamp(b + (rnd() * 2 - 1) * a); };
+      var clip = function () {
+        var pts = [[jx(2,15),jx(4,15)],[jx(98,15),jx(3,13)],[jx(97,13),jx(98,15)],[jx(3,15),jx(97,15)]];
+        if (rnd() > 0.45) {
+          var i = Math.floor(rnd() * 4), a = pts[i], b = pts[(i + 1) % 4];
+          pts.splice(i + 1, 0, [clamp((a[0]+b[0])/2 + (rnd()*2-1)*13), clamp((a[1]+b[1])/2 + (rnd()*2-1)*13)]);
+        }
+        return 'polygon(' + pts.map(function (p) { return p[0] + '% ' + p[1] + '%'; }).join(',') + ')';
+      };
+      // Cards are narrower than the viewport, but generating to viewport width
+      // and clipping keeps every strip full-bleed with no gap.
+      var need = Math.ceil((window.innerWidth + 60) / ADVANCE);
+      if (need <= st.count) return;
+      var frag = document.createDocumentFragment();
+      for (var i = st.count; i < need; i++) {
+        var d = document.createElement('div');
+        d.style.background = BASE[Math.floor(rnd() * BASE.length)];
+        d.style.clipPath = clip();
+        frag.appendChild(d);
+      }
+      el.appendChild(frag);
+      st.count = need;
+      if (!st.coral) { var idx = 5 + Math.floor(rnd() * 4); if (el.children[idx]) el.children[idx].style.background = '#B23A2E'; st.coral = true; }
+    }
+    var strips = [].slice.call(document.querySelectorAll('.mosaic-strip'));
+    function run() { strips.forEach(build); }
+    run();
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+  })();
+</script>
+
+<script>
+  /* Mobile nav toggle */
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', function () { setOpen(toggle.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); } });
+    window.addEventListener('resize', function () { if (window.innerWidth > 768) setOpen(false); });
+  })();
+</script>
 
 </body>
 </html>
