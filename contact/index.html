@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · Content Content</title>
+  <meta name="description" content="Get in touch with Content Content, an independent content design practice in Barcelona. Book a call or talk through your product.">
+  <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    ::selection{background:#B23A2E;color:#F6F5F3;}
+    a{color:#B23A2E;text-decoration:underline;text-underline-offset:2px;}
+    a:hover{color:#8F2E24;}
+
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #46809B;outline-offset:2px;border-radius:2px;}
+
+    .skip-link{position:absolute;left:-999px;top:0;background:#003262;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 20px;text-decoration:none;z-index:100;}
+    .skip-link:focus{left:0;}
+
+    /* Nav layout */
+    .nav-inner{max-width:1080px;margin:0 auto;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+    .nav-links{display:flex;gap:26px;align-items:center;}
+    .nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;padding:0;background:transparent;border:1.5px solid #D3D9DD;border-radius:6px;cursor:pointer;}
+    .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{content:'';display:block;width:20px;height:2px;background:#003262;transition:transform .2s,background .2s;}
+    .nav-toggle-bars{position:relative;}
+    .nav-toggle-bars::before{position:absolute;left:0;top:-6px;}
+    .nav-toggle-bars::after{position:absolute;left:0;top:6px;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars{background:transparent;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before{transform:translateY(6px) rotate(45deg);}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after{transform:translateY(-6px) rotate(-45deg);}
+
+    .wordmark{font-family:'Fugaz One',cursive;font-size:22px;line-height:1;text-decoration:none;}
+    .wordmark .w1{color:#003262;transition:color .18s;}
+    .wordmark .w2{color:#46809B;transition:color .18s;}
+    .wordmark:hover .w1{color:#46809B;}
+    .wordmark:hover .w2{color:#003262;}
+
+    .nav-link{font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#12222B;text-decoration:none;transition:color .18s;}
+    .nav-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:4px;}
+    .nav-link[aria-current="page"]{color:#B23A2E;font-weight:600;}
+
+    .nav-contact{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;border:1.5px solid #B23A2E;padding:7px 16px;border-radius:6px;background:transparent;transition:background .18s,color .18s;}
+    .nav-contact:hover{background:#B23A2E;color:#F6F5F3;}
+
+    .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
+    .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
+    .footer-link[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;}
+
+    .section-pad{max-width:1080px;margin:0 auto;padding:80px 24px;}
+    .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
+    .hero .lede{max-width:600px;margin:32px 0 0;font-size:22px;line-height:1.45;color:#12222B;}
+
+    /* Form */
+    .btn-primary{display:inline-block;background:#B23A2E;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:16px;text-decoration:none;border:none;border-radius:6px;padding:14px 30px;cursor:pointer;transition:background .18s;}
+    .btn-primary:hover{background:#8F2E24;color:#F6F5F3;}
+    .btn-primary:disabled{background:#46545C;cursor:default;}
+    .form{max-width:600px;}
+    .form-note{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#46545C;margin:0 0 24px;}
+    .field{margin-bottom:22px;}
+    .field label{display:block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#003262;margin-bottom:8px;}
+    .field input,.field textarea{width:100%;font-family:'Work Sans',sans-serif;font-size:16px;color:#12222B;background:#FFFFFF;border:1px solid #D3D9DD;border-radius:6px;padding:12px 14px;line-height:1.5;}
+    .field input:focus,.field textarea:focus{outline:3px solid #46809B;outline-offset:1px;border-color:#46809B;}
+    .field textarea{min-height:150px;resize:vertical;}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+    .form-status{font-size:16px;line-height:1.55;margin:20px 0 0;color:#12222B;}
+    .contact-details{display:flex;gap:56px;flex-wrap:wrap;}
+    .contact-details .dt{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;margin:0 0 8px;}
+    .contact-details .dd{font-size:18px;line-height:1.5;color:#12222B;margin:0;}
+
+    @media (max-width:768px){
+      .nav-toggle{display:inline-flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:flex-start;gap:0;background:#F6F5F3;border-bottom:1px solid #D3D9DD;padding:8px 24px 18px;box-shadow:0 8px 16px rgba(0,50,98,0.06);}
+      .nav-links.open{display:flex;}
+      .nav-links .nav-link{padding:14px 0;width:100%;}
+      .nav-links .nav-contact{margin-top:12px;}
+      .hero-pad{padding:56px 24px 48px !important;}
+      .section-pad{padding:56px 24px !important;}
+      .field-row{grid-template-columns:1fr;gap:0;}
+      .footer-inner{padding:56px 24px 48px !important;}
+      .footer-big{font-size:34px !important;}
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div style="background:#F6F5F3;color:#12222B;font-family:'Work Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;">
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation" style="border-bottom:1px solid #D3D9DD;background:#F6F5F3;position:sticky;top:0;z-index:10;">
+    <div class="nav-inner">
+      <a class="wordmark" href="/"><span class="w1">Content</span> <span class="w2">Content</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="nav-menu">
+        <a class="nav-link" href="/services/">Services</a>
+        <a class="nav-link" href="/field-notes/">Field notes</a>
+        <a class="nav-link" href="/work/">Work</a>
+        <a class="nav-link" href="/about/">About</a>
+        <a class="nav-contact" href="/contact/" aria-current="page">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 64px;">
+      <h1 id="page-heading">Contact</h1>
+      <p class="lede">Want to book a call, talk through your product, or something else entirely? Get in touch, I'd like to hear from you.</p>
+    </section>
+
+    <!-- FORM (white section, mosaic top edge) -->
+    <section aria-labelledby="form-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+      <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+      <div class="section-pad">
+        <h2 id="form-heading" style="position:absolute;left:-9999px;">Send a message</h2>
+        <form class="form" id="contact-form" action="/api/contact" method="post" novalidate>
+          <p class="form-note">All fields required</p>
+
+          <!-- Honeypot: hidden from real visitors -->
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company (leave this blank)</label>
+            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="first-name">First name</label>
+              <input id="first-name" name="first_name" type="text" required autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label for="last-name">Last name</label>
+              <input id="last-name" name="last_name" type="text" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="message">Your message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONTACT DETAILS (below the form) -->
+    <section class="section-pad" aria-labelledby="details-heading" style="padding-top:72px;padding-bottom:72px;">
+      <h2 id="details-heading" style="position:absolute;left:-9999px;">Contact details</h2>
+      <div class="contact-details">
+        <div>
+          <p class="dt">Email</p>
+          <p class="dd"><a href="mailto:hello@contentcontent.design">hello@contentcontent.design</a></p>
+        </div>
+        <div>
+          <p class="dt">Based</p>
+          <p class="dd">Barcelona, working with startups everywhere.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="mosaic-strip" data-seed="91827364" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+    <div style="background:#003262;">
+      <div class="footer-inner" style="max-width:1080px;margin:0 auto;padding:80px 24px 56px;">
+        <p class="footer-big" style="font-family:'Fugaz One',cursive;font-size:44px;line-height:1.05;color:#F6F5F3;max-width:640px;margin:0;">To feel content with your content.</p>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:56px;border-top:1px solid #2A527A;padding-top:36px;">
+          <div>
+            <p style="margin:0 0 14px;font-size:17px;line-height:1.5;color:#F6F5F3;max-width:360px;">Barcelona based, working with startups everywhere.</p>
+            <a class="footer-link" href="mailto:hello@contentcontent.design" style="font-family:'IBM Plex Mono',monospace;font-size:16px;text-decoration:underline;text-underline-offset:3px;">hello@contentcontent.design</a>
+          </div>
+          <nav aria-label="Footer navigation" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
+            <a class="footer-link" href="/services/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Services</a>
+            <a class="footer-link" href="/field-notes/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Field notes</a>
+            <a class="footer-link" href="/work/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Work</a>
+            <a class="footer-link" href="/about/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">About</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  /* Mosaic strip (DESIGN.md §5): seeded trencadis generator, fills viewport width. */
+  (function () {
+    var TILE = 20, GAP = 1.5, ADVANCE = TILE + GAP;
+    var BASE = ['#003262','#003262','#003262','#46809B','#46809B','#E4ECF0','#F6F5F3','#12222B','#8FB0C1'];
+    function makeRng(seed) { var s = seed >>> 0; return function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+    function clamp(v) { return Math.min(100, Math.max(0, Math.round(v))); }
+    function build(el) {
+      var seed = parseInt(el.getAttribute('data-seed'), 10) || 1;
+      var st = el._strip || (el._strip = { rnd: makeRng(seed), count: 0, coral: false });
+      var rnd = st.rnd;
+      var jx = function (b, a) { return clamp(b + (rnd() * 2 - 1) * a); };
+      var clip = function () {
+        var pts = [[jx(2,15),jx(4,15)],[jx(98,15),jx(3,13)],[jx(97,13),jx(98,15)],[jx(3,15),jx(97,15)]];
+        if (rnd() > 0.45) {
+          var i = Math.floor(rnd() * 4), a = pts[i], b = pts[(i + 1) % 4];
+          pts.splice(i + 1, 0, [clamp((a[0]+b[0])/2 + (rnd()*2-1)*13), clamp((a[1]+b[1])/2 + (rnd()*2-1)*13)]);
+        }
+        return 'polygon(' + pts.map(function (p) { return p[0] + '% ' + p[1] + '%'; }).join(',') + ')';
+      };
+      var need = Math.ceil((window.innerWidth + 60) / ADVANCE);
+      if (need <= st.count) return;
+      var frag = document.createDocumentFragment();
+      for (var i = st.count; i < need; i++) {
+        var d = document.createElement('div');
+        d.style.background = BASE[Math.floor(rnd() * BASE.length)];
+        d.style.clipPath = clip();
+        frag.appendChild(d);
+      }
+      el.appendChild(frag);
+      st.count = need;
+      if (!st.coral) { var idx = 5 + Math.floor(rnd() * 4); if (el.children[idx]) el.children[idx].style.background = '#B23A2E'; st.coral = true; }
+    }
+    var strips = [].slice.call(document.querySelectorAll('.mosaic-strip'));
+    function run() { strips.forEach(build); }
+    run();
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+  })();
+</script>
+
+<script>
+  /* Mobile nav toggle */
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', function () { setOpen(toggle.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); } });
+    window.addEventListener('resize', function () { if (window.innerWidth > 768) setOpen(false); });
+  })();
+</script>
+
+<script>
+  /* Contact form: progressive-enhancement submit to /api/contact */
+  (function () {
+    var form = document.getElementById('contact-form');
+    var statusEl = document.getElementById('form-status');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.company && form.company.value) { done('Thanks, your message is on its way. I’ll get back to you soon.'); form.reset(); return; }
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      statusEl.style.color = '#12222B'; statusEl.textContent = '';
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: form.first_name.value.trim(),
+          last_name: form.last_name.value.trim(),
+          email: form.email.value.trim(),
+          message: form.message.value.trim(),
+          company: form.company.value
+        })
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad');
+      }).then(function () {
+        form.reset();
+        done('Thanks, your message is on its way. I’ll get back to you soon.');
+      }).catch(function () {
+        statusEl.style.color = '#B23A2E';
+        statusEl.textContent = 'Something went wrong sending that. Please email hello@contentcontent.design directly.';
+      }).finally(function () {
+        btn.disabled = false; btn.textContent = 'Send message';
+      });
+    });
+    function done(msg) { statusEl.style.color = '#12222B'; statusEl.textContent = msg; }
+  })();
+</script>
+
+</body>
+</html>
