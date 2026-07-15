@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Creating content governance to drive a campaign · Content Content</title>
-  <meta name="description" content="How I turned Shelter's Renters Reform Bill campaign page into a content hub with governance behind it, lifting traffic ~55% and petition engagement ~40%.">
+  <title>Turning an AI chatbot into a trusted support channel · Content Content</title>
+  <meta name="description" content="How I designed the content layer for an AI support chatbot, lifting deflection from ~65% to 93% over six months. B2B SaaS, RAG, content systems.">
   <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,14 +71,13 @@
     .cs-body p{font-family:'Work Sans',sans-serif;font-size:18px;line-height:1.75;color:#12222B;margin:0 0 26px;}
     .cs-closer{font-size:20px !important;color:#12222B;margin-top:4px !important;}
 
-    .cs-figures{max-width:920px;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:32px 28px;}
-    .cs-figures figure{margin:0;}
-    .shot{position:relative;border:1px solid #D3D9DD;border-radius:8px;overflow:hidden;background:#FFFFFF;}
-    .shot-scroll{max-height:440px;overflow-y:auto;}
-    .shot-scroll:focus-visible{outline:3px solid #46809B;outline-offset:-3px;}
-    .shot-scroll img{display:block;width:100%;height:auto;}
-    .shot::after{content:'';position:absolute;left:0;right:0;bottom:0;height:36px;background:linear-gradient(to top, rgba(255,255,255,0.95), rgba(255,255,255,0));pointer-events:none;}
-    .cs-figures figcaption{font-family:'Work Sans',sans-serif;font-size:14px;line-height:1.5;color:#46545C;margin-top:12px;}
+    /* Chart */
+    .chart-fig{max-width:720px;margin:0;}
+    .chart-card{background:#FFFFFF;border:1px solid #D3D9DD;border-radius:10px;padding:24px 22px 18px;}
+    .chart-legend{display:flex;gap:24px;margin-top:14px;flex-wrap:wrap;}
+    .legend-item{display:inline-flex;align-items:center;gap:8px;font-family:'Work Sans',sans-serif;font-size:13px;color:#46545C;}
+    .legend-swatch{width:14px;height:14px;border-radius:3px;flex:0 0 auto;}
+    .chart-fig figcaption{font-family:'Work Sans',sans-serif;font-size:14px;line-height:1.5;color:#46545C;margin-top:14px;}
 
     @media (max-width:768px){
       .nav-toggle{display:inline-flex;}
@@ -86,7 +85,6 @@
       .nav-links.open{display:flex;}
       .nav-links .nav-link{padding:14px 0;width:100%;}
       .nav-links .nav-contact{margin-top:12px;}
-      .cs-figures{grid-template-columns:1fr;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
     }
@@ -120,9 +118,9 @@
       <!-- Title block -->
       <header class="section-pad" style="padding-top:40px;padding-bottom:64px;">
         <a class="back-link" href="/work/">← Back to work</a>
-        <p class="cs-tags" style="margin-top:40px;">Content Strategy · Charity</p>
-        <h1 class="cs-title">Creating content governance to drive a campaign</h1>
-        <p class="cs-bridge">Shelter's Renters Reform Bill campaign was delivering real change, but supporters couldn't follow the progress.</p>
+        <p class="cs-tags" style="margin-top:40px;">AI &amp; Chatbot · B2B SaaS</p>
+        <h1 class="cs-title">Turning an AI chatbot into a trusted support channel</h1>
+        <p class="cs-bridge">This is what happens when an AI feature gets a proper content foundation.</p>
       </header>
 
       <!-- Impact at a glance (white section, mosaic top edge) -->
@@ -131,9 +129,9 @@
         <div class="section-pad" style="padding-top:56px;padding-bottom:56px;">
           <p class="cs-eyebrow" id="impact-heading">Impact at a glance</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-num">~55%</span><span class="stat-label">Traffic increase</span></div>
-            <div class="stat"><span class="stat-num">~40%</span><span class="stat-label">Petition engagement growth</span></div>
-            <div class="stat"><span class="stat-num">6 years</span><span class="stat-label">To a passed Act</span></div>
+            <div class="stat"><span class="stat-num">93%</span><span class="stat-label">Peak deflection rate</span></div>
+            <div class="stat"><span class="stat-num">~65%</span><span class="stat-label">Starting deflection rate</span></div>
+            <div class="stat"><span class="stat-num">6 months</span><span class="stat-label">Steady improvement over</span></div>
           </div>
         </div>
       </section>
@@ -141,34 +139,86 @@
       <!-- Body -->
       <div class="cs-body section-pad" style="padding-top:64px;padding-bottom:24px;">
         <div class="measure">
-          <p>While being one of the top priority campaigns, the Renters Reform Bill wasn't reaching supporters where they were in a way they understood. Digital campaign activities, updates and information were disjointed, meaning engagement had to be driven through social spend or high effort marketing.</p>
-          <p>Running user testing on existing supporters and people new to the campaign gave insights on exactly what both audience types wanted to know, such as campaign timeline and updates, key wins and easy to understand objectives. Using these users' goals, I created a content strategy that turned the campaign webpage into a hub that could answer users' questions or direct users to the key areas to take action.</p>
-          <p>The hub approach gave users an organic place to engage with the campaign, as seen with a ~55% traffic increase which resulted in a ~40% increase in the main call to action, petition signatures. The strategy also gave all the internal stakeholders and subject matter experts clear guidance on what should and shouldn't be included on the campaign pages. This ongoing content governance eventually led to the campaign completing its goal and getting real changes made in Parliament.</p>
-          <p class="cs-closer">A measured and purposeful approach more often than not will deliver more impact than forced outreach, as your content will feel designed specifically for what your audience needs.</p>
+          <p>A B2B SaaS platform had connected a support chatbot straight to an AI model, without a content strategy to guide it. Answers were generic, often wrong, and occasionally invented entirely, including on client-specific policy, the kind of mistake that gets escalated to the client fast.</p>
+          <p>I organised the information the chatbot was drawing from into a proper knowledge base (for better RAG retrieval), and shaped how it delivered that information: accurate, on-brand, and honest about what it didn't know. Working with the development team, I also set the rules for what the AI should and shouldn't attempt to answer on its own.</p>
+          <p>Support tickets dropped as people started getting answers they could actually trust. That freed up the support team's time, and just as importantly, it meant fewer questions escalating back to the client that should have already been answered.</p>
+          <p class="cs-closer">The same disconnect shows up anywhere a product uses AI to talk to people. Good AI still needs good content to sound right.</p>
         </div>
       </div>
 
-      <!-- Screenshots (supplementary, at the end) -->
-      <section class="section-pad" aria-labelledby="shots-heading" style="padding-top:16px;padding-bottom:24px;">
-        <p class="cs-eyebrow" id="shots-heading" style="color:#46545C;">The campaign page over time</p>
-        <div class="cs-figures">
-          <figure>
-            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-before-2021.png" alt="Shelter campaign page, May 2021. Title reads 'Renters need rights'. Page includes a problem statement, Wall of Shame social proof section, campaign wins timeline, and social sharing."></div></div>
-            <figcaption>May 2021. Problem statement and petition, with limited structure beyond that.</figcaption>
-          </figure>
-          <figure>
-            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-mid-2022.png" alt="Shelter campaign page, February 2022. Similar structure to 2021 with minor updates including a poster download and updated campaign wins timeline."></div></div>
-            <figcaption>February 2022. Tidied but the same underlying structure.</figcaption>
-          </figure>
-          <figure>
-            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-after-jul2022.png" alt="Shelter campaign page, July 2022. Title reads 'Our Renters' Reform Bill campaign'. New sections include the bill explained, Shelter's stance, Where is the bill now timeline, decision-makers, FAQ, and more ways to take action."></div></div>
-            <figcaption>July 2022. Redesigned as a campaign hub with bill explainer, progress timeline, decision-makers, and FAQ.</figcaption>
-          </figure>
-          <figure>
-            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-after-2023.png" alt="Shelter campaign page, March 2023. Same hub structure as July 2022 with the addition of a Renters' Home Truths survey report section."></div></div>
-            <figcaption>March 2023. Hub structure maintained after handover, with the Renters' Home Truths report added.</figcaption>
-          </figure>
-        </div>
+      <!-- Chart (supplementary, at the end) -->
+      <section class="section-pad" aria-labelledby="chart-heading" style="padding-top:16px;padding-bottom:24px;">
+        <p class="cs-eyebrow" id="chart-heading" style="color:#46545C;">Weekly performance</p>
+        <figure class="chart-fig">
+          <div class="chart-card">
+            <svg viewBox="0 0 760 340" width="100%" height="auto" role="img" aria-label="Combo chart of the chatbot's weekly performance over 19 weeks. Bars show total enquiries growing from about 80 per week to over 400 at peak. A line shows the deflection rate climbing from 69% to a 93% peak and holding as volume rose." style="display:block;">
+              <line x1="42" y1="306" x2="714" y2="306" stroke="#E4ECF0" stroke-width="1"/>
+              <text x="34" y="310" text-anchor="end" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">0</text>
+              <line x1="42" y1="210.67" x2="714" y2="210.67" stroke="#E4ECF0" stroke-width="1"/>
+              <text x="34" y="214.67" text-anchor="end" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">150</text>
+              <line x1="42" y1="115.33" x2="714" y2="115.33" stroke="#E4ECF0" stroke-width="1"/>
+              <text x="34" y="119.33" text-anchor="end" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">300</text>
+              <line x1="42" y1="20" x2="714" y2="20" stroke="#E4ECF0" stroke-width="1"/>
+              <text x="34" y="24" text-anchor="end" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">450</text>
+              <rect x="49.07" y="250.07" width="21.22" height="55.93" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="84.44" y="262.78" width="21.22" height="43.22" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="119.81" y="254.52" width="21.22" height="51.48" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="155.18" y="255.16" width="21.22" height="50.84" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="190.55" y="257.7" width="21.22" height="48.30" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="225.92" y="253.25" width="21.22" height="52.75" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="261.28" y="262.15" width="21.22" height="43.85" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="296.65" y="247.53" width="21.22" height="58.47" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="332.02" y="229.1" width="21.22" height="76.90" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="367.39" y="234.18" width="21.22" height="71.82" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="402.76" y="230.37" width="21.22" height="75.63" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="438.13" y="211.3" width="21.22" height="94.70" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="473.50" y="184.61" width="21.22" height="121.39" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="508.86" y="77.84" width="21.22" height="228.16" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="544.23" y="41.61" width="21.22" height="264.39" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="579.60" y="87.37" width="21.22" height="218.63" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="614.97" y="90.55" width="21.22" height="215.45" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="650.34" y="94.36" width="21.22" height="211.64" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <rect x="685.71" y="147.75" width="21.22" height="158.25" fill="#46809B" fill-opacity="0.28" rx="1.5"/>
+              <text x="722" y="310" text-anchor="start" font-family="'Work Sans',sans-serif" font-size="11" fill="#B23A2E">0%</text>
+              <text x="722" y="167" text-anchor="start" font-family="'Work Sans',sans-serif" font-size="11" fill="#B23A2E">50%</text>
+              <text x="722" y="24" text-anchor="start" font-family="'Work Sans',sans-serif" font-size="11" fill="#B23A2E">100%</text>
+              <text x="59.68" y="328" text-anchor="middle" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">W01</text>
+              <text x="201.16" y="328" text-anchor="middle" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">W05</text>
+              <text x="378" y="328" text-anchor="middle" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">W10</text>
+              <text x="554.84" y="328" text-anchor="middle" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">W15</text>
+              <text x="696.32" y="328" text-anchor="middle" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">W19</text>
+              <path d="M 59.68 108.66 C 65.58 103.89, 83.26 81.97, 95.05 80.06 C 106.84 78.15, 118.63 94.84, 130.42 97.22 C 142.21 99.60, 154.00 96.74, 165.79 94.36 C 177.58 91.98, 189.37 87.69, 201.16 82.92 C 212.95 78.15, 224.74 64.33, 236.53 65.76 C 248.32 67.19, 260.10 89.59, 271.89 91.5 C 283.68 93.41, 295.47 79.11, 307.26 77.2 C 319.05 75.29, 330.84 81.97, 342.63 80.06 C 354.42 78.15, 366.21 67.19, 378 65.76 C 389.79 64.33, 401.58 72.91, 413.37 71.48 C 425.16 70.05, 436.95 53.84, 448.74 57.18 C 460.53 60.52, 472.32 91.50, 484.11 91.5 C 495.90 91.50, 507.68 61.95, 519.47 57.18 C 531.26 52.41, 543.05 63.38, 554.84 62.9 C 566.63 62.42, 578.42 54.80, 590.21 54.32 C 602.00 53.84, 613.79 60.04, 625.58 60.04 C 637.37 60.04, 649.16 57.66, 660.95 54.32 C 672.74 50.98, 690.43 42.40, 696.32 40.02" fill="none" stroke="#B23A2E" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="59.68" cy="108.66" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="95.05" cy="80.06" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="130.42" cy="97.22" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="165.79" cy="94.36" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="201.16" cy="82.92" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="236.53" cy="65.76" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="271.89" cy="91.5" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="307.26" cy="77.2" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="342.63" cy="80.06" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="378" cy="65.76" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="413.37" cy="71.48" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="448.74" cy="57.18" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="484.11" cy="91.5" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="519.47" cy="57.18" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="554.84" cy="62.9" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="590.21" cy="54.32" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="625.58" cy="60.04" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="660.95" cy="54.32" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="696.32" cy="40.02" r="3.5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="59.68" cy="108.66" r="5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <circle cx="696.32" cy="40.02" r="5" fill="#B23A2E" stroke="#FFFFFF" stroke-width="1.5"/>
+              <text x="66" y="100" text-anchor="start" font-family="'Work Sans',sans-serif" font-weight="600" font-size="13" fill="#003262">69%</text>
+              <text x="694" y="30" text-anchor="end" font-family="'Work Sans',sans-serif" font-weight="600" font-size="13" fill="#B23A2E">93%</text>
+            </svg>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-swatch" style="background:#46809B;opacity:0.45;"></span>Total enquiries</span>
+              <span class="legend-item"><span class="legend-swatch" style="background:#B23A2E;"></span>Deflection rate</span>
+            </div>
+          </div>
+          <figcaption>Weekly enquiry volume (bars) and deflection rate (line) over the first 19 weeks. Deflection climbed from 69% to a 93% peak and held as volume grew past 400 a week.</figcaption>
+        </figure>
       </section>
 
       <!-- CTA -->
