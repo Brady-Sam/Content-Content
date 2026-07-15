@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content design services · Content Content</title>
+  <meta name="description" content="Content design services for startups: discovery, content strategy, UX writing, information architecture, and content systems, scoped around what your audience needs.">
+  <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    ::selection{background:#B23A2E;color:#F6F5F3;}
+    a{color:#B23A2E;text-decoration:underline;text-underline-offset:2px;}
+    a:hover{color:#8F2E24;}
+
+    /* Visible focus (DESIGN.md focus ring) */
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #46809B;outline-offset:2px;border-radius:2px;}
+
+    /* Skip link */
+    .skip-link{position:absolute;left:-999px;top:0;background:#003262;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 20px;text-decoration:none;z-index:100;}
+    .skip-link:focus{left:0;}
+
+    /* Nav layout */
+    .nav-inner{max-width:1080px;margin:0 auto;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+    .nav-links{display:flex;gap:26px;align-items:center;}
+    .nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;padding:0;background:transparent;border:1.5px solid #D3D9DD;border-radius:6px;cursor:pointer;}
+    .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{content:'';display:block;width:20px;height:2px;background:#003262;transition:transform .2s,background .2s;}
+    .nav-toggle-bars{position:relative;}
+    .nav-toggle-bars::before{position:absolute;left:0;top:-6px;}
+    .nav-toggle-bars::after{position:absolute;left:0;top:6px;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars{background:transparent;}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before{transform:translateY(6px) rotate(45deg);}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after{transform:translateY(-6px) rotate(-45deg);}
+
+    /* Wordmark — two-tone, colours swap on hover */
+    .wordmark{font-family:'Fugaz One',cursive;font-size:22px;line-height:1;text-decoration:none;}
+    .wordmark .w1{color:#003262;transition:color .18s;}
+    .wordmark .w2{color:#46809B;transition:color .18s;}
+    .wordmark:hover .w1{color:#46809B;}
+    .wordmark:hover .w2{color:#003262;}
+
+    /* Nav links */
+    .nav-link{font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#12222B;text-decoration:none;transition:color .18s;}
+    .nav-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:4px;}
+    .nav-link[aria-current="page"]{color:#B23A2E;font-weight:600;}
+
+    /* Nav Contact button */
+    .nav-contact{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;border:1.5px solid #B23A2E;padding:7px 16px;border-radius:6px;background:transparent;transition:background .18s,color .18s;}
+    .nav-contact:hover{background:#B23A2E;color:#F6F5F3;}
+
+    /* Primary CTA */
+    .btn-primary{display:inline-block;background:#B23A2E;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;text-decoration:none;border-radius:6px;transition:background .18s;}
+    .btn-primary:hover{background:#8F2E24;color:#F6F5F3;}
+
+    /* Footer links */
+    .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
+    .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
+    .footer-link[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;}
+
+    /* Section helpers */
+    .section-pad{max-width:1080px;margin:0 auto;padding:88px 24px;}
+    .two-col{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;}
+    .h2{font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;}
+    .lead{font-size:20px;line-height:1.55;color:#12222B;max-width:560px;}
+
+    /* Hero */
+    .hero h1{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.9rem,4.5vw,2.85rem);line-height:1.18;letter-spacing:-0.01em;margin:0;color:#003262;max-width:820px;}
+    .hero .subhead{font-size:20px;line-height:1.55;color:#12222B;max-width:600px;margin:28px 0 36px;}
+
+    /* Where to start — symptom list */
+    .symptom h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.35;margin:0 0 8px;color:#003262;}
+    .symptom p{margin:0;font-size:16px;line-height:1.6;color:#46545C;max-width:540px;}
+    .symptom + .symptom{margin-top:28px;padding-top:28px;border-top:1px solid #D3D9DD;}
+
+    /* What this can include — flat list */
+    .includes{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;}
+    .includes li{position:relative;padding-left:20px;font-size:17px;line-height:1.5;color:#12222B;}
+    .includes li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;background:#B23A2E;}
+
+    /* FAQ accordion */
+    .faq{border-top:1px solid #D3D9DD;}
+    .faq details{border-bottom:1px solid #D3D9DD;}
+    .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 2px;font-family:'Work Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.35;color:#003262;}
+    .faq summary::-webkit-details-marker{display:none;}
+    .faq summary::after{content:'';flex:0 0 auto;width:9px;height:9px;margin-right:4px;border-right:2px solid #46809B;border-bottom:2px solid #46809B;transform:rotate(45deg);transition:transform .2s;}
+    .faq details[open] summary::after{transform:rotate(-135deg);}
+    .faq .faq-a{margin:0;padding:0 2px 24px;max-width:660px;font-size:16px;line-height:1.65;color:#12222B;}
+
+    @media (max-width:768px){
+      .nav-toggle{display:inline-flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:flex-start;gap:0;background:#F6F5F3;border-bottom:1px solid #D3D9DD;padding:8px 24px 18px;box-shadow:0 8px 16px rgba(0,50,98,0.06);}
+      .nav-links.open{display:flex;}
+      .nav-links .nav-link{padding:14px 0;width:100%;}
+      .nav-links .nav-contact{margin-top:12px;}
+      .section-pad{padding:56px 24px !important;}
+      .two-col{grid-template-columns:1fr;gap:32px;}
+      .includes{grid-template-columns:1fr;}
+      .hero-pad{padding:56px 24px 64px !important;}
+      .footer-inner{padding:56px 24px 48px !important;}
+      .footer-big{font-size:34px !important;}
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div style="background:#F6F5F3;color:#12222B;font-family:'Work Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;">
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation" style="border-bottom:1px solid #D3D9DD;background:#F6F5F3;position:sticky;top:0;z-index:10;">
+    <div class="nav-inner">
+      <a class="wordmark" href="/"><span class="w1">Content</span> <span class="w2">Content</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="nav-menu">
+        <a class="nav-link" href="/services/" aria-current="page">Services</a>
+        <a class="nav-link" href="/field-notes/">Field notes</a>
+        <a class="nav-link" href="/work/">Work</a>
+        <a class="nav-link" href="/about/">About</a>
+        <a class="nav-contact" href="/contact/">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO / HEADLINE + SUBHEAD -->
+    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:88px 24px 80px;">
+      <h1 id="page-heading">Content design starts with a problem, not your product's features.</h1>
+      <p class="subhead">We'll work together to define the exact scope based on your context. Or if you'd prefer to fast-track the value, explore the pre-scoped packages on offer.</p>
+      <a class="btn-primary" href="#packages" style="font-size:17px;padding:15px 32px;">Browse packages</a>
+    </section>
+
+    <!-- WHERE TO START -->
+    <section class="section-pad" aria-labelledby="start-heading">
+      <div class="two-col">
+        <div>
+          <h2 class="h2" id="start-heading">Start here</h2>
+          <p class="lead" style="margin:20px 0 0;">A few common ways content can hold a product back.</p>
+        </div>
+        <div>
+          <div class="symptom">
+            <h3>My audience gets frustrated and doesn't know what to do next</h3>
+            <p>The information is there. It's just not structured around what someone actually needs to do at that moment.</p>
+          </div>
+          <div class="symptom">
+            <h3>Something about the product doesn't sound or feel right</h3>
+            <p>Usually, it's not one big thing. It's the small inconsistencies adding up: tone, word choice, what gets explained and what doesn't.</p>
+          </div>
+          <div class="symptom">
+            <h3>The copy is inconsistent</h3>
+            <p>Different people write different parts, at different times, with no shared guide or reference point.</p>
+          </div>
+          <div class="symptom">
+            <h3>AI writes all my content</h3>
+            <p>It's fast, and it fills the page. But it doesn't know your product, your audience, or what they're trying to achieve.</p>
+          </div>
+          <div class="symptom">
+            <h3>We're still figuring things out</h3>
+            <p>Priorities move fast, and content is usually the last thing revisited. It can fall behind the product without anyone deciding that should happen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT THIS CAN INCLUDE (white section, mosaic top edge) -->
+    <section aria-labelledby="include-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+      <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+      <div class="section-pad">
+        <div class="two-col">
+          <div>
+            <h2 class="h2" id="include-heading">What this can include</h2>
+            <p class="lead" style="margin:20px 0 0;">A non-exhaustive list of activities. Delivered as standalone pieces of work, but work best when one task informs the next.</p>
+          </div>
+          <div>
+            <ul class="includes">
+              <li>Discovery &amp; research</li>
+              <li>Content strategy</li>
+              <li>Voice &amp; messaging audits</li>
+              <li>Information architecture</li>
+              <li>UX writing</li>
+              <li>User journey mapping</li>
+              <li>Conversation design</li>
+              <li>Content systems: voice, rules, glossary</li>
+              <li>Content operations &amp; governance</li>
+              <li>Success metrics &amp; iteration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A QUICK NOTE ON AI (Personal callout) -->
+    <section aria-labelledby="ai-heading" style="max-width:1080px;margin:0 auto;padding:80px 24px;">
+      <div style="max-width:680px;">
+        <div style="width:32px;height:2px;background:#B23A2E;margin-bottom:22px;"></div>
+        <h2 style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 20px;color:#003262;" id="ai-heading">A quick note on AI</h2>
+        <p style="margin:0 0 20px;font-family:'Spectral',serif;font-size:19px;line-height:1.6;color:#12222B;">In content design, AI offers speed but at a real risk to quality. In the content industry (like many others) the value comes from the professionals handling the tools. This can mean using AI to work faster while an expert eye catches the weaker outputs. Or, taking all that UX thinking and decision-making to build robust content systems that deliver quality from the source.</p>
+        <p style="margin:0;font-family:'Spectral',serif;font-size:19px;line-height:1.6;color:#12222B;">At Content Content, AI is the virtual assistant in the trenches. I'm learning the dos and don'ts in real time, like everyone else. As it stands, it helps me work through the "middle" part of work: faster drafting, testing, refining, spelling... The problem at the start, the judgement at the end, plus the context wrapping it all together, is still me. You'd notice if it wasn't.</p>
+      </div>
+    </section>
+
+    <!-- FAQs (accordion) -->
+    <section aria-labelledby="faq-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+      <div class="section-pad">
+        <div class="two-col">
+          <div>
+            <h2 class="h2" id="faq-heading">FAQs</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Do I need content design?</summary>
+              <p class="faq-a">Yes. Your digital product and services will be easier to understand, and deliver a better experience when the content and information are treated as part of the design process.</p>
+            </details>
+            <details>
+              <summary>What is content design, and how's it different from copywriting?</summary>
+              <p class="faq-a">The skills overlap, but a copywriter will craft compelling copy to say what your business wants to say. Content design takes what your users need to know and delivers that information in the best way for them to use your services.</p>
+            </details>
+            <details>
+              <summary>Do you only work with startups?</summary>
+              <p class="faq-a">My focus is on startups. They're often underserved when it comes to quality product content, and that's the gap I built this practice to work in. That said, I work with businesses of all sizes, scale-ups, NGOs, larger SaaS teams, wherever the same problem shows up.</p>
+            </details>
+            <details>
+              <summary>We already have a designer or copywriter, why do we need this too?</summary>
+              <p class="faq-a">Content and UX/product designers are complementary forces, by collaborating on a task each role can focus on their specifics. The same applies when working with copywriters, staying aligned on brand voice and tone so all marketing communications sound like the same business as the product.</p>
+            </details>
+            <details>
+              <summary>What do you need from me to get started?</summary>
+              <p class="faq-a">Not much to begin with. Every project starts with a call, so we can talk through your product, your goals, and where things are getting stuck. From there, I'll ask for access to the product, any existing research or feedback, and someone on your team who can answer questions and make decisions along the way. If some of that doesn't exist yet, that's fine, we work with what's there.</p>
+            </details>
+            <details>
+              <summary>Do you offer one-off projects or ongoing support?</summary>
+              <p class="faq-a">Both, we can scope your exact needs together and find a working pattern that suits your goals.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES (placeholder, hero CTA anchors here) -->
+    <section id="packages" class="section-pad" aria-labelledby="packages-heading" style="padding-top:72px;padding-bottom:72px;">
+      <div class="two-col">
+        <div>
+          <h2 class="h2" id="packages-heading">Packages</h2>
+        </div>
+        <div>
+          <div style="background:#E4ECF0;border:1px solid #D3D9DD;border-radius:10px;padding:22px 24px;max-width:560px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;margin-bottom:10px;">In progress</div>
+            <p style="font-size:15px;line-height:1.6;color:#12222B;margin:0;">Pre-scoped packages are being finalised and will appear here soon. In the meantime, work is scoped directly around what you need, <a href="/contact/">get in touch</a> to talk it through.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="mosaic-strip" data-seed="91827364" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+    <div style="background:#003262;">
+      <div class="footer-inner" style="max-width:1080px;margin:0 auto;padding:80px 24px 56px;">
+        <p class="footer-big" style="font-family:'Fugaz One',cursive;font-size:44px;line-height:1.05;color:#F6F5F3;max-width:640px;margin:0;">To feel content with your content.</p>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:56px;border-top:1px solid #2A527A;padding-top:36px;">
+          <div>
+            <p style="margin:0 0 14px;font-size:17px;line-height:1.5;color:#F6F5F3;max-width:360px;">Barcelona based, working with startups everywhere.</p>
+            <a class="footer-link" href="mailto:hello@contentcontent.design" style="font-family:'IBM Plex Mono',monospace;font-size:16px;text-decoration:underline;text-underline-offset:3px;">hello@contentcontent.design</a>
+          </div>
+          <nav aria-label="Footer navigation" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
+            <a class="footer-link" href="/services/" aria-current="page" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Services</a>
+            <a class="footer-link" href="/field-notes/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Field notes</a>
+            <a class="footer-link" href="/work/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Work</a>
+            <a class="footer-link" href="/about/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">About</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  /* Mosaic strip (DESIGN.md §5): seeded trencadís generator, fills viewport width. */
+  (function () {
+    var TILE = 20, GAP = 1.5, ADVANCE = TILE + GAP;
+    var BASE = ['#003262','#003262','#003262','#46809B','#46809B','#E4ECF0','#F6F5F3','#12222B','#8FB0C1'];
+    function makeRng(seed) { var s = seed >>> 0; return function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; }
+    function clamp(v) { return Math.min(100, Math.max(0, Math.round(v))); }
+    function build(el) {
+      var seed = parseInt(el.getAttribute('data-seed'), 10) || 1;
+      var st = el._strip || (el._strip = { rnd: makeRng(seed), count: 0, coral: false });
+      var rnd = st.rnd;
+      var jx = function (b, a) { return clamp(b + (rnd() * 2 - 1) * a); };
+      var clip = function () {
+        var pts = [[jx(2,15),jx(4,15)],[jx(98,15),jx(3,13)],[jx(97,13),jx(98,15)],[jx(3,15),jx(97,15)]];
+        if (rnd() > 0.45) {
+          var i = Math.floor(rnd() * 4), a = pts[i], b = pts[(i + 1) % 4];
+          pts.splice(i + 1, 0, [clamp((a[0]+b[0])/2 + (rnd()*2-1)*13), clamp((a[1]+b[1])/2 + (rnd()*2-1)*13)]);
+        }
+        return 'polygon(' + pts.map(function (p) { return p[0] + '% ' + p[1] + '%'; }).join(',') + ')';
+      };
+      var need = Math.ceil((window.innerWidth + 60) / ADVANCE);
+      if (need <= st.count) return;
+      var frag = document.createDocumentFragment();
+      for (var i = st.count; i < need; i++) {
+        var d = document.createElement('div');
+        d.style.background = BASE[Math.floor(rnd() * BASE.length)];
+        d.style.clipPath = clip();
+        frag.appendChild(d);
+      }
+      el.appendChild(frag);
+      st.count = need;
+      if (!st.coral) { var idx = 5 + Math.floor(rnd() * 4); if (el.children[idx]) el.children[idx].style.background = '#B23A2E'; st.coral = true; }
+    }
+    var strips = [].slice.call(document.querySelectorAll('.mosaic-strip'));
+    function run() { strips.forEach(build); }
+    run();
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+  })();
+</script>
+
+<script>
+  /* Mobile nav toggle */
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', function () { setOpen(toggle.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); } });
+    window.addEventListener('resize', function () { if (window.innerWidth > 768) setOpen(false); });
+  })();
+</script>
+
+</body>
+</html>
