@@ -116,3 +116,4 @@ These are non-negotiable and apply to all copy on the site:
 - Never introduce a third accent colour without discussion
 - Never use `we` in copy
 - Never use em dashes
+- Never phrase a header as a question
