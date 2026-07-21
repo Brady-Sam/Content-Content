@@ -70,6 +70,16 @@ These are non-negotiable and apply to all copy on the site:
 
 ---
 
+## Header punctuation
+
+Three heading tiers, each with a fixed terminal-punctuation rule. Internal punctuation (commas, ampersands, colons) is always fine in any tier, this only governs the last character.
+
+- **Hero headline** (Fugaz One, the page H1) — no terminal punctuation. Exception: the homepage headline, "Content, Designed."
+- **Subheading** (Work Sans 600, Oxford Navy) — no terminal punctuation. Applies the same way whether it's acting as a hero line under the H1 or as a section label (e.g. "The symptoms", "The response"). Question marks are exempt where the heading is a genuine question, e.g. FAQ accordion summaries, the "?" is doing grammatical work, not decorating a fullstop.
+- **Lead paragraph** (Work Sans 400, Ink) — ends in a full stop. Only appears when there's real sentence-like copy to add after the title and subheading, not every page needs one.
+
+---
+
 ## Case study conventions
 
 - Structure: Situation, Task, Action (with h3 sub-sections), Result
