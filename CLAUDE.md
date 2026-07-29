@@ -8,49 +8,43 @@ This is the working site for Content Content, an independent content design prac
 
 ```
 site/
-  index.html          # Homepage
-  about/index.html    # About page
-  work/index.html     # Work index
-  work/training-ai    # Case study (bare file, no folder)
-  work/shelter/       # Case study (folder with index.html)
-  work/knowledge-hub/ # Case study (folder with index.html)
-  work/benefits/      # Case study (folder with index.html)
-  CC_favicon.svg
+  index.html            # Homepage
+  404.html              # Site-wide not found
+  services/index.html   # Services, incl. the Flow Review / Flow Rebuild steps
+  work/index.html       # Work index
+  work/benefits/        # Case study
+  work/knowledge-hub/   # Case study
+  work/shelter/         # Case study
+  work/training-ai/     # Case study
+  field-notes/index.html
+  about/index.html
+  contact/index.html
+  brand/                # Favicons and logo PNGs
   README.md
   CLAUDE.md
+  drafts/               # Internal, gitignored, never published
 ```
 
-Case studies use two conventions: bare files (`/work/training-ai`) and folders with `index.html` (`/work/shelter/`). Never add trailing slashes to bare file links. Check existing pages before creating new ones.
+Every page and case study is a folder with an `index.html`, linked with a trailing slash (`/work/shelter/`). Check existing pages before creating new ones and copy the nearest one's shell rather than rebuilding it.
+
+Pages are self-contained: each carries its own `<style>` block, mosaic script and nav-toggle script. There is no shared stylesheet and no build step, so a change to a shared component has to be repeated in every page that uses it.
 
 ---
 
 ## Brand
 
-### Colours
+**All visual tokens live in `DESIGN.md` at the repo parent, and that file is the only source of truth for them.** Do not duplicate colours, type scales, spacing or component markup into this file. If something here ever contradicts `DESIGN.md` on a visual question, `DESIGN.md` wins. On a copy or voice question, this file wins.
 
-| Variable         | Hex       | Use                          |
-|------------------|-----------|------------------------------|
-| --bg             | #F5F2EC   | Page background              |
-| --ink            | #1A1814   | Primary text, footer         |
-| --ink-muted      | #6B6660   | Secondary text, captions     |
-| --accent         | #A8401A   | Links, emphasis, data        |
-| --accent-warm    | #C9532A   | Hovers, highlights           |
-| --accent-light   | #F0E8E4   | Tag backgrounds, callouts    |
-| --rule           | #D9D4CC   | Borders, dividers            |
-| --white          | #FDFCFA   | Card backgrounds             |
+The short version, enough to spot when something is off brand:
 
-### Fonts
+- Anchors are Oxford Navy `#003262`, Air Force Blue `#46809B`, White Smoke `#F6F5F3`. Body text is Ink `#12222B`, links and CTAs are Coral `#B23A2E`.
+- Type is Fugaz One (display only, one hero line per page), Work Sans (headings and body), Spectral (personal and long-form), IBM Plex Mono (labels, eyebrows, prices).
+- Air Force Blue is never used for text under 24px, on any background. It fails AA. Use Muted slate `#46545C` for small labels.
+- Max container 1080px, 24px gutters, single breakpoint at 768px.
+- Borders over shadows, always.
+- The mosaic strip appears exactly twice per page: the top edge of the first white section, and the top edge of the footer.
 
-- **Playfair Display** — headlines and case study titles only
-- **DM Sans** (weight 300/400) — all body copy
-- **DM Mono** (weight 300/400) — nav, labels, tags, stats, buttons, captions. Always uppercase and letter-spaced when used as a label.
-
-### Layout
-
-- Max container width: 1080px
-- Generous section padding: 4 to 7rem between major sections
-- Borders over shadows. Cards use `--rule` border, never drop shadows.
-- Metrics always: large Playfair number + small DM Mono label beneath.
+Section backgrounds follow a fixed rhythm, documented in `DESIGN.md` §8. The hero is always White Smoke and the section after it is always white with the mosaic strip.
 
 ---
 
@@ -60,7 +54,8 @@ These are non-negotiable and apply to all copy on the site:
 
 - **Never use em dashes.** Anywhere. No exceptions.
 - **UK English** throughout (colour, behaviour, organised, etc.)
-- **No "we"** — first person singular only. "How I work", not "how we work."
+- **No "we" for the practice.** Content Content is one person. Anything Sam does is "I": "how I work", never "how we work". The practice never speaks as a team.
+- **Collaborative "we" is allowed**, meaning Sam and the client together: "we'll work together to define the scope", "once we know what needs to change". This is the reading in use across the live site. If a "we" could be mistaken for a team, rewrite it as "I".
 - **No "users"** except in genuinely technical contexts. Say "employees", "people", "founders".
 - **No three-part list rhythms** — "not just X, but Y and Z" is the clearest AI tell.
 - **No staccato drama** — avoid several short fragments in a row for effect.
@@ -83,10 +78,10 @@ Three heading tiers, each with a fixed terminal-punctuation rule. Internal punct
 ## Case study conventions
 
 - Structure: Situation, Task, Action (with h3 sub-sections), Result
-- Metrics panel at the top: 2 or 3 stats max, Playfair number + DM Mono label
-- Callout blocks for key insights: terracotta left border, accent-light background
+- Metrics panel at the top: 2 or 3 stats max, Fugaz One number + IBM Plex Mono label
+- Callout blocks for key insights: use the callout family in `DESIGN.md` §6, pick the one whose job matches. Do not invent a fifth treatment.
 - Before/after images go in the case study folder, named: `before-[descriptor].png` / `after-[descriptor].png`
-- Footnotes for data caveats: DM Mono, small, honest
+- Footnotes for data caveats: IBM Plex Mono, small, honest
 - Only use metrics that would hold up under interview scrutiny. Drop weak figures rather than spin them.
 - Attribute in-house work accurately. Collaborative decisions are "working with the designer, I..." not solo claims.
 
@@ -96,34 +91,60 @@ Three heading tiers, each with a fixed terminal-punctuation rule. Internal punct
 
 - **Not** a freelancer or contractor. An independent practice.
 - Target client: early-stage B2B SaaS with product and development in place, no content design function.
-- Lead with symptoms founders recognise (conversion drop-off, onboarding confusion), not the content design label.
-- Services: The Audit (fixed-scope diagnostic), The Fix (one critical journey), The Build (full content system).
+- Lead with symptoms founders recognise (conversion drop-off, onboarding confusion), not the content design label. "Content design" should not appear above the fold on any page.
 - Site should read as an active practice, not an archived portfolio.
+
+### The offer
+
+Four things, sold as a sequence rather than a menu. Published prices are always "from", never a range.
+
+| | Price | On the site |
+|---|---|---|
+| **Flow Review** | From €2,500, ten working days | `/services/` step 1, own page to come |
+| **Flow Rebuild** | From €4,500, two to three weeks | `/services/` step 2, own page to come |
+| **Embedded content design** | Day rate | Never published. Quoted when asked. |
+| **Content System** | From €7,500, four weeks | Own page, not yet built |
+
+Rules that shape the copy:
+
+- **Never call these "packages".** They are a sequence, not a tiered menu, and "packages" reads as marketplace pricing. The services page calls the section "The steps".
+- **Never publish the day rate**, and never state a day count for a fixed-price piece of work. Sell the deadline and the outcome, not the input. A published day rate caps every fixed price, because the client just divides.
+- **Never state a count of anything.** No screens, fixes, words or pages. Scope by boundary, which is what stops the work being priced by units.
+- Never build a three-column pricing layout. There is no middle option because there is no choice.
+- The Content System is not referenced anywhere until its page exists.
 
 ---
 
-## Services in the nav
+## Nav
 
+In order, on every page:
+
+- Services (`/services/`)
+- Field notes (`/field-notes/`)
 - Work (`/work/`)
 - About (`/about/`)
-- Contact (`#contact` anchor on homepage)
+- Contact (`/contact/`), styled as a coral outline button, not a plain link
+
+The current page's link carries `aria-current="page"`. The 404 sets it on nothing.
 
 ---
 
 ## Deployment
 
-- Hosted on Cloudflare Pages
-- Auto-deploys from GitHub repo: `Brady-Sam/Content-Content`
-- Push to main branch triggers deploy. No build step needed.
+- Auto-deploys from GitHub repo: `Brady-Sam/Content-Content`. Push to main triggers deploy. No build step.
+- The contact form posts to `/api/contact`, handled by a separate Worker that lives outside this repo (`../contact-worker`) so its source is never served publicly.
 - Cloudflare Web Analytics planned but not yet set up.
+- **Open issue:** `404.html` is deployed and reachable at `/404`, but missing routes return an empty-bodied 404 rather than serving it, so browsers show their own error page. Cause not yet identified, needs the Cloudflare dashboard. Check whether the site is served by Pages (check the build output directory) or by a Worker with static assets (needs `not_found_handling = "404-page"`).
 
 ---
 
 ## Things to never do
 
 - Never modify image files that are part of live case studies without Sam confirming
-- Never add trailing slashes to links pointing at bare HTML files (e.g. `/work/training-ai` not `/work/training-ai/`)
 - Never introduce a third accent colour without discussion
 - Never use `we` in copy
 - Never use em dashes
 - Never phrase a header as a question
+- Never call the offer "packages"
+- Never publish the day rate, a day count, or a count of screens, fixes or pages
+- Never duplicate visual tokens from `DESIGN.md` into this file
