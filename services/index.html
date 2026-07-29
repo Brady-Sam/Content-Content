@@ -81,6 +81,25 @@
     .includes li{position:relative;padding-left:20px;font-size:17px;line-height:1.5;color:#12222B;}
     .includes li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;background:#B23A2E;}
 
+    /* The steps: sequential flow */
+    .steps-head{max-width:560px;margin:0 0 48px;}
+    .flow{list-style:none;margin:0;padding:0;max-width:624px;}
+    .flow-step{position:relative;background:#FFFFFF;border:1px solid #D3D9DD;border-radius:12px;padding:32px 32px 28px;}
+    .flow-num{position:absolute;top:-16px;left:28px;width:32px;height:32px;border-radius:50%;background:#003262;color:#F6F5F3;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;}
+    .flow-eyebrow{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#46545C;margin:6px 0 10px;}
+    .flow-step h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 12px;color:#003262;}
+    .flow-body{margin:0 0 18px;font-size:16px;line-height:1.6;color:#12222B;}
+    .flow-price{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#46545C;margin:0 0 18px;}
+    .flow-cta{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;}
+
+    /* Personal callout between steps 1 and 2 (DESIGN.md callout family) */
+    .flow-connector{padding:32px 8px 40px 32px;}
+    .flow-connector .rule{width:32px;height:2px;background:#B23A2E;margin-bottom:22px;}
+    .flow-connector p{margin:0;font-family:'Spectral',serif;font-weight:400;font-size:19px;line-height:1.6;color:#12222B;max-width:520px;}
+
+    /* Closing note under step 2 */
+    .flow-close{max-width:560px;margin:32px 0 0;font-size:16px;line-height:1.65;color:#46545C;}
+
     /* FAQ accordion */
     .faq{border-top:1px solid #D3D9DD;}
     .faq details{border-bottom:1px solid #D3D9DD;}
@@ -99,6 +118,10 @@
       .section-pad{padding:56px 24px !important;}
       .two-col{grid-template-columns:1fr;gap:32px;}
       .includes{grid-template-columns:1fr;}
+      .steps-head{margin-bottom:36px;}
+      .flow-step{padding:28px 24px 24px;}
+      .flow-num{left:20px;}
+      .flow-connector{padding:28px 4px 36px 24px;}
       .hero-pad{padding:56px 24px 64px !important;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
@@ -133,8 +156,8 @@
     <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:88px 24px 80px;">
       <h1 id="page-heading">Services</h1>
       <p class="hero-subhead">Content design starts with a problem, not your product's features</p>
-      <p class="hero-text">We'll work together to define the scope based on your context. Or if you'd prefer to fast-track the value, explore the pre-scoped packages on offer.</p>
-      <a class="btn-primary" href="#packages" style="font-size:17px;padding:15px 32px;">Browse packages</a>
+      <p class="hero-text">We'll work together to define the scope based on your context. Or if you'd prefer to fast-track the value, there's fixed-scope work already priced and ready to go.</p>
+      <a class="btn-primary" href="#steps" style="font-size:17px;padding:15px 32px;">See the steps</a>
     </section>
 
     <!-- WHERE TO START -->
@@ -196,6 +219,44 @@
       </div>
     </section>
 
+    <!-- THE STEPS (hero CTA anchors here) -->
+    <section id="steps" class="section-pad" aria-labelledby="steps-heading" style="padding-bottom:32px;">
+      <div class="steps-head">
+        <h2 class="h2" id="steps-heading">The steps</h2>
+        <p class="lead" style="margin:20px 0 0;">Two fixed-scope steps that work together to deliver you quick and tangible value.</p>
+      </div>
+      <ol class="flow">
+
+        <li>
+          <div class="flow-step">
+            <span class="flow-num" aria-hidden="true">1</span>
+            <p class="flow-eyebrow">Step 1 &middot; Flow Review</p>
+            <h3>Find what's wrong</h3>
+            <p class="flow-body">I go through one key flow in your product the way your audience would. Onboarding is a good place to start, but it can be any area you want fresh eyes on. You'll get a clear picture of where your content and UX are working, and what needs attention.</p>
+            <p class="flow-price">From &euro;2,500 &middot; Ten working days</p>
+            <a class="flow-cta" href="/services/flow-review/">See what's included &rarr;</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="flow-connector">
+            <div class="rule" aria-hidden="true"></div>
+            <p>Already have a hunch about what's wrong? I'd recommend starting with the Flow Review; we can find and validate the right problem, so the Flow Rebuild is working on the right solution.</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-num" aria-hidden="true">2</span>
+            <p class="flow-eyebrow">Step 2 &middot; Flow Rebuild</p>
+            <h3>Fix the whole journey</h3>
+            <p class="flow-body">Once we know what needs to change, I rebuild the full journey, every screen, state, and edge case delivered in your own tools. Fixed price for a fixed journey.</p>
+            <p class="flow-price">From &euro;4,500 &middot; Two to three weeks</p>
+            <a class="flow-cta" href="/services/flow-rebuild/">See what's included &rarr;</a>
+          </div>
+        </li>
+
+      </ol>
+      <p class="flow-close">If you want more hands-on work with your team and roadmap, day-rate work can be scoped for your exact needs. <a href="/contact/">Get in touch</a> and we'll go from there.</p>
+    </section>
+
     <!-- A QUICK NOTE ON AI (Personal callout) -->
     <section aria-labelledby="ai-heading" style="max-width:1080px;margin:0 auto;padding:80px 24px;">
       <div style="max-width:680px;">
@@ -238,21 +299,6 @@
               <summary>Do you offer one-off projects or ongoing support?</summary>
               <p class="faq-a">Both, we can scope your exact needs together and find a working pattern that suits your goals.</p>
             </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PACKAGES (placeholder, hero CTA anchors here) -->
-    <section id="packages" class="section-pad" aria-labelledby="packages-heading" style="padding-top:72px;padding-bottom:72px;">
-      <div class="two-col">
-        <div>
-          <h2 class="h2" id="packages-heading">Packages</h2>
-        </div>
-        <div>
-          <div style="background:#E4ECF0;border:1px solid #D3D9DD;border-radius:10px;padding:22px 24px;max-width:560px;">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;margin-bottom:10px;">In progress</div>
-            <p style="font-size:15px;line-height:1.6;color:#12222B;margin:0;">Pre-scoped packages are being finalised and will appear here soon. In the meantime, work is scoped directly around what you need, <a href="/contact/">get in touch</a> to talk it through.</p>
           </div>
         </div>
       </div>
