@@ -32,6 +32,18 @@ Pages are self-contained: each carries its own `<style>` block, mosaic script an
 
 ---
 
+## Copy docs
+
+`drafts/` is an Obsidian vault holding one markdown copy doc per page (`Contact.md`, `Homepage.md`, `Services.md`, `Book a call.md`, `Work/`). It is gitignored and never published.
+
+**Any change to copy on a page must be made in that page's copy doc in the same pass.** The doc is the record of what the page says and why, so a page edited without it goes stale immediately and the reasoning behind a line is lost. This applies to headlines, ledes, body copy, button labels, form labels and microcopy. It does not apply to markup, styling or script changes that leave the words alone.
+
+When copy is cut rather than changed, move it into a "Cut from the page" section in the doc with the reason, rather than deleting it. Cut copy gets reconsidered, and the reason it went is the useful part.
+
+If a page has no copy doc yet, create one, following the structure of the nearest existing doc.
+
+---
+
 ## Brand
 
 **All visual tokens live in `DESIGN.md` at the repo parent, and that file is the only source of truth for them.** Do not duplicate colours, type scales, spacing or component markup into this file. If something here ever contradicts `DESIGN.md` on a visual question, `DESIGN.md` wins. On a copy or voice question, this file wins.
@@ -152,3 +164,4 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 - Never call the offer "packages"
 - Never publish the day rate, a day count, or a count of screens, fixes or pages
 - Never duplicate visual tokens from `DESIGN.md` into this file
+- Never change copy on a page without updating that page's copy doc in `drafts/` in the same pass
