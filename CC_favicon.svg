@@ -1,0 +1,24 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+<title>Content Content favicon</title>
+<g>
+<polygon points="8,8 32,6 34,28 6,26" fill="#003262" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="38,6 62,8 60,32 36,30" fill="#46809B" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="68,10 90,8 92,30 70,28" fill="#E4ECF0" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="100,12 116,6 118,26 102,30" fill="#8FB0C1" stroke="#AFB0A9" stroke-width="0.8"/>
+
+<polygon points="6,36 30,34 32,58 8,60" fill="#46809B" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="36,38 62,36 64,62 38,64" fill="#B23A2E" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="68,40 92,38 94,64 70,66" fill="#003262" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="100,42 118,40 116,62 102,64" fill="#46809B" stroke="#AFB0A9" stroke-width="0.8"/>
+
+<polygon points="8,68 32,66 34,90 10,92" fill="#8FB0C1" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="38,70 64,68 66,94 40,96" fill="#003262" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="70,72 94,70 96,96 72,98" fill="#46809B" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="102,74 118,72 116,98 104,100" fill="#B23A2E" stroke="#AFB0A9" stroke-width="0.8"/>
+
+<polygon points="10,102 34,100 32,118 8,120" fill="#003262" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="40,104 66,102 64,120 38,118" fill="#46809B" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="72,106 96,104 94,120 70,118" fill="#E4ECF0" stroke="#AFB0A9" stroke-width="0.8"/>
+<polygon points="104,108 118,106 116,120 102,118" fill="#003262" stroke="#AFB0A9" stroke-width="0.8"/>
+</g>
+</svg>
