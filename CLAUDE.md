@@ -19,6 +19,7 @@ site/
   field-notes/index.html
   about/index.html
   contact/index.html
+  book/index.html       # Cal.com discovery-call embed
   brand/                # Favicons and logo PNGs
   README.md
   CLAUDE.md
@@ -132,7 +133,10 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 ## Deployment
 
 - Auto-deploys from GitHub repo: `Brady-Sam/Content-Content`. Push to main triggers deploy. No build step.
-- The contact form posts to `/api/contact`, handled by a separate Worker that lives outside this repo (`../contact-worker`) so its source is never served publicly.
+- The contact form posts to `/api/contact`, handled by a separate Worker that lives outside this repo (`../contact-worker`) so its source is never served publicly. The same Worker handles `/api/booking`, which receives the Cal.com webhook and emails a briefing on whoever booked.
+- `/book/` embeds a Cal.com discovery call. The Cal.com account is registered as `hello@contentcontent.design` so the practice, not the personal Gmail, is what bookers see. The `calLink` is set once at the bottom of `book/index.html`.
+- **Known limitation:** the Google Calendar invite shows the personal Gmail address in its organiser field. A free consumer Google account cannot present an alias, and Cal.com's setting to hide it is a paid feature. Only Google Workspace fixes this properly.
+- `/book/` is deliberately not in the nav. The nav is fixed at five items; the service-page CTAs carry the booking link.
 - Cloudflare Web Analytics planned but not yet set up.
 - **Open issue:** `404.html` is deployed and reachable at `/404`, but missing routes return an empty-bodied 404 rather than serving it, so browsers show their own error page. Cause not yet identified, needs the Cloudflare dashboard. Check whether the site is served by Pages (check the build output directory) or by a Worker with static assets (needs `not_found_handling = "404-page"`).
 
