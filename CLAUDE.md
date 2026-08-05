@@ -11,11 +11,11 @@ site/
   index.html            # Homepage
   404.html              # Site-wide not found
   services/index.html   # Services, incl. the Flow Review / Flow Rebuild steps
-  work/index.html       # Work index
-  work/benefits/        # Case study
-  work/knowledge-hub/   # Case study
-  work/shelter/         # Case study
-  work/training-ai/     # Case study
+  case-studies/index.html          # Case studies index
+  case-studies/benefits/           # Case study
+  case-studies/knowledge-hub/      # Case study
+  case-studies/shelter/            # Case study
+  case-studies/training-ai/        # Case study
   field-notes/index.html
   about/index.html
   contact/index.html
@@ -26,7 +26,7 @@ site/
   drafts/               # Internal, gitignored, never published
 ```
 
-Every page and case study is a folder with an `index.html`, linked with a trailing slash (`/work/shelter/`). Check existing pages before creating new ones and copy the nearest one's shell rather than rebuilding it.
+Every page and case study is a folder with an `index.html`, linked with a trailing slash (`/case-studies/shelter/`). Check existing pages before creating new ones and copy the nearest one's shell rather than rebuilding it.
 
 Pages are self-contained: each carries its own `<style>` block, mosaic script and nav-toggle script. There is no shared stylesheet and no build step, so a change to a shared component has to be repeated in every page that uses it.
 
@@ -34,7 +34,7 @@ Pages are self-contained: each carries its own `<style>` block, mosaic script an
 
 ## Copy docs
 
-`drafts/` is an Obsidian vault holding one markdown copy doc per page (`Contact.md`, `Homepage.md`, `Services.md`, `Book a call.md`, `Work/`). It is gitignored and never published.
+`drafts/` is an Obsidian vault holding one markdown copy doc per page (`Contact.md`, `Homepage.md`, `Services.md`, `Book a call.md`, `Case studies/`). It is gitignored and never published.
 
 **Any change to copy on a page must be made in that page's copy doc in the same pass.** The doc is the record of what the page says and why, so a page edited without it goes stale immediately and the reasoning behind a line is lost. This applies to headlines, ledes, body copy, button labels, form labels and microcopy. It does not apply to markup, styling or script changes that leave the words alone.
 
@@ -96,6 +96,7 @@ Three heading tiers, each with a fixed terminal-punctuation rule. Internal punct
 - Before/after images go in the case study folder, named: `before-[descriptor].png` / `after-[descriptor].png`
 - Footnotes for data caveats: IBM Plex Mono, small, honest
 - Only use metrics that would hold up under interview scrutiny. Drop weak figures rather than spin them.
+- **No approximation tildes on stats.** Write "55%", never "~55%". A figure either holds up stated plainly or it should not be published, and the tilde just advertises the doubt. Removed site-wide on 5 August 2026.
 - Attribute in-house work accurately. Collaborative decisions are "working with the designer, I..." not solo claims.
 
 ---
@@ -134,7 +135,7 @@ In order, on every page:
 
 - Services (`/services/`)
 - Field notes (`/field-notes/`)
-- Work (`/work/`)
+- Case studies (`/case-studies/`)
 - About (`/about/`)
 - Contact (`/contact/`), styled as a coral outline button, not a plain link
 
@@ -145,6 +146,8 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 ## Deployment
 
 - Auto-deploys from GitHub repo: `Brady-Sam/Content-Content`. Push to main triggers deploy. No build step.
+- `_redirects` at the repo root 301s `/work/*` to `/case-studies/*`. The section was renamed on 5 August 2026 and the old URLs had been live and shared. Do not delete this file, and add to it rather than replacing it if another path moves.
+- **HTML is cached at the Cloudflare edge and is not purged on deploy.** For several minutes after every push, requests return either the old or the new page depending on which edge node answers. Verify a deploy across a wide sample of requests, not one or two, or it will look live when it is not. A Cache Rule bypassing cache for `text/html` would fix this properly and has not been set up.
 - The contact form posts to `/api/contact`, handled by a separate Worker that lives outside this repo (`../contact-worker`) so its source is never served publicly. The same Worker handles `/api/booking`, which receives the Cal.com webhook and emails a briefing on whoever booked.
 - `/book/` embeds a Cal.com discovery call. The Cal.com account is registered as `hello@contentcontent.design` so the practice, not the personal Gmail, is what bookers see. The `calLink` is set once at the bottom of `book/index.html`.
 - **Known limitation:** the Google Calendar invite shows the personal Gmail address in its organiser field. A free consumer Google account cannot present an alias, and Cal.com's setting to hide it is a paid feature. Only Google Workspace fixes this properly.

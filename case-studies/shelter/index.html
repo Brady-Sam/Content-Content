@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Work · Content Content</title>
-  <meta name="description" content="Case studies from Content Content showing the impact of good content design, from an AI support chatbot to a charity campaign.">
-  <link rel="canonical" href="https://contentcontent.design/work/">
+  <title>Creating content governance to drive a campaign · Content Content</title>
+  <meta name="description" content="How I turned Shelter's Renters Reform Bill campaign page into a content hub with governance behind it, lifting traffic 55% and petition engagement 40%.">
+  <link rel="canonical" href="https://contentcontent.design/case-studies/shelter/">
   <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,28 +52,34 @@
     .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
     .footer-link[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;}
 
-    .section-pad{max-width:1080px;margin:0 auto;padding:72px 24px 88px;}
-    .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
-    .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
-    .hero .hero-text{font-size:20px;line-height:1.5;color:#12222B;margin:16px 0 0;max-width:600px;}
+    .btn-primary{display:inline-block;background:#B23A2E;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:16px;text-decoration:none;border-radius:6px;padding:14px 30px;transition:background .18s;}
+    .btn-primary:hover{background:#8F2E24;color:#F6F5F3;}
 
-    /* Case study cards */
-    .cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
-    .card{background:#FFFFFF;border:1px solid #D3D9DD;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
-    .card-body{display:flex;flex-direction:column;flex:1;padding:28px;}
-    .card-tags{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;margin:0 0 16px;}
-    .card-title{font-family:'Work Sans',sans-serif;font-weight:600;font-size:22px;line-height:1.25;color:#003262;margin:0 0 14px;}
-    .card-bridge{font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;color:#46545C;margin:0 0 24px;}
-    .card-stat{margin-top:auto;padding-top:20px;border-top:1px solid #D3D9DD;margin-bottom:22px;}
-    .stat-num{display:block;font-family:'Fugaz One',cursive;font-size:44px;line-height:1;color:#003262;}
-    .stat-label{display:block;font-family:'Work Sans',sans-serif;font-size:14px;line-height:1.4;color:#46545C;margin-top:8px;}
-    .card-link{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;align-self:flex-start;}
-    .card-link:hover{color:#8F2E24;text-decoration:underline;text-underline-offset:3px;}
+    .section-pad{max-width:1080px;margin:0 auto;padding:0 24px;}
+    .measure{max-width:680px;}
 
-    /* Empty state */
-    .empty-state{margin-top:48px;}
-    .empty-state .rule{width:32px;height:2px;background:#B23A2E;margin-bottom:22px;}
-    .empty-state p{font-size:20px;line-height:1.5;color:#46545C;margin:0;}
+    /* Case study */
+    .back-link{display:inline-block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#46545C;text-decoration:none;}
+    .back-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:3px;}
+    .cs-tags{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;margin:0 0 18px;}
+    .cs-title{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.9rem,4vw,2.75rem);line-height:1.15;color:#003262;margin:0;max-width:800px;}
+    .cs-bridge{font-family:'Work Sans',sans-serif;font-size:21px;line-height:1.5;color:#12222B;margin:24px 0 0;max-width:620px;}
+
+    .cs-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B23A2E;margin:0 0 24px;}
+    .stat-row{display:flex;flex-wrap:wrap;gap:40px 56px;}
+    .stat-num{display:block;font-family:'Fugaz One',cursive;font-size:clamp(2.4rem,5vw,3.25rem);line-height:1;color:#003262;}
+    .stat-label{display:block;font-family:'Work Sans',sans-serif;font-size:15px;line-height:1.4;color:#46545C;margin-top:10px;max-width:180px;}
+
+    .cs-body p{font-family:'Work Sans',sans-serif;font-size:18px;line-height:1.75;color:#12222B;margin:0 0 26px;}
+
+    .cs-figures{max-width:920px;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:32px 28px;}
+    .cs-figures figure{margin:0;}
+    .shot{position:relative;border:1px solid #D3D9DD;border-radius:8px;overflow:hidden;background:#FFFFFF;}
+    .shot-scroll{max-height:440px;overflow-y:auto;}
+    .shot-scroll:focus-visible{outline:3px solid #46809B;outline-offset:-3px;}
+    .shot-scroll img{display:block;width:100%;height:auto;}
+    .shot::after{content:'';position:absolute;left:0;right:0;bottom:0;height:36px;background:linear-gradient(to top, rgba(255,255,255,0.95), rgba(255,255,255,0));pointer-events:none;}
+    .cs-figures figcaption{font-family:'Work Sans',sans-serif;font-size:14px;line-height:1.5;color:#46545C;margin-top:12px;}
 
     @media (max-width:768px){
       .nav-toggle{display:inline-flex;}
@@ -81,9 +87,7 @@
       .nav-links.open{display:flex;}
       .nav-links .nav-link{padding:14px 0;width:100%;}
       .nav-links .nav-contact{margin-top:12px;}
-      .hero-pad{padding:56px 24px 40px !important;}
-      .section-pad{padding:8px 24px 56px !important;}
-      .cards-grid{grid-template-columns:1fr;}
+      .cs-figures{grid-template-columns:1fr;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
     }
@@ -104,7 +108,7 @@
       <div class="nav-links" id="nav-menu">
         <a class="nav-link" href="/services/">Services</a>
         <a class="nav-link" href="/field-notes/">Field notes</a>
-        <a class="nav-link" href="/work/" aria-current="page">Work</a>
+        <a class="nav-link" href="/case-studies/" aria-current="page">Case studies</a>
         <a class="nav-link" href="/about/">About</a>
         <a class="nav-contact" href="/contact/">Contact</a>
       </div>
@@ -112,54 +116,70 @@
   </nav>
 
   <main id="main">
+    <article>
 
-    <!-- HERO -->
-    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 56px;">
-      <h1 id="page-heading">Work</h1>
-      <p class="hero-subhead">Content design in action</p>
-      <p class="hero-text">A selection of projects to show the impact good content work can have.</p>
-    </section>
+      <!-- Title block -->
+      <header class="section-pad" style="padding-top:40px;padding-bottom:64px;">
+        <a class="back-link" href="/case-studies/">← Back to work</a>
+        <p class="cs-tags" style="margin-top:40px;">Content Strategy · Charity</p>
+        <h1 class="cs-title">Creating content governance to drive a campaign</h1>
+        <p class="cs-bridge">Shelter's Renters Reform Bill campaign was delivering real change, but supporters couldn't follow the progress.</p>
+      </header>
 
-    <!-- CASE STUDIES -->
-    <section class="section-pad" aria-label="Case studies">
-      <div class="cards-grid">
-
-        <article class="card">
-          <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
-          <div class="card-body">
-            <p class="card-tags">AI &amp; Chatbot · B2B SaaS</p>
-            <h2 class="card-title">Turning an AI chatbot into a trusted support channel</h2>
-            <p class="card-bridge">What happens when an AI feature gets a proper content foundation.</p>
-            <div class="card-stat">
-              <span class="stat-num">93%</span>
-              <span class="stat-label">Peak deflection rate</span>
-            </div>
-            <a class="card-link" href="/work/training-ai/">Read the AI chatbot case study →</a>
+      <!-- Impact at a glance (white section, mosaic top edge) -->
+      <section aria-labelledby="impact-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+        <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+        <div class="section-pad" style="padding-top:56px;padding-bottom:56px;">
+          <p class="cs-eyebrow" id="impact-heading">Impact at a glance</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-num">55%</span><span class="stat-label">Traffic increase</span></div>
+            <div class="stat"><span class="stat-num">40%</span><span class="stat-label">Petition engagement growth</span></div>
+            <div class="stat"><span class="stat-num">6 years</span><span class="stat-label">To a passed Act</span></div>
           </div>
-        </article>
+        </div>
+      </section>
 
-        <article class="card">
-          <div class="mosaic-strip" data-seed="30581947" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
-          <div class="card-body">
-            <p class="card-tags">Content Strategy · Charity</p>
-            <h2 class="card-title">Creating content governance to drive a campaign</h2>
-            <p class="card-bridge">Shelter's Renters Reform Bill campaign was delivering real change, but supporters couldn't follow the progress.</p>
-            <div class="card-stat">
-              <span class="stat-num">~55%</span>
-              <span class="stat-label">Traffic increase</span>
-            </div>
-            <a class="card-link" href="/work/shelter/">Read the Shelter case study →</a>
-          </div>
-        </article>
-
+      <!-- Body -->
+      <div class="cs-body section-pad" style="padding-top:64px;padding-bottom:24px;">
+        <div class="measure">
+          <p>While being one of the top priority campaigns, the Renters Reform Bill wasn't reaching supporters where they were in a way they understood. Digital campaign activities, updates and information were disjointed, meaning engagement had to be driven through social spend or high effort marketing.</p>
+          <p>Running user testing on existing supporters and people new to the campaign gave insights on exactly what both audience types wanted to know, such as campaign timeline and updates, key wins and easy to understand objectives. Using these users' goals, I created a content strategy that turned the campaign webpage into a hub that could answer users' questions or direct users to the key areas to take action.</p>
+          <p>The hub approach gave users an organic place to engage with the campaign, as seen with a 55% traffic increase which resulted in a 40% increase in the main call to action, petition signatures. The strategy also gave all the internal stakeholders and subject matter experts clear guidance on what should and shouldn't be included on the campaign pages. This ongoing content governance eventually led to the campaign completing its goal and getting real changes made in Parliament.</p>
+          <p>A measured and purposeful approach more often than not will deliver more impact than forced outreach, as your content will feel designed specifically for what your audience needs.</p>
+        </div>
       </div>
 
-      <div class="empty-state">
-        <div class="rule"></div>
-        <p>More on the way...</p>
-      </div>
-    </section>
+      <!-- Screenshots (supplementary, at the end) -->
+      <section class="section-pad" aria-labelledby="shots-heading" style="padding-top:16px;padding-bottom:24px;">
+        <p class="cs-eyebrow" id="shots-heading" style="color:#46545C;">The campaign page over time</p>
+        <div class="cs-figures">
+          <figure>
+            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-before-2021.png" alt="Shelter campaign page, May 2021. Title reads 'Renters need rights'. Page includes a problem statement, Wall of Shame social proof section, campaign wins timeline, and social sharing."></div></div>
+            <figcaption>May 2021. Problem statement and petition, with limited structure beyond that.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-mid-2022.png" alt="Shelter campaign page, February 2022. Similar structure to 2021 with minor updates including a poster download and updated campaign wins timeline."></div></div>
+            <figcaption>February 2022. Tidied but the same underlying structure.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-after-jul2022.png" alt="Shelter campaign page, July 2022. Title reads 'Our Renters' Reform Bill campaign'. New sections include the bill explained, Shelter's stance, Where is the bill now timeline, decision-makers, FAQ, and more ways to take action."></div></div>
+            <figcaption>July 2022. Redesigned as a campaign hub with bill explainer, progress timeline, decision-makers, and FAQ.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot"><div class="shot-scroll" tabindex="0"><img src="shelter-after-2023.png" alt="Shelter campaign page, March 2023. Same hub structure as July 2022 with the addition of a Renters' Home Truths survey report section."></div></div>
+            <figcaption>March 2023. Hub structure maintained after handover, with the Renters' Home Truths report added.</figcaption>
+          </figure>
+        </div>
+      </section>
 
+      <!-- CTA -->
+      <section class="section-pad" style="padding-top:32px;padding-bottom:88px;">
+        <div class="measure" style="border-top:1px solid #D3D9DD;padding-top:40px;">
+          <a class="btn-primary" href="/contact/">Get in touch to talk about your product</a>
+        </div>
+      </section>
+
+    </article>
   </main>
 
   <!-- FOOTER -->
@@ -176,7 +196,7 @@
           <nav aria-label="Footer navigation" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
             <a class="footer-link" href="/services/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Services</a>
             <a class="footer-link" href="/field-notes/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Field notes</a>
-            <a class="footer-link" href="/work/" aria-current="page" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Work</a>
+            <a class="footer-link" href="/case-studies/" aria-current="page" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">Case studies</a>
             <a class="footer-link" href="/about/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">About</a>
           </nav>
         </div>
@@ -206,8 +226,6 @@
         }
         return 'polygon(' + pts.map(function (p) { return p[0] + '% ' + p[1] + '%'; }).join(',') + ')';
       };
-      // Cards are narrower than the viewport, but generating to viewport width
-      // and clipping keeps every strip full-bleed with no gap.
       var need = Math.ceil((window.innerWidth + 60) / ADVANCE);
       if (need <= st.count) return;
       var frag = document.createDocumentFragment();

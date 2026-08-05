@@ -1,0 +1,5 @@
+# /work/ became /case-studies/ on 5 August 2026. These keep old inbound links,
+# search results and shared URLs working. 301 so the move is permanent and
+# search engines transfer the ranking rather than treating it as a new page.
+/work /case-studies 301
+/work/* /case-studies/:splat 301
