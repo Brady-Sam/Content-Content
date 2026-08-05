@@ -55,6 +55,13 @@
     .section-pad{max-width:1080px;margin:0 auto;padding:80px 24px;}
     .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
     .hero .lede{max-width:600px;margin:32px 0 0;font-size:22px;line-height:1.45;color:#12222B;}
+    .h2{font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;}
+
+    /* Cal.com inline embed. min-height stops the page reflowing as it loads; once
+       embed.js is in it injects its own stylesheet, resets this and self-sizes.
+       That reset also kills any margin set here, so the spacing above the embed
+       lives on the heading instead. */
+    .cal-embed{width:100%;min-height:720px;overflow:hidden;}
 
     /* Form */
     .btn-primary{display:inline-block;background:#B23A2E;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:16px;text-decoration:none;border:none;border-radius:6px;padding:14px 30px;cursor:pointer;transition:background .18s;}
@@ -82,6 +89,7 @@
       .nav-links .nav-contact{margin-top:12px;}
       .hero-pad{padding:56px 24px 48px !important;}
       .section-pad{padding:56px 24px !important;}
+      .cal-embed{min-height:920px;}
       .field-row{grid-template-columns:1fr;gap:0;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
@@ -115,14 +123,23 @@
     <!-- HERO -->
     <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 64px;">
       <h1 id="page-heading">Contact</h1>
-      <p class="lede">Want to book a call, talk through your product, or something else entirely? Get in touch, I'd like to hear from you.</p>
+      <p class="lede">Let's talk about your content, your business, and everything in between.</p>
     </section>
 
-    <!-- FORM (white section, mosaic top edge) -->
-    <section aria-labelledby="form-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+    <!-- BOOKING (white section, mosaic top edge) -->
+    <section aria-labelledby="booking-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
       <div class="section-pad">
-        <h2 id="form-heading" style="position:absolute;left:-9999px;">Send a message</h2>
+        <h2 class="h2" id="booking-heading" style="margin-bottom:32px;">Schedule a call</h2>
+
+        <div class="cal-embed" id="cal-booking"></div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section aria-labelledby="form-heading">
+      <div class="section-pad">
+        <h2 class="h2" id="form-heading" style="margin-bottom:32px;">Send a message</h2>
         <form class="form" id="contact-form" action="/api/contact" method="post" novalidate>
           <p class="form-note"><span style="color:#B23A2E">*</span> Required fields</p>
 
@@ -280,6 +297,50 @@
       });
     });
     function done(msg) { statusEl.style.color = '#12222B'; statusEl.textContent = msg; }
+  })();
+</script>
+
+<script>
+  /* Cal.com inline embed.
+     CAL_LINK is <cal.com username>/<event type slug>. Update it if either changes.
+     The same embed runs on /book/; a change here needs the same change there. */
+  (function (C, A, L) {
+    var p = function (a, ar) { a.q.push(ar); };
+    var d = C.document;
+    C.Cal = C.Cal || function () {
+      var cal = C.Cal; var ar = arguments;
+      if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; }
+      if (ar[0] === L) {
+        var api = function () { p(api, arguments); };
+        var namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === 'string') { (cal.ns[namespace] = api) && p(api, ar); } else { p(cal, ar); }
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+  (function () {
+    var CAL_LINK = 'content-content/discovery-call';
+    Cal('init', 'discovery', { origin: 'https://app.cal.com' });
+    Cal.ns.discovery('inline', {
+      elementOrSelector: '#cal-booking',
+      calLink: CAL_LINK,
+      config: { layout: 'month_view' }
+    });
+    Cal.ns.discovery('ui', {
+      layout: 'month_view',
+      hideEventTypeDetails: false,
+      cssVarsPerTheme: {
+        light: {
+          'cal-brand': '#B23A2E',
+          'cal-text': '#12222B',
+          'cal-text-emphasis': '#003262',
+          'cal-border': '#D3D9DD'
+        }
+      }
+    });
   })();
 </script>
 
