@@ -113,6 +113,15 @@
       <div class="two-col">
         <div>
           <h2 class="h2" id="origin-heading">An origin story</h2>
+          <div style="margin-top:32px;">
+            <div style="position:relative;width:216px;height:216px;">
+              <div aria-hidden="true" style="position:absolute;inset:0;border-radius:50%;background:#AFB0A9;"></div>
+              <div style="position:absolute;top:8px;left:8px;right:8px;bottom:8px;border-radius:50%;overflow:hidden;">
+                <img src="/about/sam-brady.jpg" alt="Sam Brady, founder of Content Content" style="width:100%;height:100%;object-fit:cover;object-position:50% 80%;" />
+              </div>
+              <div id="photo-ring-svg" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;"></div>
+            </div>
+          </div>
         </div>
         <div>
           <p class="narrative">10+ years working in tech, across product strategy, management and content design, I came to an unconfirmed conclusion: content design mainly appears across two broad industries, public services such as GOV.UK, and charities, and established SaaS companies. There will be many exceptions to this rule, but the newer companies aren't getting the benefits of the discipline. It's something to look into later, or they survive without it and leave the work at the bottom of a to-do list, usually picked up by UX designers.</p>
@@ -218,6 +227,43 @@
     run();
     var t;
     window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+  })();
+</script>
+
+<script>
+  /* Mosaic ring around portrait: strip tiles wrapped sequentially around the circle (DESIGN.md §5). */
+  (function () {
+    var el = document.getElementById('photo-ring-svg');
+    if (!el) return;
+    var cx = 108, cy = 108, Ro = 107, Ri = 100;
+    var Rm = (Ro + Ri) / 2; // mean radius for circumference
+    var s = 20260713; // same seed as primary strip
+    var rnd = function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; };
+    var TILE_W = 20, GAP = 1.5, SLOT = TILE_W + GAP;
+    var C = 2 * Math.PI * Rm;
+    var N = Math.floor(C / SLOT); // tiles that fit at mean radius (~30)
+    var slotRad = (2 * Math.PI) / N;     // angular slot per tile (preserves tile:gap ratio)
+    var tileRad = slotRad * TILE_W / SLOT;
+    var BASE = ['#003262','#003262','#003262','#46809B','#46809B','#E4ECF0','#F6F5F3','#12222B','#8FB0C1'];
+    var tiles = [];
+    for (var i = 0; i < N; i++) tiles.push(BASE[Math.floor(rnd() * BASE.length)]);
+    var coralIdx = 5 + Math.floor(rnd() * 4);
+    if (coralIdx < N) tiles[coralIdx] = '#B23A2E';
+    var pt = function (r, a) { return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+    var f  = function (v) { return v.toFixed(2); };
+    var startA = -Math.PI / 2; // start at 12 o'clock
+    var paths = tiles.map(function (fill, i) {
+      var a0 = startA + i * slotRad;
+      var a1 = a0 + tileRad;
+      var am = (a0 + a1) / 2;
+      // small radial jitter on each corner for the trencadís jagged feel
+      var jr = function () { return (rnd() * 2 - 1) * 1.5; };
+      var p0o = pt(Ro + jr(), a0); var pmo = pt(Ro + jr(), am); var p1o = pt(Ro + jr(), a1);
+      var p1i = pt(Ri + jr(), a1); var pmi = pt(Ri + jr(), am); var p0i = pt(Ri + jr(), a0);
+      var pts = [p0o, pmo, p1o, p1i, pmi, p0i];
+      return '<path d="M ' + pts.map(function (p) { return f(p[0]) + ' ' + f(p[1]); }).join(' L ') + ' Z" fill="' + fill + '"/>';
+    });
+    el.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="216" height="216" viewBox="0 0 216 216" aria-hidden="true">' + paths.join('') + '</svg>';
   })();
 </script>
 

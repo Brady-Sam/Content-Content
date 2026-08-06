@@ -1,0 +1,65 @@
+{
+  "generated": "2026-08-06T10:50:42.080Z",
+  "spec": {
+    "tileCount": 60,
+    "tileWidth": "20px",
+    "groutGap": "1.5px",
+    "stripHeight": "8px",
+    "viewBox": "0 0 1288.50 8",
+    "algorithm": "LCG seeded RNG — s = (s * 1103515245 + 12345) & 0x7fffffff"
+  },
+  "palette": {
+    "oxfordNavy": "#003262",
+    "airForceBlue": "#46809B",
+    "whiteSmoke": "#F6F5F3",
+    "ink": "#12222B",
+    "coral": "#B23A2E",
+    "blueTint": "#E4ECF0",
+    "lightNavyTint": "#8FB0C1",
+    "groutGrey": "#AFB0A9"
+  },
+  "strips": [
+    {
+      "name": "primary",
+      "seed": 20260713,
+      "label": "Primary (site white-section top edge)",
+      "usage": "Top edge of white/light sections on the site. Matches the live site exactly.",
+      "filename": "mosaic-strip-primary.svg"
+    },
+    {
+      "name": "footer",
+      "seed": 91827364,
+      "label": "Footer (site footer top edge)",
+      "usage": "Top edge of the site footer. Matches the live site exactly.",
+      "filename": "mosaic-strip-footer.svg"
+    },
+    {
+      "name": "variant-a",
+      "seed": 11223344,
+      "label": "Variant A",
+      "usage": "Design option for off-site use — presentations, social, print.",
+      "filename": "mosaic-strip-variant-a.svg"
+    },
+    {
+      "name": "variant-b",
+      "seed": 55667788,
+      "label": "Variant B",
+      "usage": "Design option for off-site use — presentations, social, print.",
+      "filename": "mosaic-strip-variant-b.svg"
+    },
+    {
+      "name": "variant-c",
+      "seed": 99001122,
+      "label": "Variant C",
+      "usage": "Design option for off-site use — presentations, social, print.",
+      "filename": "mosaic-strip-variant-c.svg"
+    },
+    {
+      "name": "variant-d",
+      "seed": 13579246,
+      "label": "Variant D",
+      "usage": "Design option for off-site use — presentations, social, print.",
+      "filename": "mosaic-strip-variant-d.svg"
+    }
+  ]
+}

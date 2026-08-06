@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1288.50 8" width="1200" height="8" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <!-- Content Content mosaic strip — Variant A (seed 11223344) -->
+  <!-- Trencadís-inspired divider. Scale width freely; height is fixed at 8px. -->
+  <rect width="1288.50" height="8" fill="#AFB0A9" />
+  <defs>
+  <clipPath id="cp0"><polygon points="3.40,0.08 7.80,0.00 17.00,0.00 20.00,7.68 0.00,8.00" /></clipPath>
+  <clipPath id="cp1"><polygon points="21.50,0.00 41.50,1.12 41.50,7.44 21.50,7.60" /></clipPath>
+  <clipPath id="cp2"><polygon points="46.20,1.20 62.40,0.00 63.00,7.60 43.00,8.00" /></clipPath>
+  <clipPath id="cp3"><polygon points="65.90,0.08 84.50,0.00 84.10,8.00 65.50,8.00" /></clipPath>
+  <clipPath id="cp4"><polygon points="86.40,0.00 103.80,1.12 104.80,8.00 94.80,7.04 87.20,8.00" /></clipPath>
+  <clipPath id="cp5"><polygon points="108.50,0.00 127.50,0.00 126.30,8.00 107.50,7.68 107.50,4.32" /></clipPath>
+  <clipPath id="cp6"><polygon points="130.20,0.00 138.00,0.72 149.00,0.00 148.80,7.52 131.60,8.00" /></clipPath>
+  <clipPath id="cp7"><polygon points="151.70,0.40 159.50,0.00 167.50,0.32 168.70,8.00 150.50,8.00" /></clipPath>
+  <clipPath id="cp8"><polygon points="173.00,1.44 190.20,0.32 188.80,4.48 189.20,8.00 172.00,8.00" /></clipPath>
+  <clipPath id="cp9"><polygon points="193.50,0.72 213.50,0.00 213.50,7.52 196.50,7.76" /></clipPath>
+  <clipPath id="cp10"><polygon points="215.00,0.00 232.60,1.12 235.00,6.72 223.00,7.20 215.00,6.80" /></clipPath>
+  <clipPath id="cp11"><polygon points="236.50,0.00 255.50,0.72 256.10,8.00 238.90,8.00" /></clipPath>
+  <clipPath id="cp12"><polygon points="260.40,0.00 277.40,0.00 278.00,6.64 258.00,7.36" /></clipPath>
+  <clipPath id="cp13"><polygon points="279.50,0.00 296.50,1.12 298.90,8.00 281.10,8.00" /></clipPath>
+  <clipPath id="cp14"><polygon points="301.00,0.32 321.00,0.00 319.40,6.96 301.00,8.00" /></clipPath>
+  <clipPath id="cp15"><polygon points="323.30,0.00 342.50,1.04 342.50,8.00 322.50,7.76" /></clipPath>
+  <clipPath id="cp16"><polygon points="344.00,0.00 361.20,0.00 364.00,8.00 344.00,7.04" /></clipPath>
+  <clipPath id="cp17"><polygon points="365.50,0.48 382.90,0.00 385.50,6.72 365.50,7.12 367.30,3.84" /></clipPath>
+  <clipPath id="cp18"><polygon points="387.00,1.12 405.40,0.00 406.40,6.96 388.20,8.00 387.00,5.12" /></clipPath>
+  <clipPath id="cp19"><polygon points="409.50,0.40 428.30,0.00 427.50,8.00 411.30,7.84" /></clipPath>
+  <clipPath id="cp20"><polygon points="432.40,0.00 448.00,0.48 449.80,7.68 430.40,7.44" /></clipPath>
+  <clipPath id="cp21"><polygon points="451.50,0.00 470.30,0.00 471.50,6.96 451.90,7.68" /></clipPath>
+  <clipPath id="cp22"><polygon points="473.00,0.00 492.20,0.00 491.80,8.00 474.00,8.00" /></clipPath>
+  <clipPath id="cp23"><polygon points="497.90,0.00 514.50,1.20 514.50,8.00 502.90,6.96 496.10,7.20" /></clipPath>
+  <clipPath id="cp24"><polygon points="517.80,0.00 533.80,0.00 535.40,8.00 516.00,8.00" /></clipPath>
+  <clipPath id="cp25"><polygon points="537.50,0.88 555.50,0.32 557.10,8.00 537.70,6.80" /></clipPath>
+  <clipPath id="cp26"><polygon points="561.60,0.88 577.00,0.00 577.60,8.00 559.60,6.56" /></clipPath>
+  <clipPath id="cp27"><polygon points="580.50,1.28 600.10,1.04 600.50,7.28 583.30,7.92" /></clipPath>
+  <clipPath id="cp28"><polygon points="605.00,1.44 622.00,0.40 622.00,8.00 602.60,7.60" /></clipPath>
+  <clipPath id="cp29"><polygon points="623.50,0.64 643.50,0.40 642.50,4.48 640.70,7.60 626.30,7.36" /></clipPath>
+  <clipPath id="cp30"><polygon points="645.00,0.00 665.00,0.00 665.00,8.00 645.00,8.00" /></clipPath>
+  <clipPath id="cp31"><polygon points="666.50,0.00 686.50,0.00 685.70,7.12 668.30,7.28 669.90,3.28" /></clipPath>
+  <clipPath id="cp32"><polygon points="688.00,0.00 707.60,0.00 708.00,3.28 707.60,8.00 689.00,8.00" /></clipPath>
+  <clipPath id="cp33"><polygon points="709.50,1.28 726.90,1.04 726.50,6.88 712.90,8.00" /></clipPath>
+  <clipPath id="cp34"><polygon points="731.40,0.00 749.60,0.00 750.00,8.00 732.20,6.72" /></clipPath>
+  <clipPath id="cp35"><polygon points="753.10,1.44 762.30,1.60 772.50,0.96 771.50,7.20 754.70,7.52" /></clipPath>
+  <clipPath id="cp36"><polygon points="776.00,1.20 794.00,0.16 791.00,8.00 775.00,7.84" /></clipPath>
+  <clipPath id="cp37"><polygon points="798.50,0.80 815.50,0.32 813.70,8.00 797.30,6.88" /></clipPath>
+  <clipPath id="cp38"><polygon points="817.00,0.96 836.80,0.00 834.80,5.04 837.00,8.00 817.20,8.00" /></clipPath>
+  <clipPath id="cp39"><polygon points="838.90,1.04 858.50,0.16 857.50,4.48 858.50,7.84 838.90,8.00" /></clipPath>
+  <clipPath id="cp40"><polygon points="862.40,0.88 880.00,0.40 880.00,6.72 860.60,7.20" /></clipPath>
+  <clipPath id="cp41"><polygon points="883.50,1.20 900.10,0.32 900.10,7.60 881.50,7.20" /></clipPath>
+  <clipPath id="cp42"><polygon points="904.80,0.00 921.20,0.00 922.80,4.64 923.00,8.00 906.00,7.76" /></clipPath>
+  <clipPath id="cp43"><polygon points="924.50,0.00 932.30,0.00 943.70,0.16 944.50,8.00 925.10,6.88" /></clipPath>
+  <clipPath id="cp44"><polygon points="946.00,0.96 966.00,0.00 964.60,6.64 948.40,8.00" /></clipPath>
+  <clipPath id="cp45"><polygon points="969.10,0.00 985.50,0.00 987.10,8.00 968.70,7.76" /></clipPath>
+  <clipPath id="cp46"><polygon points="990.20,0.00 1006.40,0.48 1009.00,7.12 991.80,8.00 990.80,4.64" /></clipPath>
+  <clipPath id="cp47"><polygon points="1013.70,1.12 1023.30,0.00 1030.50,0.80 1030.50,7.52 1013.70,7.68" /></clipPath>
+  <clipPath id="cp48"><polygon points="1032.00,0.16 1050.40,0.00 1052.00,7.92 1040.40,7.44 1032.00,8.00" /></clipPath>
+  <clipPath id="cp49"><polygon points="1053.50,0.72 1073.50,0.80 1073.30,8.00 1053.50,8.00" /></clipPath>
+  <clipPath id="cp50"><polygon points="1075.00,0.32 1082.60,0.00 1092.60,1.04 1095.00,8.00 1075.00,7.68" /></clipPath>
+  <clipPath id="cp51"><polygon points="1096.50,0.40 1104.90,1.04 1114.50,0.48 1116.50,7.04 1098.50,7.44" /></clipPath>
+  <clipPath id="cp52"><polygon points="1118.00,0.48 1135.40,0.00 1136.40,8.00 1118.00,6.64 1118.00,2.96" /></clipPath>
+  <clipPath id="cp53"><polygon points="1141.50,0.00 1156.30,0.16 1159.50,8.00 1139.50,7.12" /></clipPath>
+  <clipPath id="cp54"><polygon points="1161.00,0.00 1181.00,0.72 1181.00,6.80 1163.20,8.00" /></clipPath>
+  <clipPath id="cp55"><polygon points="1185.10,0.00 1201.30,0.80 1202.50,8.00 1194.90,8.00 1182.70,8.00" /></clipPath>
+  <clipPath id="cp56"><polygon points="1204.00,0.08 1223.20,1.12 1220.80,7.44 1204.40,6.72 1204.00,2.64" /></clipPath>
+  <clipPath id="cp57"><polygon points="1225.50,0.00 1243.70,0.00 1245.50,3.60 1245.50,7.12 1228.90,8.00" /></clipPath>
+  <clipPath id="cp58"><polygon points="1247.00,0.00 1255.20,1.44 1264.80,0.80 1266.80,7.28 1248.40,7.60" /></clipPath>
+  <clipPath id="cp59"><polygon points="1268.50,0.00 1288.50,1.12 1288.50,7.68 1268.50,8.00" /></clipPath>
+  </defs>
+  <rect x="0" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp0)" />
+  <rect x="21.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp1)" />
+  <rect x="43" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp2)" />
+  <rect x="64.5" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp3)" />
+  <rect x="86" y="0" width="20" height="8" fill="#E4ECF0" clip-path="url(#cp4)" />
+  <rect x="107.5" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp5)" />
+  <rect x="129" y="0" width="20" height="8" fill="#B23A2E" clip-path="url(#cp6)" />
+  <rect x="150.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp7)" />
+  <rect x="172" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp8)" />
+  <rect x="193.5" y="0" width="20" height="8" fill="#E4ECF0" clip-path="url(#cp9)" />
+  <rect x="215" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp10)" />
+  <rect x="236.5" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp11)" />
+  <rect x="258" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp12)" />
+  <rect x="279.5" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp13)" />
+  <rect x="301" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp14)" />
+  <rect x="322.5" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp15)" />
+  <rect x="344" y="0" width="20" height="8" fill="#F6F5F3" clip-path="url(#cp16)" />
+  <rect x="365.5" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp17)" />
+  <rect x="387" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp18)" />
+  <rect x="408.5" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp19)" />
+  <rect x="430" y="0" width="20" height="8" fill="#F6F5F3" clip-path="url(#cp20)" />
+  <rect x="451.5" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp21)" />
+  <rect x="473" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp22)" />
+  <rect x="494.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp23)" />
+  <rect x="516" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp24)" />
+  <rect x="537.5" y="0" width="20" height="8" fill="#E4ECF0" clip-path="url(#cp25)" />
+  <rect x="559" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp26)" />
+  <rect x="580.5" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp27)" />
+  <rect x="602" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp28)" />
+  <rect x="623.5" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp29)" />
+  <rect x="645" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp30)" />
+  <rect x="666.5" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp31)" />
+  <rect x="688" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp32)" />
+  <rect x="709.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp33)" />
+  <rect x="731" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp34)" />
+  <rect x="752.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp35)" />
+  <rect x="774" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp36)" />
+  <rect x="795.5" y="0" width="20" height="8" fill="#F6F5F3" clip-path="url(#cp37)" />
+  <rect x="817" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp38)" />
+  <rect x="838.5" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp39)" />
+  <rect x="860" y="0" width="20" height="8" fill="#F6F5F3" clip-path="url(#cp40)" />
+  <rect x="881.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp41)" />
+  <rect x="903" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp42)" />
+  <rect x="924.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp43)" />
+  <rect x="946" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp44)" />
+  <rect x="967.5" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp45)" />
+  <rect x="989" y="0" width="20" height="8" fill="#E4ECF0" clip-path="url(#cp46)" />
+  <rect x="1010.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp47)" />
+  <rect x="1032" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp48)" />
+  <rect x="1053.5" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp49)" />
+  <rect x="1075" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp50)" />
+  <rect x="1096.5" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp51)" />
+  <rect x="1118" y="0" width="20" height="8" fill="#12222B" clip-path="url(#cp52)" />
+  <rect x="1139.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp53)" />
+  <rect x="1161" y="0" width="20" height="8" fill="#E4ECF0" clip-path="url(#cp54)" />
+  <rect x="1182.5" y="0" width="20" height="8" fill="#46809B" clip-path="url(#cp55)" />
+  <rect x="1204" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp56)" />
+  <rect x="1225.5" y="0" width="20" height="8" fill="#8FB0C1" clip-path="url(#cp57)" />
+  <rect x="1247" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp58)" />
+  <rect x="1268.5" y="0" width="20" height="8" fill="#003262" clip-path="url(#cp59)" />
+</svg>
