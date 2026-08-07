@@ -62,6 +62,18 @@
     .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
     .hero .subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
 
+    /* Field note cards (matches /case-studies/ Content card) */
+    .notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;}
+    .note-card{background:#FFFFFF;border:1px solid #D3D9DD;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+    .note-card-body{display:flex;flex-direction:column;flex:1;padding:28px;}
+    .note-card-title{font-family:'Work Sans',sans-serif;font-weight:600;font-size:22px;line-height:1.25;color:#003262;margin:0 0 14px;}
+    .note-card-desc{font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;color:#46545C;margin:0 0 24px;flex:1;}
+    .note-card-link{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;align-self:flex-start;}
+    .note-card-link:hover{color:#8F2E24;text-decoration:underline;text-underline-offset:3px;}
+    .notes-empty{margin-top:48px;}
+    .notes-empty .rule{width:32px;height:2px;background:#B23A2E;margin-bottom:22px;}
+    .notes-empty p{font-size:20px;line-height:1.5;color:#46545C;margin:0;}
+
     @media (max-width:768px){
       .nav-toggle{display:inline-flex;}
       .nav-links{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:flex-start;gap:0;background:#F6F5F3;border-bottom:1px solid #D3D9DD;padding:8px 24px 18px;box-shadow:0 8px 16px rgba(0,50,98,0.06);}
@@ -70,6 +82,7 @@
       .nav-links .nav-contact{margin-top:12px;}
       .hero-pad{padding:56px 24px 56px !important;}
       .section-pad{padding:56px 24px !important;}
+      .notes-grid{grid-template-columns:1fr;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
     }
@@ -105,17 +118,22 @@
       <p class="subhead">Thoughts about the work</p>
     </section>
 
-    <!-- ENTRIES (white section, mosaic top edge) -->
-    <section aria-label="Published field notes" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
-      <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
-      <div class="section-pad" style="padding:56px 24px;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
-          <article style="background:#F6F5F3;border:1px solid #D3D9DD;border-radius:10px;padding:28px;display:flex;flex-direction:column;">
-            <h2 style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:20px;line-height:1.25;color:#003262;margin:0 0 16px;font-size:22px;line-height:1.25;">What is content design?</h2>
-            <p style="font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;color:#46545C;margin:0 0 24px;flex:1;">Applying design thinking to the content of your product and service.</p>
-            <a href="/field-notes/what-is-content-design/" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;align-self:flex-start;">Read the note →</a>
-          </article>
-        </div>
+    <!-- ENTRIES -->
+    <section aria-label="Published field notes" class="section-pad" style="padding:16px 24px 88px;">
+      <div class="notes-grid">
+        <article class="note-card">
+          <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+          <div class="note-card-body">
+            <h2 class="note-card-title">What is content design?</h2>
+            <p class="note-card-desc">Applying design thinking to the content of your product and service.</p>
+            <a class="note-card-link" href="/field-notes/what-is-content-design/">Read the note →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="notes-empty">
+        <div class="rule"></div>
+        <p>More on the way...</p>
       </div>
     </section>
 

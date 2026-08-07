@@ -55,9 +55,9 @@ The short version, enough to spot when something is off brand:
 - Air Force Blue is never used for text under 24px, on any background. It fails AA. Use Muted slate `#46545C` for small labels.
 - Max container 1080px, 24px gutters, single breakpoint at 768px.
 - Borders over shadows, always.
-- The mosaic strip appears exactly twice per page: the top edge of the first white section, and the top edge of the footer.
+- The mosaic strip appears exactly twice per page: the top edge of the first white section, and the top edge of the footer. Field notes and Case studies are the exception, the strip runs on the first Content card's top edge instead, see `DESIGN.md` §5.
 
-Section backgrounds follow a fixed rhythm, documented in `DESIGN.md` §8. The hero is always White Smoke and the section after it is always white with the mosaic strip.
+Section backgrounds follow a fixed rhythm, documented in `DESIGN.md` §8. The hero is always White Smoke and the section after it is always white with the mosaic strip, except Content-card grid pages (Field notes, Case studies) which stay White Smoke straight through.
 
 ---
 
