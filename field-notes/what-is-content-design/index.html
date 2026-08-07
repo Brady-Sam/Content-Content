@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Field notes · Content Content</title>
-  <meta name="description" content="Field notes from Content Content, an independent content design practice in Barcelona. Thoughts inspired by and about the work, first notes coming soon.">
-  <link rel="canonical" href="https://contentcontent.design/field-notes/">
+  <title>What is content design? · Content Content</title>
+  <meta name="description" content="Applying design thinking to the content of your product and service—a field note from Content Content.">
+  <link rel="canonical" href="https://contentcontent.design/field-notes/what-is-content-design/">
   <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;}
     body{margin:0;}
@@ -35,32 +35,37 @@
     .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before{transform:translateY(6px) rotate(45deg);}
     .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after{transform:translateY(-6px) rotate(-45deg);}
 
-    /* Wordmark */
     .wordmark{font-family:'Fugaz One',cursive;font-size:22px;line-height:1;text-decoration:none;}
     .wordmark .w1{color:#003262;transition:color .18s;}
     .wordmark .w2{color:#46809B;transition:color .18s;}
     .wordmark:hover .w1{color:#46809B;}
     .wordmark:hover .w2{color:#003262;}
 
-    /* Nav links */
     .nav-link{font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#12222B;text-decoration:none;transition:color .18s;}
     .nav-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:4px;}
     .nav-link[aria-current="page"]{color:#B23A2E;font-weight:600;}
 
-    /* Nav Contact button */
     .nav-contact{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;border:1.5px solid #B23A2E;padding:7px 16px;border-radius:6px;background:transparent;transition:background .18s,color .18s;}
     .nav-contact:hover{background:#B23A2E;color:#F6F5F3;}
 
-    /* Footer links */
     .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
     .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
     .footer-link[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;}
 
-    .section-pad{max-width:1080px;margin:0 auto;padding:80px 24px;}
+    .section-pad{max-width:1080px;margin:0 auto;padding:0 24px;}
+    .measure{max-width:680px;}
 
-    /* Hero */
-    .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
-    .hero .subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
+    /* Field note */
+    .back-link{display:inline-block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#46545C;text-decoration:none;}
+    .back-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:3px;}
+    .note-title{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.9rem,4vw,2.75rem);line-height:1.15;color:#003262;margin:0;max-width:800px;}
+
+    .note-intro{font-size:20px;line-height:1.5;color:#12222B;margin:0 0 40px;font-weight:500;}
+    .note-body{font-family:'Work Sans',sans-serif;}
+    .note-body p{font-size:18px;line-height:1.75;color:#12222B;margin:0 0 32px;}
+    .note-body h2{font-family:'Fugaz One',cursive;font-weight:400;font-size:32px;line-height:1.1;color:#003262;margin:64px 0 28px;padding-top:0;}
+    .note-body h2:first-of-type{margin-top:0;}
+    .pull-quote{border-left:4px solid #46809B;padding-left:20px;margin:40px 0;font-size:18px;line-height:1.75;color:#003262;font-style:italic;font-weight:500;}
 
     @media (max-width:768px){
       .nav-toggle{display:inline-flex;}
@@ -68,8 +73,6 @@
       .nav-links.open{display:flex;}
       .nav-links .nav-link{padding:14px 0;width:100%;}
       .nav-links .nav-contact{margin-top:12px;}
-      .hero-pad{padding:56px 24px 56px !important;}
-      .section-pad{padding:56px 24px !important;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
     }
@@ -98,27 +101,38 @@
   </nav>
 
   <main id="main">
+    <article>
 
-    <!-- HERO -->
-    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 72px;">
-      <h1 id="page-heading">Field notes</h1>
-      <p class="subhead">Thoughts about the work</p>
-    </section>
+      <!-- Title block -->
+      <header class="section-pad" style="padding-top:40px;padding-bottom:0;">
+        <a class="back-link" href="/field-notes/">← Back to field notes</a>
+        <h1 class="note-title" style="margin-top:40px;margin-bottom:32px;">What is content design?</h1>
+        <p class="note-intro">You will find 101 articles and definitions online all hopefully saying a similar thing, here is my take.</p>
+      </header>
 
-    <!-- ENTRIES (white section, mosaic top edge) -->
-    <section aria-label="Published field notes" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
-      <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
-      <div class="section-pad" style="padding:56px 24px;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
-          <article style="background:#F6F5F3;border:1px solid #D3D9DD;border-radius:10px;padding:28px;display:flex;flex-direction:column;">
-            <h2 style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:20px;line-height:1.25;color:#003262;margin:0 0 16px;font-size:22px;line-height:1.25;">What is content design?</h2>
-            <p style="font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;color:#46545C;margin:0 0 24px;flex:1;">Applying design thinking to the content of your product and service.</p>
-            <a href="/field-notes/what-is-content-design/" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;align-self:flex-start;">Read the note →</a>
-          </article>
+      <!-- Body (white section, mosaic top edge) -->
+      <section style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+        <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+        <div class="note-body section-pad measure" style="padding-top:56px;padding-bottom:64px;">
+          <h2>In short</h2>
+          <p>The goal is to give the users all the information they need, when they need it, so they can complete the task at hand. Without it you might find them getting confused when using your product or not quite converting in the way you'd imagine.</p>
+
+          <h2>In slightly longer</h2>
+          <p>Content design was coined by Sarah Winters as she found that the term writing didn't quite reflect the level of effort going into the content work she was doing.</p>
+          <div class="pull-quote">Research, user needs, journey mapping, language, creation, sharing, and iteration, the content is being <em>designed</em>, not just <em>written</em>.</div>
+          <p>The discipline is about taking a step back from the output, and refocusing on the thinking beforehand, pairing an understanding of the audience, with an understanding of the business. A content designer (ideally working collaboratively) can create a solution that communicates exactly what is needed so that both parties get the win.</p>
+          <p>Most of the time the content will be words designed and written in a way that is easy to understand in the audience's context, but not always. If the user needs call for it, the best way to communicate may be cutting words from a page, or creating a feature like a calculator, or an asset like an infographic or video.</p>
+          <div class="pull-quote">The guiding principle is the user always comes first.</div>
+
+          <h2>What's in a name?</h2>
+          <p>It is not lost on the content design community, a community focused on being clear and concise, that there are multiple roles and titles that pretty much mean the same thing. Content designer, UX writer, content strategy to name but a few. Some folk will die on the hill that they're all separate things, I don't disagree, but I don't think it is worth getting bogged down in. The roles and responsibilities along with the approach and the goal are ultimately the same.</p>
+
+          <h2>A soft sell</h2>
+          <p>The buried lede in all of this, content design is an essential role in delivering the user experience that your audience needs. If you haven't already, you should look into it.</p>
         </div>
-      </div>
-    </section>
+      </section>
 
+    </article>
   </main>
 
   <!-- FOOTER -->
@@ -146,7 +160,7 @@
 </div>
 
 <script>
-  /* Mosaic strip (DESIGN.md §5): seeded trencadis generator, fills viewport width. */
+  /* Mosaic strip (DESIGN.md §5): seeded trencadis generator, fills its edge. */
   (function () {
     var TILE = 20, GAP = 1.5, ADVANCE = TILE + GAP;
     var BASE = ['#003262','#003262','#003262','#46809B','#46809B','#E4ECF0','#F6F5F3','#12222B','#8FB0C1'];
