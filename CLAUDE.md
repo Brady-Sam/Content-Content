@@ -67,14 +67,18 @@ These are non-negotiable and apply to all copy on the site:
 
 - **Never use em dashes.** Anywhere. No exceptions.
 - **UK English** throughout (colour, behaviour, organised, etc.)
-- **No "we" for the practice.** Content Content is one person. Anything Sam does is "I": "how I work", never "how we work". The practice never speaks as a team.
-- **Collaborative "we" is allowed**, meaning Sam and the client together: "we'll work together to define the scope", "once we know what needs to change". This is the reading in use across the live site. If a "we" could be mistaken for a team, rewrite it as "I".
+- **No "we" for the practice, ever.** Content Content is one person. It never speaks as a team.
+- **"Content Content" is the subject for structural claims** — what the practice offers, how it's built, its positioning, its scope. "Content Content has been built as a practice so...", not a claim that needs Sam's name attached. This is a deliberate choice (decided 7 August 2026, About page): "practice" is a category term like "studio", it describes how a business is organised, not something that has to be earned through track record before it's used.
+- **"I" is Sam's own voice**, reserved for genuinely personal register: opinions, process, the About page's "human in the loop" section, Field Notes, first-person asides. If a sentence is about Sam's judgement or experience rather than the practice's offer, it's "I".
+- **Never refer to Sam in the third person.** "Run by Sam", "Sam does the work" and similar constructions are off-brand, even inside otherwise entity-led copy. It's either "Content Content" (the entity) or "I" (Sam speaking), never "Sam" as a named third party in running copy.
+- **Collaborative "we" is allowed**, meaning Sam and the client together: "we'll work together to define the scope", "once we know what needs to change". This is the reading in use across the live site. If a "we" could be mistaken for a team inside Content Content, rewrite it as "I" or "Content Content" depending on register.
 - **No "users"** except in genuinely technical contexts. Say "employees", "people", "founders".
 - **No three-part list rhythms** — "not just X, but Y and Z" is the clearest AI tell.
 - **No staccato drama** — avoid several short fragments in a row for effect.
 - **No importance-puffing openers** — nothing that inflates the significance before making the point.
 - **No AI-sounding constructions** — run a Slop Mop pass on all copy before publishing.
 - **No colons used as rhythmic pauses** — a colon should introduce content, not create drama.
+- **Never justify "practice" by comparing it to another category** ("the same way a design studio is a studio", "like a law practice"). State the practice's own position directly. An analogy to borrow legitimacy from reads as less confident, not more.
 
 ---
 
