@@ -129,6 +129,28 @@
     .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
     .hero .hero-text{font-size:20px;line-height:1.55;color:#12222B;max-width:600px;margin:16px 0 36px;}
 
+    /* Symptoms sit inside the hero section, not in one of their own, so the top of
+       the page reads as a single White Smoke block. The mosaic strip then breaks
+       the page at the offer below, instead of immediately under the hero. */
+    .hero-symptoms{margin-top:88px;max-width:680px;}
+    .hero-symptoms h2{font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0 0 36px;color:#003262;}
+
+    /* Symptom list — copied from /services/ */
+    .symptom h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.35;margin:0 0 8px;color:#003262;}
+    .symptom p{margin:0;font-size:16px;line-height:1.6;color:#46545C;max-width:540px;}
+    .symptom + .symptom{margin-top:28px;padding-top:28px;border-top:1px solid #D3D9DD;}
+
+    /* Stat row — copied from the case studies */
+    .stat-row{display:flex;flex-wrap:wrap;gap:40px 56px;}
+    .stat-num{display:block;font-family:'Fugaz One',cursive;font-size:clamp(2.4rem,5vw,3.25rem);line-height:1;color:#003262;}
+    .stat-label{display:block;font-family:'Work Sans',sans-serif;font-size:15px;line-height:1.4;color:#46545C;margin-top:10px;max-width:180px;}
+    /* Homepage only: the stats link through to their case study. Kills the global
+       link underline and colour so the stat keeps the case-study treatment. */
+    .stat-link{display:block;text-decoration:none;color:inherit;border-radius:2px;}
+    .stat-link .stat-num,.stat-link .stat-label{transition:color .18s;}
+    .stat-link:hover .stat-num{color:#B23A2E;}
+    .stat-link:hover .stat-label{color:#12222B;text-decoration:underline;text-underline-offset:3px;}
+
     /* Footer links */
     .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
     .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
@@ -147,6 +169,8 @@
       .nav-links .nav-contact{margin-top:12px;}
       .hero{padding:56px 24px 64px !important;}
       .hero h1{font-size:clamp(2.5rem,14vw,4rem) !important;}
+      .hero-symptoms{margin-top:56px;}
+      .hero-symptoms h2{font-size:30px;margin-bottom:28px;}
       .section-pad{padding:56px 24px !important;}
       .two-col{grid-template-columns:1fr !important;gap:32px !important;}
       .footer-inner{padding:56px 24px 48px !important;}
@@ -184,29 +208,75 @@
       <p class="hero-subhead">An independent content design practice</p>
       <p class="hero-text">Helping startups spot content problems and fix them.</p>
       <a class="btn-primary" href="/book/" style="font-size:17px;padding:15px 32px;">Book a free discovery call</a>
+
+      <!-- THE SYMPTOMS — attached to the hero, same White Smoke block, no divider -->
+      <div class="hero-symptoms">
+        <h2 id="symptoms-heading">The symptoms</h2>
+        <div class="symptom">
+          <h3>My audience gets frustrated and doesn't know what to do next</h3>
+          <p>The information is there. It's just not structured around what someone actually needs to do at that moment.</p>
+        </div>
+        <div class="symptom">
+          <h3>Something about the product doesn't sound or feel right</h3>
+          <p>Usually, it's not one big thing. It's the small inconsistencies adding up: tone, word choice, what gets explained and what doesn't.</p>
+        </div>
+        <div class="symptom">
+          <h3>AI writes all my content</h3>
+          <p>It's fast, and it fills the page. But it doesn't know your product, your audience, or what they're trying to achieve.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- HOW CAN I HELP -->
+    <!-- HOW CONTENT CONTENT CAN HELP (first white section, carries the mosaic strip) -->
     <section aria-labelledby="help-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
       <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
         <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
           <div>
-            <h2 id="help-heading" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;">How I can help</h2>
+            <h2 id="help-heading" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;">How Content Content can help</h2>
           </div>
           <div>
-            <p style="margin:0 0 32px;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">I look at your product end-to-end to make sure that every bit of information is helping your audience achieve their goals and meet your business needs.</p>
+            <p style="margin:0 0 32px;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">Check that every piece of information and copy, across all screens, is designed for what your audience needs to do and what your business needs it to achieve.</p>
             <a class="btn-primary" href="/services/" style="font-size:16px;padding:13px 26px;">View content services</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT / CREDIBILITY (Personal callout) -->
-    <section class="section-pad" aria-label="About Sam Brady" style="max-width:1080px;margin:0 auto;padding:72px 24px;">
-      <div style="max-width:680px;">
-        <div style="width:32px;height:2px;background:#B23A2E;margin-bottom:22px;"></div>
-        <p style="margin:0;font-family:'Spectral',serif;font-size:19px;line-height:1.6;color:#12222B;">I'm Sam, based in Barcelona. I worked in tech for over a decade, alongside organisations, big and small. I created Content Content to help startups get their UX right, one word at a time.</p>
+    <!-- SOME PROOF -->
+    <section aria-labelledby="proof-heading">
+      <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
+        <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
+          <div>
+            <h2 id="proof-heading" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;">Some proof</h2>
+            <p style="margin:20px 0 0;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">Head to <a href="/case-studies/">case studies</a> for more content work in action.</p>
+          </div>
+          <div>
+            <div class="stat-row">
+              <a class="stat-link" href="/case-studies/training-ai/" aria-label="93% of support questions answered without a ticket. Read the AI chatbot case study.">
+                <span class="stat-num">93%</span>
+                <span class="stat-label">Support questions answered without a ticket</span>
+              </a>
+              <a class="stat-link" href="/case-studies/shelter/" aria-label="55% increase in campaign page traffic. Read the Shelter case study.">
+                <span class="stat-num">55%</span>
+                <span class="stat-label">Increase in campaign page traffic</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / CREDIBILITY (Personal callout) — second white section, so hairlines
+         only and no strip. Background and borders sit on the section, with the width
+         cap on the inner div, so the white runs full bleed rather than painting only
+         the centre column. -->
+    <section aria-label="About Sam Brady" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+      <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:72px 24px;">
+        <div style="max-width:680px;">
+          <div style="width:32px;height:2px;background:#B23A2E;margin-bottom:22px;"></div>
+          <p style="margin:0;font-family:'Spectral',serif;font-size:19px;line-height:1.6;color:#12222B;">I'm Sam, based in Barcelona. I worked in tech for over a decade, alongside organisations, big and small. I created Content Content to help startups get their UX right, one word at a time.</p>
+        </div>
       </div>
     </section>
 
