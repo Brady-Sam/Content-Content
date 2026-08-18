@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Turning an AI chatbot into a trusted support channel · Content Content</title>
-  <meta name="description" content="How I designed the content layer for an AI support chatbot, lifting deflection from 65% to 93% over six months. B2B SaaS, RAG, content systems.">
+  <meta name="description" content="How I designed the content layer for an AI support chatbot, taking questions answered without a support ticket from 69% to 93%. B2B SaaS, RAG.">
   <link rel="canonical" href="https://contentcontent.design/case-studies/training-ai/">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon_v2.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/CC_logo_32x32.png">
@@ -77,6 +77,8 @@
     .stat-num{display:block;font-family:'Fugaz One',cursive;font-size:clamp(2.4rem,5vw,3.25rem);line-height:1;color:#003262;}
     .stat-label{display:block;font-family:'Work Sans',sans-serif;font-size:15px;line-height:1.4;color:#46545C;margin-top:10px;max-width:180px;}
 
+    .cs-body h2{font-family:'Fugaz One',cursive;font-weight:400;font-size:32px;line-height:1.1;color:#003262;margin:64px 0 28px;padding-top:0;}
+    .cs-body .measure > h2:first-child{margin-top:0;}
     .cs-body p{font-family:'Work Sans',sans-serif;font-size:18px;line-height:1.75;color:#12222B;margin:0 0 26px;}
 
     /* Chart */
@@ -128,18 +130,16 @@
         <a class="back-link" href="/case-studies/">← Back to work</a>
         <p class="cs-tags" style="margin-top:40px;">AI &amp; Chatbot · B2B SaaS</p>
         <h1 class="cs-title">Turning an AI chatbot into a trusted support channel</h1>
-        <p class="cs-bridge">This is what happens when an AI feature gets a proper content foundation.</p>
       </header>
 
-      <!-- Impact at a glance (white section, mosaic top edge) -->
+      <!-- The impact (white section, mosaic top edge) -->
       <section aria-labelledby="impact-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
         <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
         <div class="section-pad" style="padding-top:56px;padding-bottom:56px;">
-          <p class="cs-eyebrow" id="impact-heading">Impact at a glance</p>
+          <p class="cs-eyebrow" id="impact-heading">The impact</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-num">93%</span><span class="stat-label">Peak deflection rate</span></div>
-            <div class="stat"><span class="stat-num">65%</span><span class="stat-label">Starting deflection rate</span></div>
-            <div class="stat"><span class="stat-num">6 months</span><span class="stat-label">Steady improvement over</span></div>
+            <div class="stat"><span class="stat-num">93%</span><span class="stat-label">Questions answered without a support ticket</span></div>
+            <div class="stat"><span class="stat-num">10 hours</span><span class="stat-label">Saved per week in the support team</span></div>
           </div>
         </div>
       </section>
@@ -147,9 +147,14 @@
       <!-- Body -->
       <div class="cs-body section-pad" style="padding-top:64px;padding-bottom:24px;">
         <div class="measure">
-          <p>A B2B SaaS platform had connected a support chatbot straight to an AI model, without a content strategy to guide it. Answers were generic, often wrong, and occasionally invented entirely, including on client-specific policy, the kind of mistake that gets escalated to the client fast.</p>
-          <p>I organised the information the chatbot was drawing from into a proper knowledge base (for better RAG retrieval), and shaped how it delivered that information: accurate, on-brand, and honest about what it didn't know. Working with the development team, I also set the rules for what the AI should and shouldn't attempt to answer on its own.</p>
-          <p>Support tickets dropped as people started getting answers they could actually trust. That freed up the support team's time, and just as importantly, it meant fewer questions escalating back to the client that should have already been answered. A good AI experience needs good conversation design behind it.</p>
+          <h2>The situation</h2>
+          <p>A B2B SaaS platform connected an AI model to their support chatbot to triage and answer user questions. However, no content strategy or planning was included with the integration. Answers were generic, often wrong or hallucinated, including responses on client-specific policy, risking client escalations. Any time saved for the customer support team was spent cleaning up the errors.</p>
+
+          <h2>Action taken</h2>
+          <p>First the knowledge base the chatbot was pulling from was organised and redrafted into easy to understand (for both people and machines) answers. Then the guardrails and conversation design were shaped so that outputs were on brand, clear, and honest when it didn't have an answer. Collaborating with the development team meant these rules could catch when unanswered questions came in so they could be reviewed and the knowledge base could be updated.</p>
+
+          <h2>The result</h2>
+          <p>An increase from 69% to 93% of queries that were successfully answered by the AI. This change happened over a 6-month period, including the "peak season" of support requests. Users gained trust in the tool, and the support team got 10 hours' worth of time back in their week.</p>
         </div>
       </div>
 
@@ -158,7 +163,7 @@
         <p class="cs-eyebrow" id="chart-heading" style="color:#46545C;">Weekly performance</p>
         <figure class="chart-fig">
           <div class="chart-card">
-            <svg viewBox="0 0 760 340" width="100%" height="auto" role="img" aria-label="Combo chart of the chatbot's weekly performance over 19 weeks. Bars show total enquiries growing from about 80 per week to over 400 at peak. A line shows the deflection rate climbing from 69% to a 93% peak and holding as volume rose." style="display:block;">
+            <svg viewBox="0 0 760 340" width="100%" height="auto" role="img" aria-label="Combo chart of the chatbot's weekly performance over 19 weeks. Bars show total enquiries growing from about 80 per week to over 400 at peak. A line shows the share answered without a support ticket climbing from 69% to 93% and holding as volume rose." style="display:block;">
               <line x1="42" y1="306" x2="714" y2="306" stroke="#E4ECF0" stroke-width="1"/>
               <text x="34" y="310" text-anchor="end" font-family="'Work Sans',sans-serif" font-size="11" fill="#46545C">0</text>
               <line x1="42" y1="210.67" x2="714" y2="210.67" stroke="#E4ECF0" stroke-width="1"/>
@@ -221,17 +226,17 @@
             </svg>
             <div class="chart-legend">
               <span class="legend-item"><span class="legend-swatch" style="background:#46809B;opacity:0.45;"></span>Total enquiries</span>
-              <span class="legend-item"><span class="legend-swatch" style="background:#B23A2E;"></span>Deflection rate</span>
+              <span class="legend-item"><span class="legend-swatch" style="background:#B23A2E;"></span>Answered without a support ticket</span>
             </div>
           </div>
-          <figcaption>Weekly enquiry volume (bars) and deflection rate (line) over the first 19 weeks. Deflection climbed from 69% to a 93% peak and held as volume grew past 400 a week.</figcaption>
+          <figcaption>Weekly enquiry volume (bars) and the share answered without a support ticket (line) over the first 19 weeks. That share climbed from 69% to 93% and held as volume grew past 400 a week.</figcaption>
         </figure>
       </section>
 
       <!-- CTA -->
       <section class="section-pad" style="padding-top:32px;padding-bottom:88px;">
         <div class="measure" style="border-top:1px solid #D3D9DD;padding-top:40px;">
-          <a class="btn-primary" href="/contact/">Get in touch to talk about your product</a>
+          <a class="btn-primary" href="/contact/">Let's give your AI something better to say</a>
         </div>
       </section>
 
