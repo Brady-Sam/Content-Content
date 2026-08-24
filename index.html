@@ -124,17 +124,72 @@
     .btn-primary{display:inline-block;background:#B23A2E;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;text-decoration:none;border-radius:6px;transition:background .18s;}
     .btn-primary:hover{background:#8F2E24;color:#F6F5F3;}
 
-    /* Hero two-tier subheader (matches /services/) */
-    .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
-    .hero .hero-text{font-size:20px;line-height:1.55;color:#12222B;max-width:600px;margin:16px 0 36px;}
+    /* Screen-reader-only text — same definition as /services/flow-review/ */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
-    /* Symptoms sit inside the hero section, not in one of their own, so the top of
-       the page reads as a single White Smoke block. The mosaic strip then breaks
-       the page at the offer below, instead of immediately under the hero. */
-    .hero-symptoms{margin-top:88px;max-width:680px;}
-    .hero-symptoms h2{font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0 0 36px;color:#003262;}
+    /* Hero subhead — carries the pairing widget. Plain Work Sans, regular weight,
+       Ink, so the two Fugaz One words are the only emphasis in the line. The navy
+       600 treatment moved down to the practice statement.
+       The clamp floor is 1.65rem rather than 1.5rem because the product area is Air
+       Force Blue, which DESIGN.md bars under 24px. 1.65rem floors the Fugaz One
+       spans at 24.8px, so the rule holds at every viewport width. */
+    .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:400;font-size:clamp(1.65rem,3vw,1.9rem);line-height:1.4;color:#12222B;margin:28px 0 0;max-width:760px;}
+    .hero .hero-cta{margin:36px 0 0;}
 
-    /* Symptom list — copied from /services/ */
+    /* Practice statement closes the hero, with its own lead under it. The two lines
+       are both about the practice, which is what makes them a real two-tier pair.
+       Wide gap above so it opens a block rather than trailing off the CTA. */
+    .hero .hero-practice{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;max-width:680px;margin:72px 0 0;}
+    .hero .hero-lead{font-size:20px;line-height:1.55;color:#12222B;max-width:600px;margin:16px 0 0;}
+
+    /* Fugaz One has a taller cap height and a different baseline to Work Sans, so
+       at a shared font-size it rides high and reads oversized inline. Scaled down
+       and nudged down onto the surrounding baseline rather than left to inherit. */
+    .pairing{display:inline;}
+    .pairing-verb,.pairing-area{font-family:'Fugaz One',cursive;font-weight:400;font-size:max(24px,0.94em);line-height:1;position:relative;top:0.055em;letter-spacing:0.005em;}
+    .pairing-verb{color:#003262;}
+    .pairing-area{color:#46809B;}
+
+    /* The product area and the button are one unbreakable unit, otherwise the
+       button orphans onto a line of its own whenever the sentence happens to end
+       near the edge. Widest case, "support tickets" plus the button, is 250px,
+       which still fits the 272px a 320px screen leaves inside the gutters. */
+    .pairing-tail{white-space:nowrap;}
+
+    /* Caret for the typing swap. Solid while the line is being retyped, hidden the
+       moment it finishes, so nothing blinks in the hero at rest. Air Force Blue, so
+       the effect introduces no colour that isn't already in the line. Under reduced
+       motion the swap is instant and no caret appears at all. */
+    .pairing-caret{display:none;width:2px;height:0.82em;background:#46809B;margin-left:3px;vertical-align:-0.02em;}
+    .pairing.is-typing .pairing-caret{display:inline-block;}
+    @media (prefers-reduced-motion:reduce){.pairing.is-typing .pairing-caret{display:none;}}
+
+    /* Shuffle button — no border or fill, just the glyph. The 44px touch target is
+       kept, it is simply invisible. Muted slate at rest, Coral on hover. */
+    .shuffle-wrap{position:relative;display:inline-block;vertical-align:middle;}
+    .pairing-shuffle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;margin-left:4px;background:transparent;border:0;border-radius:6px;color:#46545C;cursor:pointer;vertical-align:middle;transition:color .18s;}
+    .pairing-shuffle:hover{color:#B23A2E;}
+    .pairing-shuffle svg{width:22px;height:22px;display:block;}
+
+    /* Hover label, borrowed from the price tooltip on /services/flow-review/. Shown
+       on hover and keyboard focus only, and only where hover exists, so it can never
+       push a touch layout sideways. Absolutely positioned, so it stays out of the
+       height the subhead reserves for the longest pairing. */
+    .shuffle-tip{display:none;position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);width:max-content;max-width:260px;background:#FFFFFF;border:1px solid #D3D9DD;border-radius:8px;padding:9px 13px;font-family:'Work Sans',sans-serif;font-weight:400;font-size:13px;line-height:1.45;letter-spacing:normal;white-space:normal;color:#46545C;z-index:5;}
+    @media (hover:hover){
+      .shuffle-wrap:hover .shuffle-tip,.pairing-shuffle:focus-visible + .shuffle-tip{display:block;}
+    }
+
+    /* Symptoms is its own section as of 21 August 2026, and takes the first white
+       section with it, so the mosaic strip moves up from the offer below. Attached
+       to the hero it read as a sixth item under the practice statement, because the
+       statement and the symptom headings are the same Work Sans 600 Oxford Navy and
+       nothing between them marked a change of level. DESIGN.md §8 is the test: a
+       block belongs in the hero while it continues the hero's job, and five entries
+       carrying explanations are a different kind of thing, not a longer hero. */
+    .h2{font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;}
+
+    /* Symptom list — copied from /services/, headings back to h3 under the section h2 */
     .symptom h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.35;margin:0 0 8px;color:#003262;}
     .symptom p{margin:0;font-size:16px;line-height:1.6;color:#46545C;max-width:540px;}
     .symptom + .symptom{margin-top:28px;padding-top:28px;border-top:1px solid #D3D9DD;}
@@ -166,10 +221,11 @@
       .nav-links.open{display:flex;}
       .nav-links .nav-link{padding:14px 0;width:100%;}
       .nav-links .nav-contact{margin-top:12px;}
-      .hero{padding:56px 24px 64px !important;}
+      .hero{padding:56px 24px 48px !important;}
       .hero h1{font-size:clamp(2.5rem,14vw,4rem) !important;}
-      .hero-symptoms{margin-top:56px;}
-      .hero-symptoms h2{font-size:30px;margin-bottom:28px;}
+      .hero .hero-subhead{max-width:none;}
+      .hero .hero-practice{margin-top:52px;}
+      .h2{font-size:30px;}
       .section-pad{padding:56px 24px !important;}
       .two-col{grid-template-columns:1fr !important;gap:32px !important;}
       .footer-inner{padding:56px 24px 48px !important;}
@@ -202,40 +258,64 @@
   <main id="main">
 
     <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 104px;">
+    <section class="hero" aria-labelledby="hero-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 72px;">
       <h1 id="hero-heading" style="font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;">Content,<br>designed.</h1>
-      <p class="hero-subhead">An independent content design practice</p>
-      <p class="hero-text">Helping startups spot content problems and fix them.</p>
-      <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Book a free discovery call</a>
-
-      <!-- THE SYMPTOMS — attached to the hero, same White Smoke block, no divider -->
-      <div class="hero-symptoms">
-        <h2 id="symptoms-heading">The symptoms</h2>
-        <div class="symptom">
-          <h3>My audience gets frustrated and doesn't know what to do next</h3>
-          <p>The information is there. It's just not structured around what someone actually needs to do at that moment.</p>
-        </div>
-        <div class="symptom">
-          <h3>Something about the product doesn't sound or feel right</h3>
-          <p>Usually, it's not one big thing. It's the small inconsistencies adding up: tone, word choice, what gets explained and what doesn't.</p>
-        </div>
-        <div class="symptom">
-          <h3>AI writes all my content</h3>
-          <p>It's fast, and it fills the page. But it doesn't know your product, your audience, or what they're trying to achieve.</p>
-        </div>
-      </div>
+      <!-- Pairing widget. The markup ships with a real pairing in it so the line
+           reads correctly with no JavaScript; the shuffle button is hidden until
+           the script removes the attribute, so it never appears without working. -->
+      <p class="hero-subhead" id="hero-subhead">Content Content will <span class="pairing" id="hero-pairing"><span class="pairing-verb">improve</span><span class="pairing-mid"> your </span><span class="pairing-tail"><span class="pairing-area">conversions</span><span class="pairing-caret" aria-hidden="true"></span><span class="shuffle-wrap"><button class="pairing-shuffle" id="hero-shuffle" type="button" hidden aria-label="Show another example" aria-describedby="shuffle-tip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle data-pip="tl" cx="7.9" cy="7.9" r="1.45" fill="currentColor"/><circle data-pip="tr" cx="16.1" cy="7.9" r="1.45" fill="currentColor"/><circle data-pip="ml" cx="7.9" cy="12" r="1.45" fill="currentColor" style="display:none"/><circle data-pip="mr" cx="16.1" cy="12" r="1.45" fill="currentColor" style="display:none"/><circle data-pip="c" cx="12" cy="12" r="1.45" fill="currentColor"/><circle data-pip="bl" cx="7.9" cy="16.1" r="1.45" fill="currentColor"/><circle data-pip="br" cx="16.1" cy="16.1" r="1.45" fill="currentColor"/></svg></button><span class="shuffle-tip" id="shuffle-tip" role="tooltip">What else can Content Content do?</span></span></span></span><span class="sr-only" id="hero-pairing-status" aria-live="polite"></span></p>
+      <p class="hero-cta"><a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Book a free discovery call</a></p>
+      <p class="hero-practice">An independent content design practice</p>
+      <p class="hero-lead">Helping startups spot content problems and fix them.</p>
     </section>
 
-    <!-- HOW CONTENT CONTENT CAN HELP (first white section, carries the mosaic strip) -->
-    <section aria-labelledby="help-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+    <!-- THE SYMPTOMS — first white section, carries the mosaic strip. The lead-in
+         is the section's h2, which is what the brief meant by the framing line
+         carrying the job the cut "The symptoms" label used to do. -->
+    <section aria-labelledby="symptoms-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
       <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
         <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
           <div>
-            <h2 id="help-heading" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;">How Content Content can help</h2>
+            <h2 class="h2" id="symptoms-heading">Some symptoms could look like...</h2>
           </div>
           <div>
-            <p style="margin:0 0 32px;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">Check that every piece of information and copy, across all screens, is designed for what your audience needs to do and what your business needs to achieve.</p>
+            <div class="symptom">
+              <h3>My audience gets frustrated and doesn't know what to do next</h3>
+              <p>The information is there. It's just not structured around what someone actually needs to do at that moment.</p>
+            </div>
+            <div class="symptom">
+              <h3>Something about the product doesn't sound or feel right</h3>
+              <p>Usually, it's not one big thing. It's the small inconsistencies adding up: tone, word choice, what gets explained and what doesn't.</p>
+            </div>
+            <div class="symptom">
+              <h3>The copy is inconsistent</h3>
+              <p>Different people write different parts, at different times, with no shared guide or reference point.</p>
+            </div>
+            <div class="symptom">
+              <h3>AI writes all my content</h3>
+              <p>It's fast, and it fills the page. But it doesn't know your product, your audience, or what they're trying to achieve.</p>
+            </div>
+            <div class="symptom">
+              <h3>We're still figuring things out</h3>
+              <p>Priorities move fast, and content is usually the last thing revisited. It can fall behind the product without anyone noticing except the users.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW CONTENT CONTENT CAN HELP — White Smoke now that symptoms has taken the
+         white section and the strip. Bottom hairline divides it from Some proof,
+         which is also White Smoke (DESIGN.md §8, same as /services/). -->
+    <section aria-labelledby="help-heading" style="border-bottom:1px solid #D3D9DD;">
+      <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
+        <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
+          <div>
+            <h2 class="h2" id="help-heading">How Content Content can help</h2>
+          </div>
+          <div>
+            <p style="margin:0 0 32px;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">Check that every piece of information is designed for what your audience needs to do and what your business needs to achieve.</p>
             <a class="btn-primary" href="/services/" style="font-size:16px;padding:13px 26px;">View content services</a>
           </div>
         </div>
@@ -247,7 +327,7 @@
       <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
         <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
           <div>
-            <h2 id="proof-heading" style="font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;">Some proof</h2>
+            <h2 class="h2" id="proof-heading">Some proof</h2>
             <p style="margin:20px 0 0;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">Head to <a href="/case-studies/">case studies</a> for more content work in action.</p>
           </div>
           <div>
@@ -362,6 +442,181 @@
     run();
     var t;
     window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+  })();
+</script>
+
+<script>
+  /* Hero pairing widget.
+     One pairing on load, chosen at random, then static. The shuffle button is the
+     only thing that changes it, there is no timer and nothing auto-cycles.
+
+     Changing it retypes the line from after "will": the old pairing backspaces out,
+     then the new one types in, with a caret at the insertion point. Deleting runs
+     faster than typing, which is how real typing reads, and the whole swap lands
+     inside about 1.6 seconds at the longest pairing. It replaced an instant swap
+     that snapped the length of the line and yanked the button with it.
+
+     Typing was 26ms a character until 21 August 2026 and read as a blur, worst at
+     phone sizes where each character is a bigger piece of movement. 38ms is legible
+     without turning a button press into a wait. The die keeps rolling at 100ms, a
+     roll should outrun the typing rather than keep pace with it.
+
+     No-repeat rule: the last five shown, current included, are excluded from the
+     pool, so a pairing cannot come back until four others have been shown since.
+
+     Layout shift: the paragraph is measured against every pairing once the fonts
+     have loaded and pinned to the tallest result, so a short pairing leaves the
+     page the same height as a long one. Measuring drives the same render function
+     the typing does, which is why the live region is a separate empty span rather
+     than the pairing itself, the measurement writes would otherwise be announced. */
+  (function () {
+    var PAIRINGS = [
+      ['improve', 'conversions'],
+      ['answer', 'questions'],
+      ['reduce', 'support tickets'],
+      ['clarify', 'onboarding'],
+      ['simplify', 'signup'],
+      ['fix', 'messaging'],
+      ['strengthen', 'positioning'],
+      ['sharpen', 'voice'],
+      ['guide', 'users'],
+      ['structure', 'information'],
+      ['standardise', 'voice'],
+      ['systemise', 'content'],
+      ['humanise', 'AI']
+    ];
+    var MID = ' your ';
+    var HISTORY = 5;
+    var TYPE_MS = 38, DELETE_MS = 16, PAUSE_MS = 100;
+
+    var subhead = document.getElementById('hero-subhead');
+    var pairing = document.getElementById('hero-pairing');
+    var shuffle = document.getElementById('hero-shuffle');
+    var status = document.getElementById('hero-pairing-status');
+    if (!subhead || !pairing || !shuffle) return;
+
+    var verbEl = pairing.querySelector('.pairing-verb');
+    var midEl = pairing.querySelector('.pairing-mid');
+    var areaEl = pairing.querySelector('.pairing-area');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var recent = [];
+    var current = 0, shown = 0, timer = null;
+
+    /* The die rolls while the line retypes. Pips are the seven positions on a 3x3
+       grid; each face turns on the ones it uses. Markup ships showing five, so a
+       page with no JavaScript still gets a die rather than an empty square. It
+       lands on whatever face it stops at, the way a thrown die does. */
+    var FACES = [['c'], ['tl','br'], ['tl','c','br'], ['tl','tr','bl','br'],
+                 ['tl','tr','c','bl','br'], ['tl','tr','ml','mr','bl','br']];
+    var ROLL_MS = 100;
+    var pips = {}, face = 5, roller = null;
+    [].forEach.call(shuffle.querySelectorAll('[data-pip]'), function (el) {
+      pips[el.getAttribute('data-pip')] = el;
+    });
+
+    function setFace(n) {
+      var on = FACES[n - 1];
+      for (var k in pips) pips[k].style.display = on.indexOf(k) === -1 ? 'none' : '';
+    }
+    function rollTo() {
+      var n;
+      do { n = 1 + Math.floor(Math.random() * 6); } while (n === face);
+      face = n;
+      setFace(face);
+    }
+    function startRoll() { clearInterval(roller); roller = setInterval(rollTo, ROLL_MS); }
+    function stopRoll() { clearInterval(roller); roller = null; rollTo(); }
+
+    function sentence(i) { return PAIRINGS[i][0] + MID + PAIRINGS[i][1]; }
+    function length(i) { return sentence(i).length; }
+
+    /* Renders the first n characters of pairing i across the three spans, so the
+       typing runs through "your" as one sentence rather than three separate words. */
+    function render(i, n) {
+      var verb = PAIRINGS[i][0], area = PAIRINGS[i][1];
+      verbEl.textContent = verb.slice(0, n);
+      midEl.textContent = n > verb.length ? MID.slice(0, n - verb.length) : '';
+      areaEl.textContent = n > verb.length + MID.length ? area.slice(0, n - verb.length - MID.length) : '';
+    }
+
+    function nextIndex() {
+      var pool = [];
+      for (var i = 0; i < PAIRINGS.length; i++) {
+        if (recent.indexOf(i) === -1) pool.push(i);
+      }
+      if (!pool.length) pool = [0];
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function backspace(target) {
+      if (shown > 0) {
+        shown--;
+        render(current, shown);
+        timer = setTimeout(function () { backspace(target); }, DELETE_MS);
+        return;
+      }
+      current = target;
+      timer = setTimeout(type, PAUSE_MS);
+    }
+
+    function type() {
+      if (shown < length(current)) {
+        shown++;
+        render(current, shown);
+        timer = setTimeout(type, TYPE_MS);
+        return;
+      }
+      pairing.classList.remove('is-typing');
+      stopRoll();
+    }
+
+    /* animate is false on load and under reduced motion, where the pairing is just
+       set. It also gates the announcement, so the load never announces anything and
+       a press announces the whole new pairing up front rather than a character at a
+       time or a second after the press. */
+    function setPairing(i, animate) {
+      clearTimeout(timer);
+      recent.push(i);
+      if (recent.length > HISTORY) recent.shift();
+
+      if (!animate || reduce.matches) {
+        clearInterval(roller);
+        current = i;
+        shown = length(i);
+        render(current, shown);
+        pairing.classList.remove('is-typing');
+        /* Reduced motion still turns the die over, it just doesn't roll it. The
+           press has to leave some mark on the button that caused it. */
+        if (animate) { rollTo(); if (status) status.textContent = sentence(i); }
+        return;
+      }
+      if (status) status.textContent = sentence(i);
+      pairing.classList.add('is-typing');
+      startRoll();
+      backspace(i);
+    }
+
+    function measure() {
+      var wasIndex = current, wasShown = shown;
+      subhead.style.minHeight = '';
+      var tallest = 0;
+      for (var i = 0; i < PAIRINGS.length; i++) {
+        render(i, length(i));
+        var h = subhead.offsetHeight;
+        if (h > tallest) tallest = h;
+      }
+      render(wasIndex, wasShown);
+      subhead.style.minHeight = tallest + 'px';
+    }
+
+    setPairing(Math.floor(Math.random() * PAIRINGS.length), false);
+    shuffle.removeAttribute('hidden');
+    shuffle.addEventListener('click', function () { setPairing(nextIndex(), true); });
+
+    measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(measure, 150); });
   })();
 </script>
 

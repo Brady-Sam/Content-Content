@@ -77,36 +77,51 @@
 
     /* Hero */
     .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
-    .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
-    .hero .hero-text{font-size:20px;line-height:1.55;color:#12222B;max-width:600px;margin:16px 0 36px;}
+    .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 36px;max-width:680px;}
 
-    /* Where to start — symptom list */
-    .symptom h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.35;margin:0 0 8px;color:#003262;}
-    .symptom p{margin:0;font-size:16px;line-height:1.6;color:#46545C;max-width:540px;}
-    .symptom + .symptom{margin-top:28px;padding-top:28px;border-top:1px solid #D3D9DD;}
-
-    /* What this can include — flat list */
+    /* The range — each discipline carries a one-line explainer in a tooltip.
+       Term is a real button so it is reachable by keyboard and tappable on touch,
+       with a dotted underline as the affordance rather than ten "?" icons in a
+       column. Hover and focus are CSS, tap is the script at the bottom of the page,
+       which also closes on Escape and on an outside click (WCAG 1.4.13). The bubble
+       is absolutely positioned so opening one never reflows the grid. */
     .includes{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;}
     .includes li{position:relative;padding-left:20px;font-size:17px;line-height:1.5;color:#12222B;}
     .includes li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;background:#B23A2E;}
+    .range-term{display:inline;margin:0;padding:0;background:transparent;border:0;border-bottom:1px dotted #7A8990;font:inherit;color:inherit;text-align:left;cursor:help;transition:border-color .18s,color .18s;}
+    .range-term:hover{color:#003262;border-bottom-color:#B23A2E;}
+    .range-tip{display:none;position:absolute;top:100%;left:20px;z-index:5;width:max-content;max-width:min(260px,62vw);background:#FFFFFF;border:1px solid #D3D9DD;border-radius:8px;padding:10px 13px;font-size:13px;line-height:1.5;color:#46545C;}
+    .includes li:hover .range-tip,.includes li:focus-within .range-tip,.range-tip.open{display:block;}
 
-    /* The steps: sequential flow */
-    .steps-head{max-width:560px;margin:0 0 48px;}
-    .flow{list-style:none;margin:0;padding:0;max-width:624px;}
+    /* Second grid column sits against the container's right edge, so its bubbles
+       grow leftwards instead of off the side of the page. */
+    @media (min-width:769px){
+      .includes li:nth-child(even) .range-tip{left:auto;right:0;}
+    }
+
+    /* The approach — four pillars. Card family from DESIGN.md §6, same fill, border
+       and radius as the Flow Rebuild card below, which is why this section and the
+       one under it are both White Smoke. Card white only reads as raised over it. */
+    .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    .pillar{background:#FFFFFF;border:1px solid #D3D9DD;border-radius:12px;padding:28px 28px 26px;}
+    .pillar h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 12px;color:#003262;}
+    .pillar p{margin:0;font-size:16px;line-height:1.6;color:#12222B;}
+
+    /* Heading and lead above a full-width block, used by The approach and by
+       Where to start. Both hold white cards, so both sit on White Smoke. */
+    .section-head{max-width:560px;margin:0 0 48px;}
+
+    /* Where to start: one fixed-scope piece of work. Was a numbered two-step flow
+       until the Flow Review came out of the offer; the step number, the eyebrow and
+       the connector callout went with it, since one item is not a sequence. */
+    .flow{margin:0;padding:0;max-width:624px;}
     .flow-step{position:relative;background:#FFFFFF;border:1px solid #D3D9DD;border-radius:12px;padding:32px 32px 28px;}
-    .flow-num{position:absolute;top:-16px;left:28px;width:32px;height:32px;border-radius:50%;background:#003262;color:#F6F5F3;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;}
-    .flow-eyebrow{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#46545C;margin:6px 0 10px;}
     .flow-step h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 12px;color:#003262;}
     .flow-body{margin:0 0 18px;font-size:16px;line-height:1.6;color:#12222B;}
     .flow-price{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#46545C;margin:0 0 18px;}
     .flow-cta{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;}
 
-    /* Personal callout between steps 1 and 2 (DESIGN.md callout family) */
-    .flow-connector{padding:32px 8px 40px 32px;}
-    .flow-connector .rule{width:32px;height:2px;background:#B23A2E;margin-bottom:22px;}
-    .flow-connector p{margin:0;font-family:'Spectral',serif;font-weight:400;font-size:19px;line-height:1.6;color:#12222B;max-width:520px;}
-
-    /* Closing note under step 2 */
+    /* Closing note under the card */
     .flow-close{max-width:560px;margin:32px 0 0;font-size:16px;line-height:1.65;color:#46545C;}
 
     /* FAQ accordion */
@@ -127,10 +142,11 @@
       .section-pad{padding:56px 24px !important;}
       .two-col{grid-template-columns:1fr;gap:32px;}
       .includes{grid-template-columns:1fr;}
-      .steps-head{margin-bottom:36px;}
+      .range-tip{max-width:min(260px,calc(100vw - 64px));}
+      .pillars{grid-template-columns:1fr;gap:20px;}
+      .pillar{padding:24px 24px 22px;}
+      .section-head{margin-bottom:36px;}
       .flow-step{padding:28px 24px 24px;}
-      .flow-num{left:20px;}
-      .flow-connector{padding:28px 4px 36px 24px;}
       .hero-pad{padding:56px 24px 64px !important;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
@@ -162,110 +178,111 @@
   <main id="main">
 
     <!-- HERO / HEADLINE + SUBHEAD -->
-    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:88px 24px 80px;">
+    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:88px 24px 72px;">
       <h1 id="page-heading">Services</h1>
-      <p class="hero-subhead">Content design starts with a problem, not your product's features</p>
-      <p class="hero-text">We'll work together to define the scope based on your context. Or if you'd prefer to fast-track the value, there's fixed-scope work already priced and ready to go.</p>
-      <a class="btn-primary" href="#steps" style="font-size:17px;padding:15px 32px;">See the steps</a>
+      <p class="hero-subhead">How the problems get solved</p>
+      <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Start with a free discovery call</a>
     </section>
 
-    <!-- WHERE TO START -->
-    <section aria-labelledby="start-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+    <!-- THE RANGE — first white section, carries the mosaic strip -->
+    <section aria-labelledby="range-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
       <div class="section-pad">
         <div class="two-col">
-        <div>
-          <h2 class="h2" id="start-heading">The symptoms</h2>
-          <p class="lead" style="margin:20px 0 0;">A few common ways content can hold a startup back.</p>
-        </div>
-        <div>
-          <div class="symptom">
-            <h3>My audience gets frustrated and doesn't know what to do next</h3>
-            <p>The information is there. It's just not structured around what someone actually needs to do at that moment.</p>
-          </div>
-          <div class="symptom">
-            <h3>Something about the product doesn't sound or feel right</h3>
-            <p>Usually, it's not one big thing. It's the small inconsistencies adding up: tone, word choice, what gets explained and what doesn't.</p>
-          </div>
-          <div class="symptom">
-            <h3>The copy is inconsistent</h3>
-            <p>Different people write different parts, at different times, with no shared guide or reference point.</p>
-          </div>
-          <div class="symptom">
-            <h3>AI writes all my content</h3>
-            <p>It's fast, and it fills the page. But it doesn't know your product, your audience, or what they're trying to achieve.</p>
-          </div>
-          <div class="symptom">
-            <h3>We're still figuring things out</h3>
-            <p>Priorities move fast, and content is usually the last thing revisited. It can fall behind the product without anyone noticing except the users.</p>
-          </div>
-        </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT THIS CAN INCLUDE (white section, mosaic top edge) -->
-    <section aria-labelledby="include-heading" style="border-bottom:1px solid #D3D9DD;">
-      <div class="section-pad">
-        <div class="two-col">
           <div>
-            <h2 class="h2" id="include-heading">The response</h2>
-            <p class="lead" style="margin:20px 0 0;">A non-exhaustive list of activities. Delivered as standalone pieces of work, but work best when one task informs the next.</p>
+            <h2 class="h2" id="range-heading">The range</h2>
+            <p class="lead" style="margin:20px 0 0;">A non-exhaustive list of what goes into content design. We will scope exactly what you need.</p>
           </div>
           <div>
             <ul class="includes">
-              <li>Discovery &amp; research</li>
-              <li>Content strategy</li>
-              <li>Voice &amp; messaging audits</li>
-              <li>Information architecture</li>
-              <li>UX writing</li>
-              <li>User journey mapping</li>
-              <li>Conversation design</li>
-              <li>Content systems: voice, rules, glossary</li>
-              <li>Content operations &amp; governance</li>
-              <li>Success metrics &amp; iteration</li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-discovery">Discovery &amp; research</button>
+                <span class="range-tip" id="tip-discovery" role="tooltip">Understanding your context, audience, and the problems</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-strategy">Content strategy</button>
+                <span class="range-tip" id="tip-strategy" role="tooltip">The plan for what content needs to exist, how, and why</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-voice">Voice &amp; messaging audits</button>
+                <span class="range-tip" id="tip-voice" role="tooltip">Checking what you say against how you actually sound</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-ia">Information architecture</button>
+                <span class="range-tip" id="tip-ia" role="tooltip">How everything's organised, so people can find what they need</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-uxwriting">UX writing</button>
+                <span class="range-tip" id="tip-uxwriting" role="tooltip">The words inside your product: buttons, labels, error messages</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-journeys">User journey mapping</button>
+                <span class="range-tip" id="tip-journeys" role="tooltip">Following someone's path through your product, step by step</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-conversation">Conversation design</button>
+                <span class="range-tip" id="tip-conversation" role="tooltip">Writing for chatbots and assistants that talk back</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-systems">Content systems</button>
+                <span class="range-tip" id="tip-systems" role="tooltip">The shared reference that keeps everyone writing the same way</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-ops">Content operations &amp; governance</button>
+                <span class="range-tip" id="tip-ops" role="tooltip">Who owns content, and how it stays up to date</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-metrics">Success metrics &amp; iteration</button>
+                <span class="range-tip" id="tip-metrics" role="tooltip">Deciding what "working" looks like, then checking it actually is</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- THE STEPS (hero CTA anchors here) -->
-    <section id="steps" class="section-pad" aria-labelledby="steps-heading">
-      <div class="steps-head">
-        <h2 class="h2" id="steps-heading">The steps</h2>
-        <p class="lead" style="margin:20px 0 0;">Two fixed-scope steps that work together to deliver you quick and tangible value.</p>
+    <!-- THE APPROACH — holds white cards, so White Smoke with a bottom hairline
+         dividing it from Where to start, which is White Smoke for the same reason -->
+    <section class="section-pad" aria-labelledby="approach-heading" style="border-bottom:1px solid #D3D9DD;">
+      <div class="section-head">
+        <h2 class="h2" id="approach-heading">The approach</h2>
+        <p class="lead" style="margin:20px 0 0;">How all the activities get pulled together</p>
       </div>
-      <ol class="flow">
+      <div class="pillars">
+        <div class="pillar">
+          <h3>People first</h3>
+          <p>Always starts with what your audience needs to do, not the product's feature list.</p>
+        </div>
+        <div class="pillar">
+          <h3>Data led</h3>
+          <p>No guesswork, decisions are backed by testing, real behaviour and numbers, wherever possible, to inform the work.</p>
+        </div>
+        <div class="pillar">
+          <h3>Designed</h3>
+          <p>Creating the solution for the problem at hand. Rarely is it <em>more</em> content, it usually comes down to a sharp knife cutting away everything your audience doesn't need.</p>
+        </div>
+        <div class="pillar">
+          <h3>Repeatable</h3>
+          <p>The decisions made are documented, grounded and easy to follow, so the same result can happen again.</p>
+        </div>
+      </div>
+    </section>
 
-        <li>
-          <div class="flow-step">
-            <span class="flow-num" aria-hidden="true">1</span>
-            <p class="flow-eyebrow">Step 1 &middot; Flow Review</p>
-            <h3>Find what's wrong</h3>
-            <p class="flow-body">I go through one key flow in your product the way your audience would. Onboarding is a good place to start, but it can be any area you want fresh eyes on. You'll get a clear picture of where your content and UX are working, and what needs attention.</p>
-            <p class="flow-price">From &euro;2,500 &middot; Ten working days</p>
-            <a class="flow-cta" href="/services/flow-review/">See what's included &rarr;</a>
-          </div>
-        </li>
-
-        <li>
-          <div class="flow-connector">
-            <div class="rule" aria-hidden="true"></div>
-            <p>Already have a hunch about what's wrong? I'd recommend starting with the Flow Review; we can find and validate the right problem, so the Flow Rebuild is working on the right solution.</p>
-          </div>
-          <div class="flow-step">
-            <span class="flow-num" aria-hidden="true">2</span>
-            <p class="flow-eyebrow">Step 2 &middot; Flow Rebuild</p>
-            <h3>Get it fixed</h3>
-            <p class="flow-body">Once we know what needs to change, I rebuild the full journey, every screen, state, and edge case delivered in your own tools. Fixed price for a fixed journey.</p>
-            <p class="flow-price">From &euro;4,500 &middot; Two to three weeks</p>
-            <a class="flow-cta" href="/services/flow-rebuild/">See what's included &rarr;</a>
-          </div>
-        </li>
-
-      </ol>
-      <p class="flow-close">If you want more hands-on work with your team and roadmap, day-rate work can be scoped for your exact needs. <a href="/contact/">Get in touch</a> and we'll go from there.</p>
+    <!-- WHERE TO START (id kept as #steps, the Flow Rebuild page backlinks to it) -->
+    <section id="steps" class="section-pad" aria-labelledby="steps-heading">
+      <div class="section-head">
+        <h2 class="h2" id="steps-heading">Where to start</h2>
+        <p class="lead" style="margin:20px 0 0;">If something about your content is bugging you, but you don't know where to begin</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step">
+          <h3>Flow Rebuild</h3>
+          <p class="flow-body">I audit one journey in your product, service or business, find where it's not working and why. Then I fix it end to end, delivered in your own tools.</p>
+          <p class="flow-price">From &euro;4,500</p>
+          <a class="flow-cta" href="/services/flow-rebuild/">See what's included &rarr;</a>
+        </div>
+      </div>
+      <p class="flow-close">If you want more hands-on work with your team and roadmap, day-rate work can be scoped for your exact needs. <a href="/contact/">Get in touch</a> so we can get planning.</p>
     </section>
 
     <!-- A QUICK NOTE ON AI (Personal callout) -->
@@ -386,6 +403,37 @@
     run();
     var t;
     window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+  })();
+</script>
+
+<script>
+  /* The range tooltips. Hover and keyboard focus are handled in CSS. This adds tap
+     support for touch, which has no hover, plus Escape and outside-click to close.
+     Same mechanics as the price tooltip on /services/flow-rebuild/. The explainer is
+     tied to its term with aria-describedby, so assistive technology reads it whether
+     or not the bubble is open. */
+  (function () {
+    var items = [].slice.call(document.querySelectorAll('.includes li'));
+    if (!items.length) return;
+    function closeAll() {
+      items.forEach(function (li) {
+        var b = li.querySelector('.range-tip');
+        if (b) b.classList.remove('open');
+      });
+    }
+    items.forEach(function (li) {
+      var btn = li.querySelector('.range-term');
+      var bubble = li.querySelector('.range-tip');
+      if (!btn || !bubble) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = bubble.classList.contains('open');
+        closeAll();
+        if (!isOpen) bubble.classList.add('open');
+      });
+    });
+    document.addEventListener('click', closeAll);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
   })();
 </script>
 
