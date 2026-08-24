@@ -88,8 +88,12 @@
     .includes{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;}
     .includes li{position:relative;padding-left:20px;font-size:17px;line-height:1.5;color:#12222B;}
     .includes li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;background:#B23A2E;}
-    .range-term{display:inline;margin:0;padding:0;background:transparent;border:0;border-bottom:1px dotted #7A8990;font:inherit;color:inherit;text-align:left;cursor:help;transition:border-color .18s,color .18s;}
-    .range-term:hover{color:#003262;border-bottom-color:#B23A2E;}
+    /* Underline is text-decoration, not border-bottom. A button will not take
+       display:inline, it computes to inline-block, so its box is the full column
+       width and a border draws once straight across it, under the last line only
+       and running well past the text. text-decoration follows each line instead. */
+    .range-term{display:inline;margin:0;padding:0;background:transparent;border:0;font:inherit;color:inherit;text-align:left;cursor:help;text-decoration:underline dotted #7A8990;text-decoration-thickness:1px;text-underline-offset:4px;transition:color .18s,text-decoration-color .18s;}
+    .range-term:hover{color:#003262;text-decoration-color:#B23A2E;}
     .range-tip{display:none;position:absolute;top:100%;left:20px;z-index:5;width:max-content;max-width:min(260px,62vw);background:#FFFFFF;border:1px solid #D3D9DD;border-radius:8px;padding:10px 13px;font-size:13px;line-height:1.5;color:#46545C;}
     .includes li:hover .range-tip,.includes li:focus-within .range-tip,.range-tip.open{display:block;}
 
