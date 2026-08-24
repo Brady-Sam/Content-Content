@@ -10,7 +10,8 @@ This is the working site for Content Content, an independent content design prac
 site/
   index.html            # Homepage
   404.html              # Site-wide not found
-  services/index.html   # Services, incl. the Flow Review / Flow Rebuild steps
+  services/index.html   # Services: The range, The approach, Where to start
+  services/flow-rebuild/           # The one fixed-scope piece of work
   case-studies/index.html          # Case studies index
   case-studies/benefits/           # Case study
   case-studies/knowledge-hub/      # Case study
@@ -114,18 +115,19 @@ Three heading tiers, each with a fixed terminal-punctuation rule. Internal punct
 
 ### The offer
 
-Four things, sold as a sequence rather than a menu. Published prices are always "from", never a range.
+Sold as a sequence rather than a menu. Published prices are always "from", never a range.
 
 | | Price | On the site |
 |---|---|---|
-| **Flow Review** | From €2,500, ten working days | `/services/` step 1, own page to come |
-| **Flow Rebuild** | From €4,500, two to three weeks | `/services/` step 2, own page to come |
+| **Flow Rebuild** | From €4,500 | `/services/` "Where to start", own page at `/services/flow-rebuild/` |
 | **Embedded content design** | Day rate | Never published. Quoted when asked. |
 | **Content System** | From €7,500, four weeks | Own page, not yet built |
 
+**Flow Review was withdrawn on 21 August 2026** and its page pulled down, `_redirects` 301s the URL to `/services/`. Do not reintroduce it. The diagnostic work did not disappear, it folded into the Flow Rebuild, which now opens by auditing the journey. One reference survives on `/services/flow-rebuild/`, a precondition in "What I need from you" saying a completed Review is required, and it still needs rewriting.
+
 Rules that shape the copy:
 
-- **Never call these "packages".** They are a sequence, not a tiered menu, and "packages" reads as marketplace pricing. The services page calls the section "The steps".
+- **Never call these "packages".** They are a sequence, not a tiered menu, and "packages" reads as marketplace pricing. The services page calls the section "Where to start".
 - **Never publish the day rate**, and never state a day count for a fixed-price piece of work. Sell the deadline and the outcome, not the input. A published day rate caps every fixed price, because the client just divides.
 - **Never state a count of anything.** No screens, fixes, words or pages. Scope by boundary, which is what stops the work being priced by units.
 - Never build a three-column pricing layout. There is no middle option because there is no choice.
@@ -150,7 +152,7 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 ## Deployment
 
 - Auto-deploys from GitHub repo: `Brady-Sam/Content-Content`. Push to main triggers deploy. No build step.
-- `_redirects` at the repo root 301s `/work/*` to `/case-studies/*`. The section was renamed on 5 August 2026 and the old URLs had been live and shared. Do not delete this file, and add to it rather than replacing it if another path moves.
+- `_redirects` at the repo root 301s `/work/*` to `/case-studies/*`, and `/services/flow-review/` to `/services/`. Both paths had been live and shared before they moved or were withdrawn. Do not delete this file, and add to it rather than replacing it if another path moves.
 - **HTML is cached at the Cloudflare edge and is not purged on deploy.** For several minutes after every push, requests return either the old or the new page depending on which edge node answers. Verify a deploy across a wide sample of requests, not one or two, or it will look live when it is not. A Cache Rule bypassing cache for `text/html` would fix this properly and has not been set up.
 - The contact form posts to `/api/contact`, handled by a separate Worker that lives outside this repo (`../contact-worker`) so its source is never served publicly. The same Worker handles `/api/booking`, which receives the Cal.com webhook and emails a briefing on whoever booked.
 - `/book/` embeds a Cal.com discovery call. The Cal.com account is registered as `hello@contentcontent.design` so the practice, not the personal Gmail, is what bookers see. The `calLink` is set once at the bottom of `book/index.html`.

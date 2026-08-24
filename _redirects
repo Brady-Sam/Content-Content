@@ -3,3 +3,9 @@
 # search engines transfer the ranking rather than treating it as a new page.
 /work /case-studies 301
 /work/* /case-studies/:splat 301
+
+# Flow Review was withdrawn from the offer on 21 August 2026 and its page pulled
+# down. The URL had been live and linked, so it 301s to the services page rather
+# than 404ing. /services/ carries what is still buyable.
+/services/flow-review /services/ 301
+/services/flow-review/* /services/ 301
