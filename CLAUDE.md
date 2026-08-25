@@ -89,7 +89,7 @@ Three heading tiers, each with a fixed terminal-punctuation rule. Internal punct
 
 - **Hero headline** (Fugaz One, the page H1) — no terminal punctuation. Exception: the homepage headline, "Content, Designed."
 - **Subheading** (Work Sans 600, Oxford Navy) — no terminal punctuation. Applies the same way whether it's acting as a hero line under the H1 or as a section label (e.g. "The symptoms", "The response"). Question marks are exempt where the heading is a genuine question, e.g. FAQ accordion summaries, the "?" is doing grammatical work, not decorating a fullstop.
-- **Lead paragraph** (Work Sans 400, Ink) — ends in a full stop. Only appears when there's real sentence-like copy to add after the title and subheading, not every page needs one.
+- **Lead paragraph** (Work Sans 400, Ink) — ends in a full stop. Only appears when there's real sentence-like copy to add after the title and subheading, not every page needs one. **This applies to every lead on the page, not only the hero's.** The lead sitting under a section `h2` is the same tier and takes the same full stop. Four of them were published without one across `/services/` and `/services/flow-rebuild/` before this was caught on 21 August 2026. If a lead cannot take a full stop without reading as a broken sentence, the copy is a fragment leaning on the list below it, so rewrite the lead rather than dropping the full stop.
 
 ---
 

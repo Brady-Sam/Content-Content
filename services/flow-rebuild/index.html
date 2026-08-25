@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flow Rebuild · Content Content</title>
-  <meta name="description" content="One journey rebuilt end to end, every screen and every state, delivered in your own tools. Fixed price for a fixed journey. From &euro;4,500.">
+  <meta name="description" content="One journey in your product, rebuilt end to end and delivered in your own tools. Every screen and state, with what changed and why. From &euro;4,500.">
   <link rel="canonical" href="https://contentcontent.design/services/flow-rebuild/">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon_v2.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/CC_logo_32x32.png">
@@ -126,6 +126,14 @@
     .close-cta h2{font-family:'Work Sans',sans-serif;font-weight:600;font-size:30px;line-height:1.15;margin:0 0 14px;color:#003262;}
     .close-cta p{font-size:17px;line-height:1.6;color:#12222B;margin:0 0 28px;}
 
+    /* Reassurance: the personal callout from DESIGN.md's callout family, the same
+       treatment the bio uses on the homepage and the AI note on /services/. No
+       heading, "Reassurance" names the job the block does rather than its content,
+       so the section is named for assistive technology with aria-label instead. */
+    .reassure{max-width:680px;}
+    .reassure .rule{width:32px;height:2px;background:#B23A2E;margin-bottom:22px;}
+    .reassure p{margin:0;font-family:'Spectral',serif;font-weight:400;font-size:19px;line-height:1.6;color:#12222B;}
+
     @media (max-width:768px){
       .nav-toggle{display:inline-flex;}
       .nav-links{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:flex-start;gap:0;background:#F6F5F3;border-bottom:1px solid #D3D9DD;padding:8px 24px 18px;box-shadow:0 8px 16px rgba(0,50,98,0.06);}
@@ -133,6 +141,12 @@
       .nav-links .nav-link{padding:14px 0;width:100%;}
       .nav-links .nav-contact{margin-top:12px;}
       .section-pad{padding:56px 24px !important;}
+      /* The bubble is 280px wide and the "?" it hangs off sits well into the line,
+         so on a phone it ran past the right edge. Anchoring it to the paragraph
+         instead of the button keeps it on screen whatever the price line says. */
+      .hero-meta{position:relative;}
+      .tip{position:static;}
+      .tip-bubble{left:0;right:auto;max-width:calc(100vw - 48px);}
       .two-col{grid-template-columns:1fr;gap:32px;}
       .row + .row{margin-top:40px;padding-top:40px;}
       .hero-pad{padding:40px 24px 56px !important;}
@@ -167,27 +181,33 @@
 
     <!-- HERO -->
     <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:56px 24px 80px;">
-      <a class="backlink" href="/services/#steps">&larr; The steps</a>
+      <a class="backlink" href="/services/">&larr; Services</a>
       <h1 id="page-heading">Flow Rebuild</h1>
-      <p class="hero-subhead">Get it fixed</p>
-      <p class="hero-text">Every step in one journey, brought up to the standard you saw in your Flow Review.</p>
-      <p class="hero-meta">From &euro;4,500<span class="tip"><button type="button" class="tip-btn" aria-describedby="price-note"><span aria-hidden="true">?</span><span class="sr-only">Prices in other currencies</span></button><span class="tip-bubble" id="price-note" role="tooltip"><span class="tip-row"><span class="tip-cur">GBP</span><span>From &pound;3,850</span></span><span class="tip-row"><span class="tip-cur">USD</span><span>From &#36;5,150</span></span><span class="tip-foot">Can invoice in GBP or USD if preferred. Prices set not converted live.</span></span></span></p>
+      <p class="hero-subhead">Your content working for you</p>
+      <p class="hero-text">One journey, rebuilt end to end.</p>
+      <p class="hero-meta">From &euro;4,500<span class="tip"><button type="button" class="tip-btn" aria-describedby="price-note"><span aria-hidden="true">?</span><span class="sr-only">Prices in other currencies</span></button><span class="tip-bubble" id="price-note" role="tooltip"><span class="tip-row"><span class="tip-cur">GBP</span><span>From &pound;3,850</span></span><span class="tip-row"><span class="tip-cur">USD</span><span>From &#36;6,000</span></span><span class="tip-row"><span class="tip-cur">CAD</span><span>From &#36;7,000</span></span><span class="tip-foot">Can invoice in GBP, USD or CAD if preferred. Prices set not converted live.</span></span></span></p>
       <div class="hero-cta">
-        <a class="btn-primary" href="/book/" style="font-size:17px;padding:15px 32px;">Book a call to scope your Rebuild</a>
+        <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Book a free discovery call</a>
       </div>
-      <p class="hero-support">Priced from your Flow Review findings, confirmed within a day.</p>
+      <p class="hero-support">No pressure, just a conversation to find the right fit.</p>
     </section>
 
-    <!-- THE PROBLEM (first white section, mosaic top edge) -->
-    <section aria-labelledby="problem-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+    <!-- WHO THIS IS FOR (first white section, mosaic top edge) -->
+    <section aria-labelledby="who-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
       <div class="section-pad">
         <div class="two-col">
           <div>
-            <h2 class="h2" id="problem-heading">The problem this solves</h2>
+            <h2 class="h2" id="who-heading">Who this is for</h2>
+            <p class="lead" style="margin:20px 0 0;">If any of these resonate with you.</p>
           </div>
           <div>
-            <p class="lead" style="margin:0;">Take the findings of your Flow Review and put them into action. One journey fully rebuilt aligned to your business and audience needs.</p>
+            <ul class="ticks">
+              <li>Something isn't landing, but you can't quite say why.</li>
+              <li>Your product is self-serve. This covers the marketing page, signup, first run and real task.</li>
+              <li>People get invited in or assigned access. This covers the handover, first login and first task.</li>
+              <li>You already know the exact area. This is the quickest way to get it sorted.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -198,92 +218,49 @@
       <div class="two-col">
         <div>
           <h2 class="h2" id="get-heading">What you get</h2>
+          <p class="lead" style="margin:20px 0 0;">Delivered as one report.</p>
         </div>
         <div>
           <ul class="ticks">
-            <li>Every screen in the named journey, rewritten to a finished standard, delivered where you need them, e.g. Figma, CMS, or repository</li>
-            <li>All states covered, not just the happy path, empty, loading, error, success, edge cases, and any others that don't exist but you need</li>
-            <li>A written rationale note explaining the decisions taken, for your team to refer back to</li>
-            <li>A handover naming anything I noticed outside the agreed journey worth your attention later</li>
-            <li>A short watchlist, two or three things to keep an eye on, what a good result looks like, and roughly when to expect it. A steer on what to watch to measure the impact of the changes</li>
+            <li>Every screen and state in the journey, rewritten to a finished standard, delivered in your tools</li>
+            <li>Screens added or cut where the journey actually needs it, not just polished as they are</li>
+            <li>What changed, why, and what to do next</li>
+            <li>How the decisions were made, method included, in case you want to see the thinking</li>
           </ul>
           <div class="note-neutral" style="margin-top:32px;">
             <p class="kicker">What's not included</p>
-            <p>This covers the one named journey, not your whole product. It doesn't include visual design, development or code implementation, ongoing content production, analytics setup, or translation, unless separately scoped. Additions to the journey during delivery count as new work, not an extension of this one.</p>
+            <p>This covers the one journey you choose, not your whole service. It doesn't stretch to visual design, development, or ongoing content production. Some things outside that, like a style guide or a look at a nearby journey, can often be scoped in separately, worth raising on the call if it's relevant to you.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS + WHAT I NEED -->
+    <!-- HOW IT WORKS -->
     <section aria-labelledby="how-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
-      <div class="section-pad">
-        <div class="row two-col">
-          <div>
-            <h2 class="h2" id="how-heading">How it works</h2>
-          </div>
-          <div>
-            <ol class="numlist">
-              <li>The priority journey is confirmed from your Flow Review findings.</li>
-              <li>I issue your fixed price and delivery date.</li>
-              <li>You accept, pay, and confirm your named contact and tool access.</li>
-              <li>Delivery begins, starting with a required 60-minute kickoff call.</li>
-              <li>I rebuild the journey end to end.</li>
-              <li>An optional 30-minute check-in partway through, if you'd like one.</li>
-              <li>Delivered in your tools, with one consolidated round of feedback, a 48-hour window, revisions capped at 2 hours.</li>
-              <li>A 60-minute handover call, plus the rationale note and watchlist.</li>
-              <li>Thirty days of support after handover for any questions that come up.</li>
-            </ol>
-          </div>
-        </div>
-        <div class="row two-col">
-          <div>
-            <h2 class="h2" id="need-heading">What I need from you</h2>
-          </div>
-          <div>
-            <ul class="ticks" aria-labelledby="need-heading">
-              <li>A completed <a href="/services/flow-review/">Flow Review</a> of this journey, this is how the fixed price stays honest, I won't quote a full rebuild on a journey I haven't properly looked at first</li>
-              <li>One named point of contact, able to respond within one working day during delivery</li>
-              <li>Working access to the environment I'll be delivering in</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICE + WHY NOW -->
-    <section aria-labelledby="price-heading" class="section-pad" style="border-bottom:1px solid #D3D9DD;">
-      <div class="row two-col">
-        <div>
-          <h2 class="h2" id="price-heading">Timeline and price</h2>
-        </div>
-        <div>
-          <p class="body-copy">From &euro;4,500. Your exact price depends on the journey's complexity, states involved, and delivery environment, confirmed alongside your fixed date.</p>
-        </div>
-      </div>
-      <div class="row two-col">
-        <div>
-          <h2 class="h2" id="why-heading">Why this, why now</h2>
-        </div>
-        <div>
-          <p class="body-copy">The Review proved the standard on one piece. The Rebuild brings the whole journey there, every part of it, so nothing in it is still working against you.</p>
-          <p class="body-copy">Delivered where your team already works, with a kickoff call, a check-in if you want one, and a proper handover, so it never feels like content design disappearing for two weeks and reappearing at the end.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT'S NEXT -->
-    <section aria-labelledby="next-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="section-pad">
         <div class="two-col">
           <div>
-            <h2 class="h2" id="next-heading">What's next</h2>
+            <h2 class="h2" id="how-heading">How it works</h2>
+            <p class="lead" style="margin:20px 0 0;">This is the usual order. It can change to fit how your team works.</p>
           </div>
           <div>
-            <p class="body-copy">Some clients keep me on hand after a Rebuild, day rate work with no fixed scope, useful if content keeps needing attention as your product grows.</p>
-            <p class="body-copy">If you'd rather have someone embedded with your team for a stretch, that's available too. <a href="/contact/">Get in touch</a> and I'll shape it around what you need.</p>
+            <ol class="numlist">
+              <li>Scoping call, we agree the journey. No price given yet.</li>
+              <li>Fixed price and delivery date confirmed.</li>
+              <li>Kickoff, once you've given access to the product.</li>
+              <li>The journey gets rebuilt end to end, with one review round before it's finished.</li>
+              <li>Handover, plus thirty days of support for anything that comes up after.</li>
+            </ol>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- REASSURANCE (personal callout, DESIGN.md callout family) -->
+    <section aria-label="Reassurance" class="section-pad" style="border-bottom:1px solid #D3D9DD;">
+      <div class="reassure">
+        <div class="rule" aria-hidden="true"></div>
+        <p>You stay in control the whole way. Nothing ships without your sign-off, and where it's useful, your team can be brought into the process along the way too, not just at the end. If something's still bugging you after handover, you've got a month to ask.</p>
       </div>
     </section>
 
@@ -295,16 +272,24 @@
         </div>
         <div class="faq">
           <details>
-            <summary>Can I buy a Rebuild without doing a Flow Review first?</summary>
-            <p class="faq-a">Not at a fixed price. I won't quote a fixed price on a journey I haven't properly looked at, that's what protects you from a guessed scope and protects me from underquoting the work. If you already know exactly what needs fixing and would rather skip that step, day rate work carries no such requirement, <a href="/contact/">get in touch</a> and I can talk you through that instead.</p>
+            <summary>What do you mean by "journey"?</summary>
+            <p class="faq-a">Just the path someone takes to do one thing in your product, like signing up or booking a demo. We'll define exactly where it starts and ends together, on the call.</p>
           </details>
           <details>
-            <summary>What if I want more changed once delivery's started?</summary>
-            <p class="faq-a">Anything beyond the agreed journey is scoped and priced as new work, so your timeline and price stay reliable for what you signed up for.</p>
+            <summary>Do I need research or a brief ready before we start?</summary>
+            <p class="faq-a">No. Send what already exists, if anything does. If it doesn't, that's fine too, we work with what's there.</p>
           </details>
           <details>
-            <summary>What tools do you work in?</summary>
-            <p class="faq-a">Whatever you already use, Figma, a CMS, or directly in your repository as a pull request for your engineers to review.</p>
+            <summary>What if the journey turns out bigger than we thought?</summary>
+            <p class="faq-a">That gets flagged, and re-scoped as its own conversation rather than quietly expanding the original price.</p>
+          </details>
+          <details>
+            <summary>What if I'm not happy with the direction?</summary>
+            <p class="faq-a">There's one consolidated review round built in, a 48-hour window to flag anything, before it's finished.</p>
+          </details>
+          <details>
+            <summary>What happens after the thirty days of support ends?</summary>
+            <p class="faq-a">If you need more, day-rate or embedded work can be scoped separately.</p>
           </details>
         </div>
       </div>
@@ -314,9 +299,9 @@
     <section aria-labelledby="cta-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;">
       <div class="section-pad">
         <div class="close-cta">
-          <h2 id="cta-heading">Get in touch to scope your Rebuild</h2>
-          <p>I'll confirm your fixed price and delivery date within a day.</p>
-          <a class="btn-primary" href="/book/" style="font-size:17px;padding:15px 32px;">Book a call</a>
+          <h2 id="cta-heading">Start where your audience gets stuck</h2>
+          <p>On the call you'll find out whether a rebuild fits.</p>
+          <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Book a call</a>
         </div>
       </div>
     </section>
