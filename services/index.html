@@ -79,6 +79,12 @@
     .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
     .hero .hero-subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 36px;max-width:680px;}
 
+    /* Price signal in the hero. The card that carries it sits 46% down the page,
+       so without this nothing above the fold says a fixed-scope offer exists.
+       The Rebuild is named before the figure on purpose. Price first read as the
+       floor for everything on the page, which is wrong, day-rate work is never
+       priced here and the disciplines above are not sold by the unit. */
+    .hero-meta{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;color:#46545C;margin:24px 0 0;}
     /* The range — each discipline carries a one-line explainer in a tooltip.
        Term is a real button so it is reachable by keyboard and tappable on touch,
        with a dotted underline as the affordance rather than ten "?" icons in a
@@ -186,6 +192,7 @@
       <h1 id="page-heading">Services</h1>
       <p class="hero-subhead">How the problems get solved</p>
       <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Start with a free discovery call</a>
+      <p class="hero-meta"><a href="/services/flow-rebuild/">See what a Flow Rebuild covers</a>, from &euro;4,500</p>
     </section>
 
     <!-- THE RANGE — first white section, carries the mosaic strip -->
