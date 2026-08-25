@@ -83,6 +83,22 @@ These are non-negotiable and apply to all copy on the site:
 
 ---
 
+## Page titles
+
+The homepage is the only one that names the practice:
+
+**Content Content. A content design practice**
+
+**Every other page is its own name and nothing else.** "Field notes", "About", "Flow Rebuild", "Turning an AI chatbot into a trusted support channel". No brand suffix and no separator.
+
+They used to read "Field notes · Content Content". The interpunct went on 25 August 2026 for reading as an AI tell, and swapping the character was not the fix: a full stop works on a long title and clips badly on "About." and "Contact.", which is half the site. Dropping the suffix removed the need for a separator at all. A browser tab truncates before it reaches the suffix anyway, so the brand was invisible exactly where it was supposed to be doing work.
+
+**Barcelona appears in no title.** It is in the meta descriptions, where the following clause answers it: "Barcelona based, working with startups everywhere." A place reassures someone who is already interested and filters someone who is not, so it belongs after the interest, not before it.
+
+**A title lives in three places.** `<title>`, `og:title` and `twitter:title` all carry the same string so there is one thing to edit. Change all three together, then re-run the LinkedIn Post Inspector or the old one stays cached.
+
+---
+
 ## Header punctuation
 
 Three heading tiers, each with a fixed terminal-punctuation rule. Internal punctuation (commas, ampersands, colons) is always fine in any tier, this only governs the last character.
