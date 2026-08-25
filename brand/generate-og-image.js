@@ -21,7 +21,10 @@
  * Options:
  *   --out <file>    Output path (default: og-image.png)
  *   --title <text>  Fugaz One headline. Use | for a line break. Default the site's.
- *   --sub <text>    Work Sans line under it.
+ *   --sub <text>    Work Sans line under it. Pass "" to omit.
+ *   --wordmark <on|off>  Wordmark in the top left (default on).
+ *   --scale <n>     Pixel density (default 2). The card is laid out at 1200x630 and
+ *                   written out at that times the scale, so 2 gives 2400x1260.
  *   --seed <n>      Mosaic seed (default 20260713, the primary strip seed)
  */
 
@@ -38,6 +41,8 @@ const opt = (flag, fallback) => {
 const OUT   = opt('--out', 'og-image.png');
 const TITLE = opt('--title', 'Content,|designed.');
 const SUB   = opt('--sub', 'An independent content design practice');
+const MARK  = opt('--wordmark', 'on') !== 'off';
+const SCALE = parseInt(opt('--scale', '2'), 10);
 const SEED  = parseInt(opt('--seed', '20260713'), 10);
 const escHtml = (t) => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const W = 1200, H = 630;
@@ -83,12 +88,10 @@ const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
   .strip{display:flex;gap:${GAP}px;background:#AFB0A9;height:${STRIP_H}px;width:${W}px;overflow:hidden;}
 </style></head>
 <body>
-  <div class="top">
-    <div class="wordmark"><span class="w1">Content</span> <span class="w2">Content</span></div>
-  </div>
+  <div class="top">${MARK ? '<div class="wordmark"><span class="w1">Content</span> <span class="w2">Content</span></div>' : ''}</div>
   <div class="mid">
     <h1>${escHtml(TITLE).split('|').join('<br>')}</h1>
-    <p>${escHtml(SUB)}</p>
+    ${SUB ? `<p>${escHtml(SUB)}</p>` : ''}
   </div>
   <div class="strip">${strip}</div>
 </body></html>`;
@@ -97,9 +100,13 @@ const tmp = path.join(require('os').tmpdir(), `cc-og-${Date.now()}.html`);
 fs.writeFileSync(tmp, html);
 
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+/* Written out at 2x and left there, rather than downsampled back to 1200x630.
+   A 1200px card is upscaled by any retina display showing it at full width, which
+   is exactly where a link preview gets judged. Declare the real dimensions in
+   og:image:width and og:image:height, do not declare 1200x630 for a 2400 file. */
 execFileSync(CHROME, [
   '--headless=new', '--disable-gpu', '--hide-scrollbars',
-  '--force-device-scale-factor=1',
+  `--force-device-scale-factor=${SCALE}`,
   `--window-size=${W},${H}`,
   `--screenshot=${path.resolve(OUT)}`,
   '--virtual-time-budget=6000',
@@ -107,4 +114,4 @@ execFileSync(CHROME, [
 ], { stdio: 'ignore' });
 
 fs.unlinkSync(tmp);
-console.log(`Wrote ${OUT} (${W}x${H}), seed ${SEED}`);
+console.log(`Wrote ${OUT} (${W * SCALE}x${H * SCALE}), seed ${SEED}`);
