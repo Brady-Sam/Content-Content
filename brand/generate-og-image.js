@@ -55,7 +55,7 @@ function makeRng(seed) {
   return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; };
 }
 
-const TILE = 30, GAP = 2.25, STRIP_H = 14;      // scaled up from the site's 20/1.5/8
+const TILE = 34, GAP = 2.5, STRIP_H = 26;       // scaled up hard from the site's 20/1.5/8
 const rnd = makeRng(SEED);
 const count = Math.ceil(W / (TILE + GAP));
 const tiles = [];
@@ -74,17 +74,17 @@ const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
   *{margin:0;padding:0;box-sizing:border-box;}
   body{width:${W}px;height:${H}px;background:#F6F5F3;font-family:'Work Sans',sans-serif;
        display:flex;flex-direction:column;overflow:hidden;}
-  .top{padding:64px 80px 0;}
+  .top{padding:52px 64px 0;}
   /* The headline block is optically centred in whatever is left between the
      wordmark and the strip, so the card never ends up bottom-heavy when a
      shorter title is passed in. */
-  .mid{flex:1;padding:0 80px;display:flex;flex-direction:column;justify-content:center;}
+  .mid{flex:1;padding:0 64px;display:flex;flex-direction:column;justify-content:center;}
   .wordmark{font-family:'Fugaz One',cursive;font-size:34px;line-height:1;letter-spacing:.005em;}
   .w1{color:#003262;} .w2{color:#46809B;}
-  h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:112px;line-height:.95;
+  h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:190px;line-height:.92;
      color:#003262;letter-spacing:.005em;}
-  p{font-family:'Work Sans',sans-serif;font-weight:600;font-size:32px;line-height:1.25;
-    color:#003262;margin-top:32px;max-width:900px;}
+  p{font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.25;
+    color:#003262;margin-top:34px;max-width:1000px;}
   .strip{display:flex;gap:${GAP}px;background:#AFB0A9;height:${STRIP_H}px;width:${W}px;overflow:hidden;}
 </style></head>
 <body>
