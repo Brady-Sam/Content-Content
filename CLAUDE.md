@@ -21,7 +21,7 @@ site/
   about/index.html
   contact/index.html
   book/index.html       # Cal.com discovery-call embed
-  brand/                # Favicons and logo PNGs
+  brand/                # Favicons, logo PNGs, and the og-image link preview card
   README.md
   CLAUDE.md
   drafts/               # Internal, gitignored, never published
@@ -159,7 +159,10 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 - `/book/` embeds a Cal.com discovery call. The Cal.com account is registered as `hello@contentcontent.design` so the practice, not the personal Gmail, is what bookers see. The `calLink` is set once at the bottom of `book/index.html`.
 - **Known limitation:** the Google Calendar invite shows the personal Gmail address in its organiser field. A free consumer Google account cannot present an alias, and Cal.com's setting to hide it is a paid feature. Only Google Workspace fixes this properly.
 - `/book/` is deliberately not in the nav. The nav is fixed at five items; the service-page CTAs carry the booking link.
-- Cloudflare Web Analytics planned but not yet set up.
+- **Cloudflare Web Analytics is live**, enabled in the dashboard on the Pages project. **The beacon is injected at the edge, not committed to this repo**, and Cloudflare only injects it for requests that look like a real browser. A plain `curl` sends no browser `User-Agent` and no `Accept: text/html`, gets no beacon, and looks exactly like a site with no analytics. Check with browser headers, or in a browser, before concluding it is missing. Token `a61f4cf5…`, verified 25 August 2026.
+- **It has no conversion goals.** It reports page views, paths, referrers, country, browser, device and Core Web Vitals. It cannot tell you which page produced a booking. Lead-level attribution would have to come from the contact Worker, which currently records no referrer, landing page or UTM data.
+- **Read Visits, not Page views.** Cloudflare counts a visit only when the referrer is a different host, so same-site navigation and your own clicking inflate page views and leave visits untouched.
+- **Referrers will under-report social.** LinkedIn, Instagram and WhatsApp in-app browsers strip the referrer, so that traffic lands in "Direct". UTM-tag any link posted to them or the channels cannot be separated.
 - **Open issue:** `404.html` is deployed and reachable at `/404`, but missing routes return an empty-bodied 404 rather than serving it, so browsers show their own error page. Cause not yet identified, needs the Cloudflare dashboard. Check whether the site is served by Pages (check the build output directory) or by a Worker with static assets (needs `not_found_handling = "404-page"`).
 
 ---

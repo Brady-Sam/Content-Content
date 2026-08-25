@@ -227,5 +227,35 @@
   })();
 </script>
 
+<script>
+  /* First-touch attribution. Records where a session came from, once, on whichever
+     page it lands on, and keeps it in sessionStorage so the contact form can send it
+     with an enquiry. Cloudflare Web Analytics has no conversion goals, so this is the
+     only way to tie a lead back to a channel.
+
+     UTM params are the reliable part. LinkedIn, Instagram and WhatsApp in-app browsers
+     strip document.referrer, so social traffic shows as Direct without them.
+
+     sessionStorage, not a cookie: nothing persists past the tab, nothing identifies a
+     person, so it needs no consent banner. Wrapped in try/catch because Safari private
+     mode can throw on write, and an analytics nicety must never break a page.
+
+     This has to sit on every page, since any page can be the landing page. */
+  (function () {
+    try {
+      var KEY = 'cc-attribution';
+      if (sessionStorage.getItem(KEY)) return;
+      var q = new URLSearchParams(location.search);
+      sessionStorage.setItem(KEY, JSON.stringify({
+        source: q.get('utm_source') || '',
+        medium: q.get('utm_medium') || '',
+        campaign: q.get('utm_campaign') || '',
+        referrer: document.referrer || '',
+        landing: location.pathname
+      }));
+    } catch (e) {}
+  })();
+</script>
+
 </body>
 </html>

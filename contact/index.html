@@ -6,6 +6,24 @@
   <title>Contact · Content Content</title>
   <meta name="description" content="Get in touch with Content Content, an independent content design practice in Barcelona. Book a call or talk through your product.">
   <link rel="canonical" href="https://contentcontent.design/contact/">
+
+  <!-- Link previews. Every value reuses the page's own title, description and
+       canonical, so there is one place to change each of them. The card image is
+       shared across the site; brand/generate-og-image.js can make per-page ones. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Content Content">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://contentcontent.design/contact/">
+  <meta property="og:title" content="Contact · Content Content">
+  <meta property="og:description" content="Get in touch with Content Content, an independent content design practice in Barcelona. Book a call or talk through your product.">
+  <meta property="og:image" content="https://contentcontent.design/brand/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Content Content wordmark above the words Content, designed, and the line An independent content design practice, on a pale background with a mosaic strip along the bottom.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact · Content Content">
+  <meta name="twitter:description" content="Get in touch with Content Content, an independent content design practice in Barcelona. Book a call or talk through your product.">
+  <meta name="twitter:image" content="https://contentcontent.design/brand/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon_v2.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/CC_logo_32x32.png">
   <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
@@ -283,6 +301,14 @@
     var form = document.getElementById('contact-form');
     var statusEl = document.getElementById('form-status');
     if (!form) return;
+    /* Whatever the first-touch script stored at the top of the session. Returns an
+       empty object if it is missing or unreadable, so a failure here can never stop
+       an enquiry being sent. */
+    function readAttribution() {
+      try { return JSON.parse(sessionStorage.getItem('cc-attribution') || '{}'); }
+      catch (e) { return {}; }
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (form.company && form.company.value) { done('Thanks, your message is on its way. I’ll get back to you soon.'); form.reset(); return; }
@@ -298,7 +324,8 @@
           last_name: form.last_name.value.trim(),
           email: form.email.value.trim(),
           message: form.message.value.trim(),
-          company: form.company.value
+          company: form.company.value,
+          attribution: readAttribution()
         })
       }).then(function (r) {
         if (!r.ok) throw new Error('bad');
@@ -357,6 +384,36 @@
         }
       }
     });
+  })();
+</script>
+
+<script>
+  /* First-touch attribution. Records where a session came from, once, on whichever
+     page it lands on, and keeps it in sessionStorage so the contact form can send it
+     with an enquiry. Cloudflare Web Analytics has no conversion goals, so this is the
+     only way to tie a lead back to a channel.
+
+     UTM params are the reliable part. LinkedIn, Instagram and WhatsApp in-app browsers
+     strip document.referrer, so social traffic shows as Direct without them.
+
+     sessionStorage, not a cookie: nothing persists past the tab, nothing identifies a
+     person, so it needs no consent banner. Wrapped in try/catch because Safari private
+     mode can throw on write, and an analytics nicety must never break a page.
+
+     This has to sit on every page, since any page can be the landing page. */
+  (function () {
+    try {
+      var KEY = 'cc-attribution';
+      if (sessionStorage.getItem(KEY)) return;
+      var q = new URLSearchParams(location.search);
+      sessionStorage.setItem(KEY, JSON.stringify({
+        source: q.get('utm_source') || '',
+        medium: q.get('utm_medium') || '',
+        campaign: q.get('utm_campaign') || '',
+        referrer: document.referrer || '',
+        landing: location.pathname
+      }));
+    } catch (e) {}
   })();
 </script>
 

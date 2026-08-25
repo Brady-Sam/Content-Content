@@ -6,6 +6,24 @@
   <title>Content Content · Content design practice in Barcelona</title>
   <meta name="description" content="An independent content design practice helping startups spot content problems and fix them. Barcelona based, working with startups everywhere.">
   <link rel="canonical" href="https://contentcontent.design/">
+
+  <!-- Link previews. Every value reuses the page's own title, description and
+       canonical, so there is one place to change each of them. The card image is
+       shared across the site; brand/generate-og-image.js can make per-page ones. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Content Content">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://contentcontent.design/">
+  <meta property="og:title" content="Content Content · Content design practice in Barcelona">
+  <meta property="og:description" content="An independent content design practice helping startups spot content problems and fix them. Barcelona based, working with startups everywhere.">
+  <meta property="og:image" content="https://contentcontent.design/brand/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Content Content wordmark above the words Content, designed, and the line An independent content design practice, on a pale background with a mosaic strip along the bottom.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Content Content · Content design practice in Barcelona">
+  <meta name="twitter:description" content="An independent content design practice helping startups spot content problems and fix them. Barcelona based, working with startups everywhere.">
+  <meta name="twitter:image" content="https://contentcontent.design/brand/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon_v2.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/CC_logo_32x32.png">
   <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
@@ -199,9 +217,12 @@
     .symptom + .symptom{margin-top:28px;padding-top:28px;border-top:1px solid #D3D9DD;}
 
     /* Stat row — copied from the case studies */
-    .stat-row{display:flex;flex-wrap:wrap;gap:40px 56px;}
+    /* Grid, not flex-wrap. With a third stat added, flex put two on one line and
+       orphaned the third underneath, which read as an afterthought not a set. */
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 24px;}
     .stat-num{display:block;font-family:'Fugaz One',cursive;font-size:clamp(2.4rem,5vw,3.25rem);line-height:1;color:#003262;}
     .stat-label{display:block;font-family:'Work Sans',sans-serif;font-size:15px;line-height:1.4;color:#46545C;margin-top:10px;max-width:180px;}
+    @media (min-width:769px){.stat-label{max-width:none;}}
     /* Homepage only: the stats link through to their case study. Kills the global
        link underline and colour so the stat keeps the case-study treatment. */
     .stat-link{display:block;text-decoration:none;color:inherit;border-radius:2px;}
@@ -232,6 +253,7 @@
       .h2{font-size:30px;}
       .section-pad{padding:56px 24px !important;}
       .two-col{grid-template-columns:1fr !important;gap:32px !important;}
+      .stat-row{grid-template-columns:1fr;gap:32px;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
     }
@@ -343,6 +365,10 @@
               <a class="stat-link" href="/case-studies/shelter/" aria-label="55% increase in campaign page traffic. Read the Shelter case study.">
                 <span class="stat-num">55%</span>
                 <span class="stat-label">Increase in campaign page traffic</span>
+              </a>
+              <a class="stat-link" href="/case-studies/benefits/" aria-label="3% of sessions ended in a support enquiry. Read the Benivo case study.">
+                <span class="stat-num">3%</span>
+                <span class="stat-label">Of sessions ended in a support enquiry</span>
               </a>
             </div>
           </div>
@@ -647,6 +673,36 @@
     window.addEventListener('resize', function () {
       if (window.innerWidth > 768) setOpen(false);
     });
+  })();
+</script>
+
+<script>
+  /* First-touch attribution. Records where a session came from, once, on whichever
+     page it lands on, and keeps it in sessionStorage so the contact form can send it
+     with an enquiry. Cloudflare Web Analytics has no conversion goals, so this is the
+     only way to tie a lead back to a channel.
+
+     UTM params are the reliable part. LinkedIn, Instagram and WhatsApp in-app browsers
+     strip document.referrer, so social traffic shows as Direct without them.
+
+     sessionStorage, not a cookie: nothing persists past the tab, nothing identifies a
+     person, so it needs no consent banner. Wrapped in try/catch because Safari private
+     mode can throw on write, and an analytics nicety must never break a page.
+
+     This has to sit on every page, since any page can be the landing page. */
+  (function () {
+    try {
+      var KEY = 'cc-attribution';
+      if (sessionStorage.getItem(KEY)) return;
+      var q = new URLSearchParams(location.search);
+      sessionStorage.setItem(KEY, JSON.stringify({
+        source: q.get('utm_source') || '',
+        medium: q.get('utm_medium') || '',
+        campaign: q.get('utm_campaign') || '',
+        referrer: document.referrer || '',
+        landing: location.pathname
+      }));
+    } catch (e) {}
   })();
 </script>
 

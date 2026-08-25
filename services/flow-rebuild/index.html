@@ -6,6 +6,24 @@
   <title>Flow Rebuild · Content Content</title>
   <meta name="description" content="One journey in your product, rebuilt end to end and delivered in your own tools. Every screen and state, with what changed and why. From &euro;4,500.">
   <link rel="canonical" href="https://contentcontent.design/services/flow-rebuild/">
+
+  <!-- Link previews. Every value reuses the page's own title, description and
+       canonical, so there is one place to change each of them. The card image is
+       shared across the site; brand/generate-og-image.js can make per-page ones. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Content Content">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://contentcontent.design/services/flow-rebuild/">
+  <meta property="og:title" content="Flow Rebuild · Content Content">
+  <meta property="og:description" content="One journey in your product, rebuilt end to end and delivered in your own tools. Every screen and state, with what changed and why. From &euro;4,500.">
+  <meta property="og:image" content="https://contentcontent.design/brand/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Content Content wordmark above the words Content, designed, and the line An independent content design practice, on a pale background with a mosaic strip along the bottom.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Flow Rebuild · Content Content">
+  <meta name="twitter:description" content="One journey in your product, rebuilt end to end and delivered in your own tools. Every screen and state, with what changed and why. From &euro;4,500.">
+  <meta name="twitter:image" content="https://contentcontent.design/brand/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon_v2.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/CC_logo_32x32.png">
   <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
@@ -421,6 +439,36 @@
     menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); } });
     window.addEventListener('resize', function () { if (window.innerWidth > 768) setOpen(false); });
+  })();
+</script>
+
+<script>
+  /* First-touch attribution. Records where a session came from, once, on whichever
+     page it lands on, and keeps it in sessionStorage so the contact form can send it
+     with an enquiry. Cloudflare Web Analytics has no conversion goals, so this is the
+     only way to tie a lead back to a channel.
+
+     UTM params are the reliable part. LinkedIn, Instagram and WhatsApp in-app browsers
+     strip document.referrer, so social traffic shows as Direct without them.
+
+     sessionStorage, not a cookie: nothing persists past the tab, nothing identifies a
+     person, so it needs no consent banner. Wrapped in try/catch because Safari private
+     mode can throw on write, and an analytics nicety must never break a page.
+
+     This has to sit on every page, since any page can be the landing page. */
+  (function () {
+    try {
+      var KEY = 'cc-attribution';
+      if (sessionStorage.getItem(KEY)) return;
+      var q = new URLSearchParams(location.search);
+      sessionStorage.setItem(KEY, JSON.stringify({
+        source: q.get('utm_source') || '',
+        medium: q.get('utm_medium') || '',
+        campaign: q.get('utm_campaign') || '',
+        referrer: document.referrer || '',
+        landing: location.pathname
+      }));
+    } catch (e) {}
   })();
 </script>
 
