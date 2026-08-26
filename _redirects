@@ -9,3 +9,15 @@
 # than 404ing. /services/ carries what is still buyable.
 /services/flow-review /services/ 301
 /services/flow-review/* /services/ 301
+
+# /case-studies/knowledge-hub/ is a portfolio-era page on the old shell. Nothing
+# links to it, but there is no robots.txt, sitemap or noindex, so it stays
+# findable by search, and it carries an "open to full-time roles" line that
+# contradicts the practice positioning. 301 to the index rather than 404 so
+# anything already shared still lands somewhere real.
+# The exact path is listed with and without the trailing slash rather than
+# relying on the splat to match an empty remainder. The splat then catches the
+# page's images, which is intended: they are only ever requested by the page.
+/case-studies/knowledge-hub /case-studies/ 301
+/case-studies/knowledge-hub/ /case-studies/ 301
+/case-studies/knowledge-hub/* /case-studies/ 301
