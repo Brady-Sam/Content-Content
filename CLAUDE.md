@@ -107,6 +107,24 @@ Three heading tiers, each with a fixed terminal-punctuation rule. Internal punct
 - **Subheading** (Work Sans 600, Oxford Navy) — no terminal punctuation. Applies the same way whether it's acting as a hero line under the H1 or as a section label (e.g. "The symptoms", "The response"). Question marks are exempt where the heading is a genuine question, e.g. FAQ accordion summaries, the "?" is doing grammatical work, not decorating a fullstop.
 - **Lead paragraph** (Work Sans 400, Ink) — ends in a full stop. Only appears when there's real sentence-like copy to add after the title and subheading, not every page needs one. **This applies to every lead on the page, not only the hero's.** The lead sitting under a section `h2` is the same tier and takes the same full stop. Four of them were published without one across `/services/` and `/services/flow-rebuild/` before this was caught on 21 August 2026. If a lead cannot take a full stop without reading as a broken sentence, the copy is a fragment leaning on the list below it, so rewrite the lead rather than dropping the full stop.
 
+
+---
+
+## List punctuation
+
+Bullets and numbered lists were punctuated by whoever wrote them until 26 August 2026, when `/services/flow-rebuild/` had two identical-looking tick lists two sections apart, one ending in full stops and one not.
+
+**Punctuate a list as a unit, never item by item.**
+
+- **A list of labels or terms takes no full stops.** Short items, no finite verb, naming a thing rather than saying something about it. The product content lists on the content ownership field note ("Push and in-app notifications", "Alt text on images", "Blogs"), and the range list on `/services/`.
+- **Every other list takes a full stop on every item.** Once the items are copy, a clause or a sentence, they all get one, including the items in that list that are fragments.
+
+The second half is the part that keeps a list from going ragged. A list that mixes a sentence with three fragments still takes full stops throughout, because the alternative is punctuation that changes halfway down and reads as an oversight. "How it works" on `/services/flow-rebuild/` is the example: four of its five steps are fragments, and all five end in a full stop.
+
+**Never publish a list where some items end in a full stop and others do not.** If one item forces stops onto a list where they look wrong, the copy is the problem, so rewrite the item rather than splitting the punctuation.
+
+A tooltip or gloss attached to a list item is not a bullet and is not covered by this. The `/services/` range list keeps its unpunctuated tooltips.
+
 ---
 
 ## Case study conventions
@@ -194,3 +212,4 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 - Never publish the day rate, a day count, or a count of screens, fixes or pages
 - Never duplicate visual tokens from `DESIGN.md` into this file
 - Never change copy on a page without updating that page's copy doc in `drafts/` in the same pass
+- Never publish a list with full stops on some items and not others, see List punctuation
