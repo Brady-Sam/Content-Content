@@ -3,33 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Field notes</title>
-  <meta name="description" content="Field notes from Content Content, an independent content design practice in Barcelona. Thoughts inspired by and about the work.">
-  <link rel="canonical" href="https://contentcontent.design/field-notes/">
+  <title>Who writes the words in your product?</title>
+  <meta name="description" content="Your product content gets written by the designer, the PM, or AI, and often nobody owns it end to end. What that does to accessibility, conversion and support load. A field note from Content Content.">
+  <link rel="canonical" href="https://contentcontent.design/field-notes/who-writes-the-words-in-your-product/">
 
   <!-- Link previews. Every value reuses the page's own title, description and
        canonical, so there is one place to change each of them. The card image is
        shared across the site; brand/generate-og-image.js can make per-page ones. -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Content Content">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:url" content="https://contentcontent.design/field-notes/">
-  <meta property="og:title" content="Field notes">
-  <meta property="og:description" content="Field notes from Content Content, an independent content design practice in Barcelona. Thoughts inspired by and about the work.">
+  <meta property="og:url" content="https://contentcontent.design/field-notes/who-writes-the-words-in-your-product/">
+  <meta property="og:title" content="Who writes the words in your product?">
+  <meta property="og:description" content="Your product content gets written by the designer, the PM, or AI, and often nobody owns it end to end. What that does to accessibility, conversion and support load. A field note from Content Content.">
   <meta property="og:image" content="https://contentcontent.design/brand/og-image.png">
   <meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta property="og:image:alt" content="The Content Content wordmark above the words Content, designed, and the line An independent content design practice, on a pale background with a mosaic strip along the bottom.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Field notes">
-  <meta name="twitter:description" content="Field notes from Content Content, an independent content design practice in Barcelona. Thoughts inspired by and about the work.">
+  <meta name="twitter:title" content="Who writes the words in your product?">
+  <meta name="twitter:description" content="Your product content gets written by the designer, the PM, or AI, and often nobody owns it end to end. What that does to accessibility, conversion and support load. A field note from Content Content.">
   <meta name="twitter:image" content="https://contentcontent.design/brand/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/CC_favicon_v2.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/CC_logo_32x32.png">
   <link rel="apple-touch-icon" href="/brand/CC_logo_180x180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;}
     body{margin:0;}
@@ -54,23 +54,19 @@
     .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before{transform:translateY(6px) rotate(45deg);}
     .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after{transform:translateY(-6px) rotate(-45deg);}
 
-    /* Wordmark */
     .wordmark{font-family:'Fugaz One',cursive;font-size:22px;line-height:1;text-decoration:none;}
     .wordmark .w1{color:#003262;transition:color .18s;}
     .wordmark .w2{color:#46809B;transition:color .18s;}
     .wordmark:hover .w1{color:#46809B;}
     .wordmark:hover .w2{color:#003262;}
 
-    /* Nav links */
     .nav-link{font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#12222B;text-decoration:none;transition:color .18s;}
     .nav-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:4px;}
     .nav-link[aria-current="page"]{color:#B23A2E;font-weight:600;}
 
-    /* Nav Contact button */
     .nav-contact{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;border:1.5px solid #B23A2E;padding:7px 16px;border-radius:6px;background:transparent;transition:background .18s,color .18s;}
     .nav-contact:hover{background:#B23A2E;color:#F6F5F3;}
 
-    /* Footer links */
     .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
     .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
 
@@ -81,20 +77,32 @@
     .footer-social svg{width:22px;height:22px;display:block;fill:currentColor;}
     .footer-link[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;}
 
-    .section-pad{max-width:1080px;margin:0 auto;padding:80px 24px;}
+    .section-pad{max-width:1080px;margin:0 auto;padding:0 24px;}
+    .measure{max-width:680px;}
 
-    /* Hero */
-    .hero h1{font-family:'Fugaz One',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,6.5rem);line-height:0.95;margin:0;color:#003262;letter-spacing:0.005em;}
-    .hero .subhead{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;margin:28px 0 0;max-width:680px;}
+    /* Field note */
+    .back-link{display:inline-block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:#46545C;text-decoration:none;}
+    .back-link:hover{color:#B23A2E;text-decoration:underline;text-underline-offset:3px;}
+    .note-title{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.9rem,4vw,2.75rem);line-height:1.15;color:#003262;margin:0;max-width:800px;}
 
-    /* Field note cards (matches /case-studies/ Content card) */
-    .notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;}
-    .note-card{background:#FFFFFF;border:1px solid #D3D9DD;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
-    .note-card-body{display:flex;flex-direction:column;flex:1;padding:28px;}
-    .note-card-title{font-family:'Work Sans',sans-serif;font-weight:600;font-size:22px;line-height:1.25;color:#003262;margin:0 0 14px;}
-    .note-card-desc{font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;color:#46545C;margin:0 0 24px;flex:1;}
-    .note-card-link{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;color:#B23A2E;text-decoration:none;align-self:flex-start;}
-    .note-card-link:hover{color:#8F2E24;text-decoration:underline;text-underline-offset:3px;}
+    .note-intro{font-size:20px;line-height:1.5;color:#12222B;margin:0 0 40px;font-weight:500;}
+    .note-body{font-family:'Work Sans',sans-serif;}
+    .note-body p{font-size:18px;line-height:1.75;color:#12222B;margin:0 0 32px;}
+    .note-body h2{font-family:'Fugaz One',cursive;font-weight:400;font-size:32px;line-height:1.1;color:#003262;margin:64px 0 28px;padding-top:0;}
+    .note-body > h2:first-child{margin-top:0;}
+    .note-body h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:22px;line-height:1.25;color:#003262;margin:48px 0 18px;}
+    .note-body ul,.note-body ol{margin:0 0 32px;padding-left:22px;}
+    .note-body li{font-size:18px;line-height:1.75;color:#12222B;margin:0 0 8px;}
+    .note-body li::marker{color:#B23A2E;}
+    .note-body ol li{padding-left:4px;}
+    .table-scroll{overflow-x:auto;margin:0 0 32px;}
+    .table-scroll:focus-visible{outline:3px solid #46809B;outline-offset:3px;}
+    .note-table{border-collapse:collapse;width:100%;min-width:420px;font-family:'Work Sans',sans-serif;}
+    .note-table caption{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;padding:0 0 14px;}
+    .note-table th,.note-table td{border:1px solid #D3D9DD;padding:12px 16px;text-align:left;font-size:16px;line-height:1.5;color:#12222B;vertical-align:top;}
+    .note-table thead th{background:#E4ECF0;font-weight:600;color:#003262;}
+    .note-table td.num{font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+    .pull-quote{border-left:4px solid #46809B;padding-left:20px;margin:40px 0;font-size:18px;line-height:1.75;color:#003262;font-style:italic;font-weight:500;}
 
     @media (max-width:768px){
       .nav-toggle{display:inline-flex;}
@@ -102,9 +110,6 @@
       .nav-links.open{display:flex;}
       .nav-links .nav-link{padding:14px 0;width:100%;}
       .nav-links .nav-contact{margin-top:12px;}
-      .hero-pad{padding:56px 24px 56px !important;}
-      .section-pad{padding:56px 24px !important;}
-      .notes-grid{grid-template-columns:1fr;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
     }
@@ -133,38 +138,155 @@
   </nav>
 
   <main id="main">
+    <article>
 
-    <!-- HERO -->
-    <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:96px 24px 72px;">
-      <h1 id="page-heading">Field notes</h1>
-      <p class="subhead">Thoughts about the work</p>
-    </section>
+      <!-- Title block -->
+      <header class="section-pad" style="padding-top:40px;padding-bottom:0;">
+        <a class="back-link" href="/field-notes/">← Back to field notes</a>
+        <h1 class="note-title" style="margin-top:40px;margin-bottom:32px;">Who writes the words in your product?</h1>
+        <p class="note-intro">I'm biased, but good content is good for your business.</p>
+      </header>
 
-    <!-- ENTRIES -->
-    <section aria-label="Published field notes" class="section-pad" style="padding:16px 24px 88px;">
-      <div class="notes-grid">
-        <article class="note-card">
-          <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
-          <div class="note-card-body">
-            <h2 class="note-card-title">Who writes the words in your product?</h2>
-            <p class="note-card-desc">The designer, the PM, or AI. Hopefully someone from start to finish.</p>
-            <a class="note-card-link" href="/field-notes/who-writes-the-words-in-your-product/">Read the content ownership note →</a>
+      <!-- Body (white section, mosaic top edge) -->
+      <section style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+        <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+        <div style="max-width:1080px;margin:0 auto;padding:0 24px;">
+          <div class="note-body measure" style="padding-top:56px;padding-bottom:64px;">
+
+          <h2>How did your product content come to pass?</h2>
+          <p>It just gets written, maybe by the designer, maybe by the PM, maybe by AI. Nothing inherently wrong with that, but could you be losing out because it wasn't owned from start to finish by the same person (or persons)?</p>
+          <p>Users don't care how it was built, e.g. tech stack, AI models, sprint rate. They need a user experience (UX) that works for them. They want to do the "thing" your product offers and get out of there. The unsung hero that guides them through is your product content.</p>
+
+          <h2>What is product content?</h2>
+          <p>Honestly anything and everything your users/customers/audience reads or interacts with to use your product. To name but a few:</p>
+
+          <h3>In the product</h3>
+          <ul>
+            <li>Button labels and calls to action</li>
+            <li>Form labels, hint text and placeholders</li>
+            <li>Validation and error messages</li>
+            <li>Empty states, before a user has any data</li>
+            <li>Loading and waiting states</li>
+            <li>Success and confirmation messages</li>
+            <li>Tooltips and inline help</li>
+            <li>Onboarding and first-run screens</li>
+            <li>Permission prompts</li>
+            <li>Settings labels and descriptions</li>
+            <li>Navigation and menu labels</li>
+            <li>Confirmation dialogs and delete warnings</li>
+            <li>No-results states in search</li>
+            <li>Plan names, tier names and pricing labels</li>
+          </ul>
+
+          <h3>Around the product</h3>
+          <ul>
+            <li>Transactional emails: receipts, password resets, invites</li>
+            <li>Push and in-app notifications</li>
+            <li>Billing and invoice wording</li>
+            <li>Cancellation and downgrade flows</li>
+            <li>Release notes and changelogs</li>
+            <li>Status page updates during an incident</li>
+            <li>Help centre articles</li>
+            <li>Support macros and chatbot replies</li>
+            <li>App store listing and subtitle</li>
+          </ul>
+
+          <h3>Hidden</h3>
+          <ul>
+            <li>Alt text on images</li>
+            <li>Page titles and browser tab labels</li>
+            <li>Link text</li>
+            <li>Form field labels in the code, not just on screen</li>
+            <li>Status and category names in your data model that users see</li>
+          </ul>
+
+          <h2>Who is writing it now?</h2>
+          <p>A question to ask yourself, who is in charge of this and when in the process do any or all of these get written? It's usually a mix of people, some by the design team, some by the PM &amp; Devs as they're wrapping up tickets, and some by the founder for those high priority screens. This doesn't mean the info is wrong, but it does set the stage for inconsistency and confusion...</p>
+
+          <h2>The impact of poor content</h2>
+          <p>Improving the content within a product is not always the first solution someone will think of when something is going wrong, but honestly it should be. Looking at some recent studies that flag problems in the tech space it is not too hard to see how a considered approach to content is a win.</p>
+          <p>This study focuses on accessibility, but it shows how much of the user experience comes down to content.</p>
+          <p>WebAIM runs an annual automated audit of the home pages of the top one million websites. The <a href="https://webaim.org/projects/million/" target="_blank" rel="noopener noreferrer">2026 report</a> found that <strong>95.9% of those home pages had a detectable accessibility failure</strong>, up from 94.8% the year before, reversing six years of small improvements.</p>
+          <p>WebAIM reports that 96% of all detected errors fall into six categories:</p>
+
+          <div class="table-scroll" tabindex="0" role="region" aria-labelledby="failure-table-caption">
+            <table class="note-table">
+              <caption id="failure-table-caption">Most common failures, WebAIM Million 2026</caption>
+              <thead>
+                <tr><th scope="col">Failure</th><th scope="col">Share of home pages</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Low contrast text</td><td class="num">83.9%</td></tr>
+                <tr><td>Missing alternative text for images</td><td class="num">53.1%</td></tr>
+                <tr><td>Missing form input labels</td><td class="num">51%</td></tr>
+                <tr><td>Empty links</td><td class="num">46.3%</td></tr>
+                <tr><td>Empty buttons</td><td class="num">30.6%</td></tr>
+                <tr><td>Missing document language</td><td class="num">13.5%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </article>
 
-        <article class="note-card">
-          <div class="mosaic-strip" data-seed="20260826" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
-          <div class="note-card-body">
-            <h2 class="note-card-title">What is content design?</h2>
-            <p class="note-card-desc">Applying design thinking to the content of your product and service.</p>
-            <a class="note-card-link" href="/field-notes/what-is-content-design/">Read the content design note →</a>
-          </div>
-        </article>
-      </div>
+          <p>Four of the six most common accessibility failures on the web are content failures. Missing alt text is a missing sentence. A missing form label is a missing word. An empty link or button has no descriptive text in it.</p>
+          <p>None of these are hard problems. They are just nobody's problem.</p>
+          <p>More detail from the same report:</p>
+          <ul>
+            <li><strong>33.1% of all form inputs were not properly labelled.</strong> A third of the boxes people are asked to type into have no name attached.</li>
+            <li><strong>More than one in four images had missing, questionable or repetitive alt text</strong>, including alt text reading "image", "graphic", or a file name.</li>
+            <li><strong>15.2% of pages used ambiguous link text</strong> like "click here", "more" and "continue", up from 13.7% in 2025.</li>
+          </ul>
+          <p>WebAIM found them with an automated scanner, on home pages, at the top million sites on the internet. It shows that strong content housekeeping and accessibility can be a real difference maker. Imagine the impact content can make beyond the accessibility layer.</p>
 
-    </section>
+          <h3>Why is it getting worse now?</h3>
+          <p>WebAIM has a theory.</p>
+          <div class="pull-quote">These trends likely reflect broader shifts in web development including increased reliance on 3rd party frameworks and libraries and automated or AI-assisted coding practices ("vibe coding").</div>
+          <p>Home pages got 22.5% more complex in a single year. Average detected errors per page rose 10.1%.</p>
+          <p>When a model generates a screen it comes with the words. They're created plausibly and instantly, so they look finished, and are often reviewed without much scrutiny.</p>
+          <p>Before, unowned content might be written by a busy engineer who knew what the feature did. Now the instant copy is written without that all-important context that ensures the info is useful for your specific users on this specific journey.</p>
+          <p>This is not an argument against AI production. The argument is that having content ownership is even more important, now that we can create faster than we can think. Humans can sniff out AI-generated copy from a mile away and they don't like it. So someone should catch and fix it first.</p>
 
+          <h2>What content ownership, love and attention can give you</h2>
+          <p><strong>A product that looks trustworthy.</strong> Content quality is the fastest way to show your audience that your product was built thoroughly and thoughtfully.</p>
+          <ul>
+            <li>All the labels are consistent</li>
+            <li>The same term used across every screen</li>
+            <li>Errors (while rare) are clearly explained with what happened and what to do next</li>
+            <li>The information given is what the person expects to see in that moment</li>
+          </ul>
+          <p>Strong communication buys you patience and understanding with your user base, which can be worth its weight in gold as you start rolling out bigger and better things.</p>
+
+          <p><strong>Better conversion rates.</strong> Baymard Institute has collected <a href="https://baymard.com/lists/cart-abandonment-rate" target="_blank" rel="noopener noreferrer">50 studies on cart abandonment</a>. The average is 70.22%. That is ecommerce rather than SaaS, but the reasons transfer to any signup, upgrade, checkout or key decision that needs to be made.</p>
+          <p>Set aside the 42% who say they were only browsing, the leading reasons people drop out are:</p>
+          <ul>
+            <li>40% left because the extra costs, shipping, tax and fees, were too high</li>
+            <li>18% left because the site wanted them to create an account</li>
+            <li>17% found the process too long or complicated</li>
+            <li>17% hit errors</li>
+            <li>12% could not see or work out the total cost up front</li>
+          </ul>
+          <p>Content can solve most of those problems without new feature development or redesigns. "Could not work out the total cost" is missing or unclear information that needs writing. "Wanted me to create an account" is a requirement that needs a soft explanation.</p>
+          <p>Baymard also found that most checkouts need only 8 form fields, while the average US checkout has <a href="https://baymard.com/blog/checkout-flow-average-form-fields" target="_blank" rel="noopener noreferrer">11.3</a>. Around three of the questions are not needed. In practice content design is more cutting than it is writing.</p>
+
+          <p><strong>Fewer questions, support tickets, and escalations.</strong> Every question your interface answers well is one that doesn't end up with your support team. On one B2B SaaS platform, redesigning the content an AI chatbot used took questions answered without a support ticket from 69% to 93%, and gave the support team ten hours a week back.</p>
+          <p>This is the exact theme of the <a href="/case-studies/training-ai/">AI support chatbot case study</a>. Have a read to see support queries drop in real time.</p>
+
+          <h2>How to get started</h2>
+          <p>Very quick wins to help you think differently about your content.</p>
+          <ol>
+            <li><strong>Run a free accessibility scanner over your main screens.</strong> <a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">WAVE</a> is the tool WebAIM used for the study above. It will find your missing alt text, unlabelled form fields, empty links and empty buttons.</li>
+            <li><strong>Read your three high-priority flows out loud.</strong> The fastest way to hear the difference between how your team talks about the product and how the product talks about itself. Chances are you'll find you're using too many words.</li>
+            <li><strong>Assign some ownership.</strong> Make someone responsible for noticing errors and inconsistencies. They don't need to be a content designer, they just need to care about the content.</li>
+          </ol>
+
+          <h2>A soft sell</h2>
+          <p>The <a href="/services/flow-rebuild/">Flow Rebuild</a> is a perfect way to get things found and fixed, especially if you haven't worked with, or thought about, content design before.</p>
+
+        </div>
+        </div>
+      </section>
+
+    </article>
   </main>
+
 
   <!-- FOOTER -->
   <footer>
@@ -196,7 +318,7 @@
 </div>
 
 <script>
-  /* Mosaic strip (DESIGN.md §5): seeded trencadis generator, fills viewport width. */
+  /* Mosaic strip (DESIGN.md §5): seeded trencadis generator, fills its edge. */
   (function () {
     var TILE = 20, GAP = 1.5, ADVANCE = TILE + GAP;
     var BASE = ['#003262','#003262','#003262','#46809B','#46809B','#E4ECF0','#F6F5F3','#12222B','#8FB0C1'];
