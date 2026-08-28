@@ -311,7 +311,7 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (form.company && form.company.value) { done('Thanks, your message is on its way. I’ll get back to you soon.'); form.reset(); return; }
+      if (form.company && form.company.value) { done('Thanks, your message is on its way. You’ll hear back soon.'); form.reset(); return; }
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true; btn.textContent = 'Sending…';
@@ -331,7 +331,7 @@
         if (!r.ok) throw new Error('bad');
       }).then(function () {
         form.reset();
-        done('Thanks, your message is on its way. I’ll get back to you soon.');
+        done('Thanks, your message is on its way. You’ll hear back soon.');
       }).catch(function () {
         statusEl.style.color = '#B23A2E';
         statusEl.textContent = 'Something went wrong sending that. Please email hello@contentcontent.design directly.';
