@@ -239,6 +239,12 @@
     .footer-social a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;color:#F6F5F3;text-decoration:none;border-radius:6px;transition:color .18s;}
     .footer-social a:hover{color:#E4ECF0;}
     .footer-social svg{width:22px;height:22px;display:block;fill:currentColor;}
+    .cc-count{position:relative;display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.04em;color:#C7D4DE;border-bottom:1px dotted #6E899B;cursor:help;}
+    .cc-count:focus-visible{outline:2px solid #C7D4DE;outline-offset:3px;}
+    .cc-count .cc-tip{position:absolute;left:0;bottom:calc(100% + 10px);width:250px;background:#F6F5F3;color:#12222B;border:1px solid #12222B;padding:10px 12px;font-family:'Work Sans',sans-serif;font-size:13px;line-height:1.5;letter-spacing:0;opacity:0;visibility:hidden;transition:opacity .15s;}
+    .cc-count:hover .cc-tip,.cc-count:focus-within .cc-tip{opacity:1;visibility:visible;}
+    .cc-aside{margin:8px 0 0;font-family:'Spectral',Georgia,serif;font-style:italic;font-size:14px;line-height:1.5;color:#C7D4DE;}
+    @media (max-width:768px){.cc-count .cc-tip{width:220px;}}
 
     @media (max-width:768px){
       .nav-toggle{display:inline-flex;}
@@ -414,6 +420,16 @@
             <a class="footer-link" href="/about/" style="font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;">About</a>
           </nav>
         </div>
+        <!-- content-counter -->
+        <div style="margin-top:34px;border-top:1px solid #2A527A;padding-top:18px;">
+          <span class="cc-count" tabindex="0" role="note" aria-label="Content counter: 169. A live-ish count of how many times content is said on this site.">
+            <span id="content-count">Content counter: 169</span>
+            <span aria-hidden="true" style="color:#8FA6B4;">&#9432;</span>
+            <span class="cc-tip">A live-ish count of how many times content is said on this site.</span>
+          </span>
+          <p class="cc-aside">Some things bear repeating.</p>
+        </div>
+        <!-- /content-counter -->
       </div>
     </div>
   </footer>
@@ -706,5 +722,21 @@
   })();
 </script>
 
+<!-- content-counter -->
+<script>
+  (function(){
+    try {
+      fetch('/content-count.json', {cache:'no-cache'})
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(d){
+          if (!d || typeof d.count !== 'number') return;
+          var el = document.getElementById('content-count');
+          if (el) el.textContent = 'Content counter: ' + d.count;
+        })
+        .catch(function(){});
+    } catch (e) {}
+  })();
+</script>
+<!-- /content-counter -->
 </body>
 </html>
