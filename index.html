@@ -230,6 +230,17 @@
     .stat-link:hover .stat-num{color:#B23A2E;}
     .stat-link:hover .stat-label{color:#12222B;text-decoration:underline;text-underline-offset:3px;}
 
+    /* Testimonial — the field note pull quote (DESIGN.md §6) carried over to a
+       client's words, at the 20px size the other right-hand columns use for their
+       lead. Weight 400 rather than the pull quote's 500, because only 400 italic is
+       loaded on this page. Not Spectral: that is Sam's own voice, and the bio sits
+       directly below. */
+    .testimonial{margin:0;max-width:560px;}
+    .testimonial blockquote{margin:0;border-left:4px solid #46809B;padding-left:20px;}
+    .testimonial p{margin:0;font-size:20px;line-height:1.6;color:#003262;font-style:italic;}
+    .testimonial + .testimonial{margin-top:56px;}
+    .testimonial figcaption{margin:20px 0 0 24px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#46545C;}
+
     /* Footer links */
     .footer-link{color:#F6F5F3;text-decoration:none;transition:color .18s;}
     .footer-link:hover{color:#E4ECF0;text-decoration:underline;text-underline-offset:4px;}
@@ -354,8 +365,9 @@
       </div>
     </section>
 
-    <!-- SOME PROOF -->
-    <section aria-labelledby="proof-heading">
+    <!-- SOME PROOF — White Smoke, with a bottom hairline now that Some kind words
+         follows it on White Smoke too. -->
+    <section aria-labelledby="proof-heading" style="border-bottom:1px solid #D3D9DD;">
       <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
         <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
           <div>
@@ -377,6 +389,33 @@
                 <span class="stat-label">Of sessions ended in a support enquiry</span>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOME KIND WORDS — White Smoke like Some proof, because both are evidence.
+         Some proof's hairline divides the two above, and the bio's top hairline
+         divides it from the bio below, so it takes no borders of its own. -->
+    <section aria-labelledby="words-heading">
+      <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
+        <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
+          <div>
+            <h2 class="h2" id="words-heading">Some kind words</h2>
+          </div>
+          <div>
+            <figure class="testimonial">
+              <blockquote>
+                <p>Most of the value came before any copy got written. Sam understood the product and the strategy, and kept users first. Having someone own how our products communicated gave time back to design and development. Worth doing.</p>
+              </blockquote>
+              <figcaption>Alex T, CPO at Benivo</figcaption>
+            </figure>
+            <figure class="testimonial">
+              <blockquote>
+                <p>The website was always a lower priority, behind the socials and getting the club open. Sam's review picked up things we'd never have spotted ourselves, and showed us what the site needed to do for people thinking about joining.</p>
+              </blockquote>
+              <figcaption>Callum A, Co-founder at Rally Yard</figcaption>
+            </figure>
           </div>
         </div>
       </div>
