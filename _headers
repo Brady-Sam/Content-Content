@@ -1,0 +1,10 @@
+# Security headers applied at the Cloudflare edge to every response.
+# No Content-Security-Policy here: pages are self-contained with inline
+# <script>/<style> blocks and no build step, so a CSP strict enough to help
+# would need per-page nonces this repo has no way to generate, and a loose
+# one (`unsafe-inline`) would add nothing. Revisit only alongside a build step.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
