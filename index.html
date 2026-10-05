@@ -163,6 +163,10 @@
        Wide gap above so it opens a block rather than trailing off the CTA. */
     .hero .hero-practice{font-family:'Work Sans',sans-serif;font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;color:#003262;max-width:680px;margin:72px 0 0;}
     .hero .hero-lead{font-size:20px;line-height:1.55;color:#12222B;max-width:600px;margin:16px 0 0;}
+    .where-label{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#46545C;margin:0 0 14px;}
+    .where{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 32px;}
+    .where li{position:relative;padding-left:20px;font-size:17px;line-height:1.5;color:#12222B;}
+    .where li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;background:#B23A2E;}
 
     /* Fugaz One has a taller cap height and a different baseline to Work Sans, so
        at a shared font-size it rides high and reads oversized inline. Scaled down
@@ -270,6 +274,7 @@
       .h2{font-size:30px;}
       .section-pad{padding:56px 24px !important;}
       .two-col{grid-template-columns:1fr !important;gap:32px !important;}
+      .where{grid-template-columns:1fr;}
       .stat-row{grid-template-columns:1fr;gap:32px;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
@@ -309,7 +314,7 @@
       <p class="hero-subhead" id="hero-subhead">Content Content will <span class="pairing" id="hero-pairing"><span class="pairing-verb">improve</span><span class="pairing-mid"> your </span><span class="pairing-tail"><span class="pairing-area">conversions</span><span class="pairing-caret" aria-hidden="true"></span><span class="shuffle-wrap"><button class="pairing-shuffle" id="hero-shuffle" type="button" hidden aria-label="Show another example" aria-describedby="shuffle-tip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle data-pip="tl" cx="7.9" cy="7.9" r="1.45" fill="currentColor"/><circle data-pip="tr" cx="16.1" cy="7.9" r="1.45" fill="currentColor"/><circle data-pip="ml" cx="7.9" cy="12" r="1.45" fill="currentColor" style="display:none"/><circle data-pip="mr" cx="16.1" cy="12" r="1.45" fill="currentColor" style="display:none"/><circle data-pip="c" cx="12" cy="12" r="1.45" fill="currentColor"/><circle data-pip="bl" cx="7.9" cy="16.1" r="1.45" fill="currentColor"/><circle data-pip="br" cx="16.1" cy="16.1" r="1.45" fill="currentColor"/></svg></button><span class="shuffle-tip" id="shuffle-tip" role="tooltip">What else can Content Content do?</span></span></span></span><span class="sr-only" id="hero-pairing-status" aria-live="polite"></span></p>
       <p class="hero-cta"><a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Book a free discovery call</a></p>
       <p class="hero-practice">An independent content design practice</p>
-      <p class="hero-lead">Helping startups spot content problems and fix them.</p>
+      <p class="hero-lead">Helping businesses get the words and structure in their product right, so people can finish what they came to do.</p>
     </section>
 
     <!-- THE SYMPTOMS — first white section, carries the mosaic strip. The lead-in
@@ -348,17 +353,35 @@
       </div>
     </section>
 
-    <!-- HOW CONTENT CONTENT CAN HELP — White Smoke now that symptoms has taken the
+    <!-- SOME EXPLAINING TO DO (was How Content Content can help) — White Smoke now that symptoms has taken the
          white section and the strip. Sits between two white sections, so their
          hairlines divide it and it takes no borders of its own (DESIGN.md §8). -->
     <section aria-labelledby="help-heading">
       <div class="section-pad" style="max-width:1080px;margin:0 auto;padding:88px 24px 96px;">
         <div class="two-col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;">
           <div>
-            <h2 class="h2" id="help-heading">How Content Content can help</h2>
+            <h2 class="h2" id="help-heading">Some explaining to do</h2>
           </div>
           <div>
-            <p style="margin:0 0 32px;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">Check that every piece of information is designed for what your audience needs to do and what your business needs to achieve.</p>
+            <p style="margin:0 0 32px;font-size:20px;line-height:1.55;color:#12222B;max-width:560px;">Content design, often known as UX writing, is the design discipline for a product's words and structure. It connects what your audience needs to do with what your business needs to achieve.</p>
+            <p class="where-label">Where you'll find it</p>
+            <ul class="where">
+              <li>Websites and landing pages</li>
+              <li>Pricing and plan pages</li>
+              <li>Signup and onboarding</li>
+              <li>Product screens and UI copy</li>
+              <li>Forms and applications</li>
+              <li>Error messages and empty states</li>
+              <li>Emails and notifications</li>
+              <li>Help centres and FAQs</li>
+              <li>AI chatbots and assistants</li>
+              <li>Settings and account pages</li>
+              <li>Checkout and payments</li>
+              <li>Cancelling and offboarding</li>
+              <li>Internal tools and handovers</li>
+              <li>Policies and consent screens</li>
+            </ul>
+            <p style="margin:0 0 32px;font-size:17px;line-height:1.6;color:#12222B;max-width:560px;">On their own, these are just parts. Content design makes them add up to a product people find easy to use.</p>
             <a class="btn-primary" href="/services/" style="font-size:16px;padding:13px 26px;">View content services</a>
           </div>
         </div>

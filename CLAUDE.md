@@ -1,6 +1,6 @@
 # Content Content — Claude Code context
 
-This is the working site for Content Content, an independent content design practice run by Sam Brady. Based in Barcelona. Targeting early-stage B2B SaaS companies that have product and development in place but no content design function.
+This is the working site for Content Content, an independent content design practice run by Sam Brady. Based in Barcelona. Focused on startups, but takes work from businesses of any size, see Practice positioning.
 
 ---
 
@@ -143,8 +143,12 @@ A tooltip or gloss attached to a list item is not a bullet and is not covered by
 ## Practice positioning
 
 - **Not** a freelancer or contractor. An independent practice.
-- Target client: early-stage B2B SaaS with product and development in place, no content design function.
-- Lead with symptoms founders recognise (conversion drop-off, onboarding confusion), not the content design label. "Content design" should not appear above the fold on any page.
+- **Focus is startups, but the practice takes work from businesses of any size.** Most clients will be teams with no content design function. Teams that already have content designers are not the target; if they hire Content Content it is as extra capacity, through day-rate work.
+- **Startups are never named in a hero.** Decided 5 October 2026, after LinkedIn feedback that the site did not say what was on offer or who it was for. Naming startups up top filters out the charity, scale-up and SME work the practice also takes, and the case studies (Shelter is a charity) would read as off-brief. Hero copy speaks to "businesses" or "your audience". The startup focus lives further down, where it reads as a focus rather than a filter: the "Do you only work with startups?" FAQ, the footer line, meta descriptions and the founder-voiced symptoms. Keep those when editing.
+- **Say what the work is in concrete terms before anything abstract.** Every hero should answer which content, and what it is for, in plain words. The services hero does it in one line: "Content Content makes sure every word (and piece of info) your audience reads is clear and useful for what they're trying to do." Name real places (onboarding, checkout, emails, help centres) rather than "content", "information" or "journey" on their own, which a marketing reader takes to mean blogs and SEO.
+- **"Content design" can appear above the fold, but never unexplained.** This replaces the earlier rule that it should not appear above the fold at all, which the homepage hero ("An independent content design practice") already broke. Where the term is defined, pair it with "UX writing", the name buyers recognise: "Content design, often known as UX writing, is the design discipline for a product's words and structure." That matches the field note "What is content design?", which treats the titles as roughly interchangeable.
+- **Positioned as content consultancy run through a content design approach**, not a UX writing service that fills in screens. Lists of places the work shows up (the homepage "Where you'll find it" list) are examples, never the boundary of the offer.
+- Symptoms founders recognise (conversion drop-off, onboarding confusion) still lead the homepage after the hero.
 - Site should read as an active practice, not an archived portfolio.
 
 ### The offer

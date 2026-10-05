@@ -108,7 +108,6 @@
        The Rebuild is named before the figure on purpose. Price first read as the
        floor for everything on the page, which is wrong, day-rate work is never
        priced here and the disciplines above are not sold by the unit. */
-    .hero-meta{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;color:#46545C;margin:24px 0 0;}
     /* The range — each discipline carries a one-line explainer in a tooltip.
        Term is a real button so it is reachable by keyboard and tappable on touch,
        with a dotted underline as the affordance rather than ten "?" icons in a
@@ -215,13 +214,35 @@
     <section class="hero hero-pad" aria-labelledby="page-heading" style="max-width:1080px;margin:0 auto;padding:88px 24px 72px;">
       <h1 id="page-heading">Services</h1>
       <p class="hero-subhead">How the problems get solved</p>
+      <p style="font-size:20px;line-height:1.55;color:#12222B;max-width:600px;margin:16px 0 36px;">Content Content makes sure every word (and piece of info) your audience reads is clear and useful for what they're trying to do.</p>
       <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Start with a free discovery call</a>
-      <p class="hero-meta"><a href="/services/flow-rebuild/">See what a Flow Rebuild covers</a>, from &euro;4,500</p>
     </section>
 
-    <!-- THE RANGE — first white section, carries the mosaic strip -->
-    <section aria-labelledby="range-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+    <!-- WHERE TO START — first white section, carries the mosaic strip. Moved above The range
+         on 5 October 2026 so the offer comes before the list. id kept as #steps,
+         the Flow Rebuild page backlinks to it. -->
+    <section id="steps" aria-labelledby="steps-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+      <div class="section-pad">
+      <div class="section-head">
+        <h2 class="h2" id="steps-heading">Where to start</h2>
+        <p class="lead" style="margin:20px 0 0;">If something about your content is bugging you, but you don't know where to begin.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step">
+          <h3>Flow Rebuild</h3>
+          <p class="flow-body">One journey in your product, like onboarding or checkout, audited to find where it's not working and why. You get the whole flow fixed, delivered in your own tools.</p>
+          <p class="flow-price">From &euro;4,500</p>
+          <a class="flow-cta" href="/services/flow-rebuild/">See what's included &rarr;</a>
+        </div>
+      </div>
+      <p class="flow-close">If you want more hands-on work with your team and roadmap, day-rate work can be scoped for your exact needs. <a href="/contact/">Get in touch</a> so we can get planning.</p>
+    </div>
+    </section>
+
+    <!-- THE RANGE — White Smoke, bottom hairline dividing it from The approach,
+         which is White Smoke because it holds white cards -->
+    <section aria-labelledby="range-heading" style="border-bottom:1px solid #D3D9DD;">
       <div class="section-pad">
         <div class="two-col">
           <div>
@@ -276,9 +297,8 @@
       </div>
     </section>
 
-    <!-- THE APPROACH — holds white cards, so White Smoke with a bottom hairline
-         dividing it from Where to start, which is White Smoke for the same reason -->
-    <section class="section-pad" aria-labelledby="approach-heading" style="border-bottom:1px solid #D3D9DD;">
+    <!-- THE APPROACH — White Smoke, the AI note's top border divides it from what follows -->
+    <section class="section-pad" aria-labelledby="approach-heading">
       <div class="section-head">
         <h2 class="h2" id="approach-heading">The approach</h2>
         <p class="lead" style="margin:20px 0 0;">How all the activities get pulled together.</p>
@@ -301,23 +321,6 @@
           <p>The decisions made are documented, grounded and easy to follow, so the same result can happen again.</p>
         </div>
       </div>
-    </section>
-
-    <!-- WHERE TO START (id kept as #steps, the Flow Rebuild page backlinks to it) -->
-    <section id="steps" class="section-pad" aria-labelledby="steps-heading">
-      <div class="section-head">
-        <h2 class="h2" id="steps-heading">Where to start</h2>
-        <p class="lead" style="margin:20px 0 0;">If something about your content is bugging you, but you don't know where to begin.</p>
-      </div>
-      <div class="flow">
-        <div class="flow-step">
-          <h3>Flow Rebuild</h3>
-          <p class="flow-body">I audit one journey in your product, service or business, find where it's not working and why. Then I fix it end to end, delivered in your own tools.</p>
-          <p class="flow-price">From &euro;4,500</p>
-          <a class="flow-cta" href="/services/flow-rebuild/">See what's included &rarr;</a>
-        </div>
-      </div>
-      <p class="flow-close">If you want more hands-on work with your team and roadmap, day-rate work can be scoped for your exact needs. <a href="/contact/">Get in touch</a> so we can get planning.</p>
     </section>
 
     <!-- A QUICK NOTE ON AI (Personal callout) -->
