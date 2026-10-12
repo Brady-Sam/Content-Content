@@ -1,0 +1,13 @@
+// Cloudflare Worker config for contentcontent.design. The site is a static-assets
+// Worker with no script: the repo folder is published as-is.
+// Added 12 October 2026. Before this there was no config, so Cloudflare ran on
+// defaults, which return an empty 404 for a missing page and ignore 404.html.
+{
+  "name": "content-content",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./",
+    // Serve 404.html, with a 404 status, for any path that matches no file.
+    "not_found_handling": "404-page"
+  }
+}

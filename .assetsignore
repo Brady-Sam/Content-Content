@@ -1,0 +1,7 @@
+# Files in the repo that must never be published as part of the site.
+# .git was being served publicly until 12 October 2026.
+.git
+.claude
+wrangler.jsonc
+CLAUDE.md
+README.md
