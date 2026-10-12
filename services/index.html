@@ -108,43 +108,57 @@
        The Rebuild is named before the figure on purpose. Price first read as the
        floor for everything on the page, which is wrong, day-rate work is never
        priced here and the disciplines above are not sold by the unit. */
-    /* The range — each discipline carries a one-line explainer in a tooltip.
-       Term is a real button so it is reachable by keyboard and tappable on touch,
-       with a dotted underline as the affordance rather than ten "?" icons in a
-       column. Hover and focus are CSS, tap is the script at the bottom of the page,
-       which also closes on Escape and on an outside click (WCAG 1.4.13). The bubble
-       is absolutely positioned so opening one never reflows the grid. */
-    .includes{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;}
-    .includes li{position:relative;padding-left:20px;font-size:17px;line-height:1.5;color:#12222B;}
-    .includes li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;background:#B23A2E;}
-    /* Underline is text-decoration, not border-bottom. A button will not take
-       display:inline, it computes to inline-block, so its box is the full column
-       width and a border draws once straight across it, under the last line only
-       and running well past the text. text-decoration follows each line instead. */
+    /* What the work covers — three service groups, first white section. No cards:
+       a white card cannot sit on a white section (DESIGN.md §8), so each group is
+       separated by the column gap. Stacked on a phone, a hairline divides one group
+       from the next, but never sits under the heading. */
+    .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+    .group{display:flex;flex-direction:column;}
+    .group-name{font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 12px;color:#003262;}
+    .group-body{margin:0 0 22px;font-size:16px;line-height:1.6;color:#12222B;}
+    .group-label{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#46545C;margin:0 0 10px;}
+    .group-eg{list-style:none;margin:0 0 24px;padding:0;}
+    .group-eg li{position:relative;padding-left:18px;margin:0 0 8px;font-size:15px;line-height:1.5;color:#46545C;}
+    .group-eg li::before{content:'';position:absolute;left:0;top:8px;width:7px;height:7px;background:#7A8990;}
+    /* Service labels: the old range list's look, a coral square and a dotted
+       underline, with its one-line explainer in a tooltip. The term is a real
+       button so it is reachable by keyboard and tappable on touch. Hover and focus
+       are CSS, tap is the script at the bottom of the page, which also closes on
+       Escape and an outside click (WCAG 1.4.13). The bubble is absolutely
+       positioned so opening one never reflows the column. Underline is
+       text-decoration, not border-bottom: a button computes to inline-block, so a
+       border would run the full column width under the last line only. */
+    .group-tags{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:10px;}
+    .group-tags li{position:relative;padding-left:20px;font-size:16px;line-height:1.5;color:#12222B;}
+    .group-tags li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;background:#B23A2E;}
     .range-term{display:inline;margin:0;padding:0;background:transparent;border:0;font:inherit;color:inherit;text-align:left;cursor:help;text-decoration:underline dotted #7A8990;text-decoration-thickness:1px;text-underline-offset:4px;transition:color .18s,text-decoration-color .18s;}
     .range-term:hover{color:#003262;text-decoration-color:#B23A2E;}
     .range-tip{display:none;position:absolute;top:100%;left:20px;z-index:5;width:max-content;max-width:min(260px,62vw);background:#FFFFFF;border:1px solid #D3D9DD;border-radius:8px;padding:10px 13px;font-size:13px;line-height:1.5;color:#46545C;}
-    .includes li:hover .range-tip,.includes li:focus-within .range-tip,.range-tip.open{display:block;}
+    /* Opens on the term itself, never the row. The li spans the full column width, so
+       li:hover fired with the pointer nowhere near the words. The bubble keeps itself
+       open while the pointer is on it, so it can be read (WCAG 1.4.13). */
+    .range-term:hover + .range-tip,.range-term:focus-visible + .range-tip,.range-tip:hover,.range-tip.open{display:block;}
+    .group-link{margin-top:auto;font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;}
+    .groups-close{max-width:560px;margin:48px 0 0;font-size:16px;line-height:1.65;color:#46545C;}
 
-    /* Second grid column sits against the container's right edge, so its bubbles
-       grow leftwards instead of off the side of the page. */
-    @media (min-width:769px){
-      .includes li:nth-child(even) .range-tip{left:auto;right:0;}
-    }
-
-    /* The approach — four pillars. Card family from DESIGN.md §6, same fill, border
-       and radius as the Flow Rebuild card below, which is why this section and the
-       one under it are both White Smoke. Card white only reads as raised over it. */
-    .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-    .pillar{background:#FFFFFF;border:1px solid #D3D9DD;border-radius:12px;padding:28px 28px 26px;}
-    .pillar h3{font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 12px;color:#003262;}
-    .pillar p{margin:0;font-size:16px;line-height:1.6;color:#12222B;}
+    /* The approach — four principles as rows, name left and sentence right, on the
+       page's two-column proportion (DESIGN.md §7). Was a two-by-two grid of white
+       cards until 12 October 2026; Sam found the boxes too templated. Rows carry no
+       order, so nothing implies the principles are steps. */
+    .principles{margin:0;}
+    .principles > div{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;padding:28px 0;}
+    /* Hairlines only between rows, none above the first or below the last. */
+    .principles > div + div{border-top:1px solid #D3D9DD;}
+    .principles > div:first-child{padding-top:0;}
+    .principles > div:last-child{padding-bottom:0;}
+    .principles dt{font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;color:#003262;}
+    .principles dd{margin:0;font-size:17px;line-height:1.6;color:#12222B;max-width:560px;}
 
     /* Heading and lead above a full-width block, used by The approach and by
-       Where to start. Both hold white cards, so both sit on White Smoke. */
+       What the work covers. */
     .section-head{max-width:560px;margin:0 0 48px;}
 
-    /* Where to start: one fixed-scope piece of work, set in two columns like The range.
+    /* Where to start: one fixed-scope piece of work, set in two columns.
        It sat in a white card until 5 October 2026, when the section moved onto white,
        where a card cannot sit (DESIGN.md §8). */
     .flow-name{font-family:'Work Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 12px;color:#003262;}
@@ -152,8 +166,6 @@
     .flow-price{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#46545C;margin:0 0 18px;}
     .flow-cta{font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;}
 
-    /* Closing note under the offer */
-    .flow-close{max-width:560px;margin:32px 0 0;font-size:16px;line-height:1.65;color:#46545C;}
 
     /* FAQ accordion */
     .faq{border-top:1px solid #D3D9DD;}
@@ -172,10 +184,10 @@
       .nav-links .nav-contact{margin-top:12px;}
       .section-pad{padding:56px 24px !important;}
       .two-col{grid-template-columns:1fr;gap:32px;}
-      .includes{grid-template-columns:1fr;}
+      .principles > div{grid-template-columns:1fr;gap:8px;padding:24px 0;}
+      .groups{grid-template-columns:1fr;gap:32px;}
+      .group + .group{border-top:1px solid #D3D9DD;padding-top:32px;}
       .range-tip{max-width:min(260px,calc(100vw - 64px));}
-      .pillars{grid-template-columns:1fr;gap:20px;}
-      .pillar{padding:24px 24px 22px;}
       .section-head{margin-bottom:36px;}
       .hero-pad{padding:56px 24px 64px !important;}
       .footer-inner{padding:56px 24px 48px !important;}
@@ -215,10 +227,151 @@
       <a class="btn-primary" href="/contact/" style="font-size:17px;padding:15px 32px;">Start with a free discovery call</a>
     </section>
 
-    <!-- WHERE TO START — first white section, mosaic strip. Two-column like The range,
-         no card: a white card cannot sit on a white section (DESIGN.md §8). -->
-    <section id="steps" aria-labelledby="steps-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
+    <!-- WHAT THE WORK COVERS — first white section, mosaic strip. Replaced The range on
+         12 October 2026. Three service groups, no cards (DESIGN.md §8). -->
+    <section id="services" aria-labelledby="groups-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="mosaic-strip" data-seed="20260713" aria-hidden="true" style="display:grid;grid-auto-flow:column;grid-auto-columns:20px;gap:1.5px;background:#AFB0A9;height:8px;overflow:hidden;"></div>
+      <div class="section-pad">
+        <div class="section-head">
+          <h2 class="h2" id="groups-heading">What the work covers</h2>
+        </div>
+        <div class="groups">
+          <div class="group">
+            <h3 class="group-name" id="group-ux">UX content</h3>
+            <p class="group-body">The words and structure inside your product, from sign-up to settings, designed so people can get things done without asking for help.</p>
+            <p class="group-label">Usually starts with</p>
+            <ul class="group-eg">
+              <li>Onboarding that loses people before they start.</li>
+              <li>Error messages and empty states that haven't changed since launch.</li>
+              <li>A form or checkout people give up on halfway.</li>
+            </ul>
+            <p class="group-label">Includes</p>
+            <ul class="group-tags" aria-label="UX content includes">
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-1">UX writing &amp; microcopy</button>
+                <span class="range-tip" id="tip-1" role="tooltip">The words inside your product: buttons, labels, error messages</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-2">Information architecture</button>
+                <span class="range-tip" id="tip-2" role="tooltip">How everything's organised, so people can find what they need</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-3">User journey mapping</button>
+                <span class="range-tip" id="tip-3" role="tooltip">Following someone's path through your product, step by step</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-4">Accessible content</button>
+                <span class="range-tip" id="tip-4" role="tooltip">Content everyone can read and use, including people on screen readers</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-5">Help centres &amp; support content</button>
+                <span class="range-tip" id="tip-5" role="tooltip">The articles and answers people look for when they get stuck</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-6">Emails &amp; notifications</button>
+                <span class="range-tip" id="tip-6" role="tooltip">The messages your product sends, and when it sends them</span>
+              </li>
+            </ul>
+            <a class="group-link" href="/case-studies/benefits/">Read the case study &rarr;</a>
+          </div>
+          <div class="group">
+            <h3 class="group-name" id="group-strategy">Content strategy</h3>
+            <p class="group-body">The plan behind your content: what needs to exist, who owns it, and how it stays consistent as the product and team grow.</p>
+            <p class="group-label">Usually starts with</p>
+            <ul class="group-eg">
+              <li>Different teams writing in different voices.</li>
+              <li>Content nobody owns, so nobody updates it.</li>
+              <li>A help centre or website that grew with no plan behind it.</li>
+            </ul>
+            <p class="group-label">Includes</p>
+            <ul class="group-tags" aria-label="Content strategy includes">
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-7">Content strategy</button>
+                <span class="range-tip" id="tip-7" role="tooltip">The plan for what content needs to exist, how, and why</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-8">Content audits</button>
+                <span class="range-tip" id="tip-8" role="tooltip">Taking stock of the content you have, and what state it's in</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-9">Tone of voice guidelines</button>
+                <span class="range-tip" id="tip-9" role="tooltip">A written guide to how your business sounds, with examples</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-10">Voice &amp; messaging audits</button>
+                <span class="range-tip" id="tip-10" role="tooltip">Checking what you say against how you actually sound</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-11">Content systems</button>
+                <span class="range-tip" id="tip-11" role="tooltip">The shared reference that keeps everyone writing the same way</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-12">Content operations &amp; governance</button>
+                <span class="range-tip" id="tip-12" role="tooltip">Who owns content, and how it stays up to date</span>
+              </li>
+            </ul>
+            <a class="group-link" href="/case-studies/shelter/">Read the case study &rarr;</a>
+          </div>
+          <div class="group">
+            <h3 class="group-name" id="group-ai">AI experiences</h3>
+            <p class="group-body">Chatbots, assistants and AI features designed so people trust the answers, and know what to do when the AI can't help.</p>
+            <p class="group-label">Usually starts with</p>
+            <ul class="group-eg">
+              <li>A support bot customers try to get around.</li>
+              <li>AI answers that sound nothing like the rest of the product.</li>
+              <li>No plan for what happens when the AI gets it wrong.</li>
+            </ul>
+            <p class="group-label">Includes</p>
+            <ul class="group-tags" aria-label="AI experiences includes">
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-13">Chatbot &amp; assistant content</button>
+                <span class="range-tip" id="tip-13" role="tooltip">The answers, prompts and fallback messages your assistant uses</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-14">Conversation design</button>
+                <span class="range-tip" id="tip-14" role="tooltip">Shaping how a back-and-forth with a chatbot or assistant flows</span>
+              </li>
+              <li>
+                <button type="button" class="range-term" aria-describedby="tip-15">Content systems for AI</button>
+                <span class="range-tip" id="tip-15" role="tooltip">The rules and reference material an AI draws on to sound like you</span>
+              </li>
+            </ul>
+            <a class="group-link" href="/case-studies/training-ai/">Read the case study &rarr;</a>
+          </div>
+        </div>
+        <p class="groups-close">Content Content can also work inside your team on a day rate, across any of the three areas.</p>
+      </div>
+    </section>
+
+    <!-- THE APPROACH — White Smoke, the white sections either side divide it. Four principles as rows. -->
+    <section class="section-pad" aria-labelledby="approach-heading">
+      <div class="section-head">
+        <h2 class="h2" id="approach-heading">The approach</h2>
+        <p class="lead" style="margin:20px 0 0;">How the work gets pulled together.</p>
+      </div>
+      <dl class="principles">
+        <div>
+          <dt>People first</dt>
+          <dd>Always starts with what your audience needs to do, not the product's feature list.</dd>
+        </div>
+        <div>
+          <dt>Data led</dt>
+          <dd>No guesswork, decisions are backed by testing, real behaviour and numbers, wherever possible, to inform the work.</dd>
+        </div>
+        <div>
+          <dt>Designed</dt>
+          <dd>Creating the solution for the problem at hand. Rarely is it <em>more</em> content, it usually comes down to a sharp knife cutting away everything your audience doesn't need.</dd>
+        </div>
+        <div>
+          <dt>Repeatable</dt>
+          <dd>The decisions made are documented, grounded and easy to follow, so the same result can happen again.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- WHERE TO START — later white section, hairlines only. Sits after The approach
+         since 12 October 2026. id kept as #steps, the Flow Rebuild page backlinks to it. -->
+    <section id="steps" aria-labelledby="steps-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
       <div class="section-pad">
         <div class="two-col">
           <div>
@@ -230,89 +383,6 @@
             <p class="flow-body">One journey in your product, like onboarding or checkout, audited to find where it's not working and why. You get the whole flow fixed, delivered in your own tools.</p>
             <p class="flow-price">From &euro;4,500</p>
             <a class="flow-cta" href="/services/flow-rebuild/">See what's included &rarr;</a>
-            <p class="flow-close">If you want more hands-on work with your team and roadmap, day-rate work can be scoped for your exact needs. <a href="/contact/">Get in touch</a> so we can get planning.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- THE APPROACH — White Smoke, holds white cards. White sections either side divide it. -->
-    <section class="section-pad" aria-labelledby="approach-heading">
-      <div class="section-head">
-        <h2 class="h2" id="approach-heading">The approach</h2>
-        <p class="lead" style="margin:20px 0 0;">How the work gets pulled together.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar">
-          <h3>People first</h3>
-          <p>Always starts with what your audience needs to do, not the product's feature list.</p>
-        </div>
-        <div class="pillar">
-          <h3>Data led</h3>
-          <p>No guesswork, decisions are backed by testing, real behaviour and numbers, wherever possible, to inform the work.</p>
-        </div>
-        <div class="pillar">
-          <h3>Designed</h3>
-          <p>Creating the solution for the problem at hand. Rarely is it <em>more</em> content, it usually comes down to a sharp knife cutting away everything your audience doesn't need.</p>
-        </div>
-        <div class="pillar">
-          <h3>Repeatable</h3>
-          <p>The decisions made are documented, grounded and easy to follow, so the same result can happen again.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- THE RANGE — later white section, hairlines only -->
-    <section aria-labelledby="range-heading" style="background:#FFFFFF;border-top:1px solid #D3D9DD;border-bottom:1px solid #D3D9DD;">
-      <div class="section-pad">
-        <div class="two-col">
-          <div>
-            <h2 class="h2" id="range-heading">The range</h2>
-            <p class="lead" style="margin:20px 0 0;">A non-exhaustive list of what goes into content design. We will scope exactly what you need.</p>
-          </div>
-          <div>
-            <ul class="includes">
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-discovery">Discovery &amp; research</button>
-                <span class="range-tip" id="tip-discovery" role="tooltip">Understanding your context, audience, and the problems</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-strategy">Content strategy</button>
-                <span class="range-tip" id="tip-strategy" role="tooltip">The plan for what content needs to exist, how, and why</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-voice">Voice &amp; messaging audits</button>
-                <span class="range-tip" id="tip-voice" role="tooltip">Checking what you say against how you actually sound</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-ia">Information architecture</button>
-                <span class="range-tip" id="tip-ia" role="tooltip">How everything's organised, so people can find what they need</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-uxwriting">UX writing</button>
-                <span class="range-tip" id="tip-uxwriting" role="tooltip">The words inside your product: buttons, labels, error messages</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-journeys">User journey mapping</button>
-                <span class="range-tip" id="tip-journeys" role="tooltip">Following someone's path through your product, step by step</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-conversation">Conversation design</button>
-                <span class="range-tip" id="tip-conversation" role="tooltip">Writing for chatbots and assistants that talk back</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-systems">Content systems</button>
-                <span class="range-tip" id="tip-systems" role="tooltip">The shared reference that keeps everyone writing the same way</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-ops">Content operations &amp; governance</button>
-                <span class="range-tip" id="tip-ops" role="tooltip">Who owns content, and how it stays up to date</span>
-              </li>
-              <li>
-                <button type="button" class="range-term" aria-describedby="tip-metrics">Success metrics &amp; iteration</button>
-                <span class="range-tip" id="tip-metrics" role="tooltip">Deciding what "working" looks like, then checking it actually is</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -450,37 +520,6 @@
 </script>
 
 <script>
-  /* The range tooltips. Hover and keyboard focus are handled in CSS. This adds tap
-     support for touch, which has no hover, plus Escape and outside-click to close.
-     Same mechanics as the price tooltip on /services/flow-rebuild/. The explainer is
-     tied to its term with aria-describedby, so assistive technology reads it whether
-     or not the bubble is open. */
-  (function () {
-    var items = [].slice.call(document.querySelectorAll('.includes li'));
-    if (!items.length) return;
-    function closeAll() {
-      items.forEach(function (li) {
-        var b = li.querySelector('.range-tip');
-        if (b) b.classList.remove('open');
-      });
-    }
-    items.forEach(function (li) {
-      var btn = li.querySelector('.range-term');
-      var bubble = li.querySelector('.range-tip');
-      if (!btn || !bubble) return;
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var isOpen = bubble.classList.contains('open');
-        closeAll();
-        if (!isOpen) bubble.classList.add('open');
-      });
-    });
-    document.addEventListener('click', closeAll);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
-  })();
-</script>
-
-<script>
   /* Mobile nav toggle */
   (function () {
     var toggle = document.querySelector('.nav-toggle');
@@ -544,5 +583,35 @@
   })();
 </script>
 <!-- /content-counter -->
+<script>
+  /* Service label tooltips. Hover and keyboard focus are handled in CSS. This adds
+     tap support for touch, which has no hover, plus Escape and outside-click to
+     close. Same mechanics as the price tooltip on /services/flow-rebuild/. The
+     explainer is tied to its term with aria-describedby, so assistive technology
+     reads it whether or not the bubble is open. */
+  (function () {
+    var items = [].slice.call(document.querySelectorAll('.group-tags li'));
+    if (!items.length) return;
+    function closeAll() {
+      items.forEach(function (li) {
+        var b = li.querySelector('.range-tip');
+        if (b) b.classList.remove('open');
+      });
+    }
+    items.forEach(function (li) {
+      var btn = li.querySelector('.range-term');
+      var bubble = li.querySelector('.range-tip');
+      if (!btn || !bubble) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = bubble.classList.contains('open');
+        closeAll();
+        if (!isOpen) bubble.classList.add('open');
+      });
+    });
+    document.addEventListener('click', closeAll);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+  })();
+</script>
 </body>
 </html>
