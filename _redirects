@@ -21,3 +21,10 @@
 /case-studies/knowledge-hub /case-studies/ 301
 /case-studies/knowledge-hub/ /case-studies/ 301
 /case-studies/knowledge-hub/* /case-studies/ 301
+
+# /book/ was retired on 12 October 2026. Every booking route already went to the
+# Cal.com embed on /contact/, and nothing on the site linked to /book/. 301 so
+# any saved or shared link still reaches the booking calendar.
+/book /contact/ 301
+/book/ /contact/ 301
+/book/* /contact/ 301

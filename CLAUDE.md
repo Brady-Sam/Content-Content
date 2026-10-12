@@ -20,7 +20,6 @@ site/
   field-notes/index.html
   about/index.html
   contact/index.html
-  book/index.html       # Cal.com discovery-call embed
   brand/                # Favicons, logo PNGs, and the og-image link preview card
   README.md
   CLAUDE.md
@@ -35,7 +34,7 @@ Pages are self-contained: each carries its own `<style>` block, mosaic script an
 
 ## Copy docs
 
-`drafts/` is an Obsidian vault holding one markdown copy doc per page (`Contact.md`, `Homepage.md`, `Services.md`, `Book a call.md`, `Case studies/`). It is gitignored and never published.
+`drafts/` is an Obsidian vault holding one markdown copy doc per page (`Contact.md`, `Homepage.md`, `Services.md`, `Case studies/`). It is gitignored and never published.
 
 **Any change to copy on a page must be made in that page's copy doc in the same pass.** The doc is the record of what the page says and why, so a page edited without it goes stale immediately and the reasoning behind a line is lost. This applies to headlines, ledes, body copy, button labels, form labels and microcopy. It does not apply to markup, styling or script changes that leave the words alone.
 
@@ -190,14 +189,14 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 ## Deployment
 
 - Auto-deploys from GitHub repo: `Brady-Sam/Content-Content`. Push to main triggers deploy. No build step.
-- `_redirects` at the repo root 301s `/work/*` to `/case-studies/*`, and `/services/flow-review/` to `/services/`. Both paths had been live and shared before they moved or were withdrawn. Do not delete this file, and add to it rather than replacing it if another path moves.
+- `_redirects` at the repo root 301s `/work/*` to `/case-studies/*`, and `/services/flow-review/` and `/book/` to `/services/` and `/contact/`. All of these paths had been live and shared before they moved or were withdrawn. Do not delete this file, and add to it rather than replacing it if another path moves.
 - **`DESIGN.md` and `drafts/` are mirrored to a private repo on every push.** Neither can live in this repo, because there is no build step so anything committed here is served publicly. Both are backed up instead by `../design-docs-mirror/`, driven by a `pre-push` hook in `site/.git/hooks/`. Edit the originals, never the mirror. Git does not version hooks, so **after a fresh clone the hook has to be put back**, and a copy is kept at `../design-docs-mirror/pre-push` for that. The hook swallows every error and exits 0, so a backup failure can never block a deploy, but it does print its result, so watch for "push FAILED" or "no remote yet" in the push output.
 - **The footer "Content counter" is derived, not written.** A `pre-commit` hook in `site/.git/hooks/` recounts the word "content" in the visible body copy of every published page (brand name included, so "Content Content" is two; `case-studies/knowledge-hub` excluded) and writes `content-count.json`, staging it into the commit. Each footer carries a baked-in fallback number and a script that swaps in the JSON value on load. The counter's own markup and script are wrapped in `<!-- content-counter -->` comments and stripped before counting, so it never counts itself. **Never hand-edit the number or `content-count.json`.** Same as `pre-push`: the hook swallows every error and exits 0, git does not version it, so after a fresh clone put it back from the copy kept at `../design-docs-mirror/pre-commit`. The count logic (an inline Python block) lives entirely in the hook, there is no separate script. The counter copy is documented in `drafts/Homepage.md` with the rest of the footer.
 - **HTML is cached at the Cloudflare edge and is not purged on deploy.** For several minutes after every push, requests return either the old or the new page depending on which edge node answers. Verify a deploy across a wide sample of requests, not one or two, or it will look live when it is not. A Cache Rule bypassing cache for `text/html` would fix this properly and has not been set up.
 - The contact form posts to `/api/contact`, handled by a separate Worker that lives outside this repo (`../contact-worker`) so its source is never served publicly. The same Worker handles `/api/booking`, which receives the Cal.com webhook and emails a briefing on whoever booked.
-- `/book/` embeds a Cal.com discovery call. The Cal.com account is registered as `hello@contentcontent.design` so the practice, not the personal Gmail, is what bookers see. The `calLink` is set once at the bottom of `book/index.html`.
+- `/contact/` embeds the Cal.com discovery call. The Cal.com account is registered as `hello@contentcontent.design` so the practice, not the personal Gmail, is what bookers see. The `CAL_LINK` is set once at the bottom of `contact/index.html`.
 - **Known limitation:** the Google Calendar invite shows the personal Gmail address in its organiser field. A free consumer Google account cannot present an alias, and Cal.com's setting to hide it is a paid feature. Only Google Workspace fixes this properly.
-- `/book/` is deliberately not in the nav. The nav is fixed at five items; the service-page CTAs carry the booking link.
+- `/book/` was retired on 12 October 2026 and 301s to `/contact/` (see `_redirects`). Every booking route already went to the embed on `/contact/`. Do not rebuild it as a separate page.
 - **Cloudflare Web Analytics is live**, enabled in the dashboard on the Pages project. **The beacon is injected at the edge, not committed to this repo**, and Cloudflare only injects it for requests that look like a real browser. A plain `curl` sends no browser `User-Agent` and no `Accept: text/html`, gets no beacon, and looks exactly like a site with no analytics. Check with browser headers, or in a browser, before concluding it is missing. Token `a61f4cf5…`, verified 25 August 2026.
 - **It has no conversion goals.** It reports page views, paths, referrers, country, browser, device and Core Web Vitals. It cannot tell you which page produced a booking. Lead-level attribution would have to come from the contact Worker, which currently records no referrer, landing page or UTM data.
 - **Read Visits, not Page views.** Cloudflare counts a visit only when the referrer is a different host, so same-site navigation and your own clicking inflate page views and leave visits untouched.
