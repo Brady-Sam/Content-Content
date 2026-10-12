@@ -86,13 +86,13 @@ These are non-negotiable and apply to all copy on the site:
 
 The homepage is the only one that names the practice:
 
-**Content Content. A content design practice**
+**Content Content. A UX content practice**
 
 **Every other page is its own name and nothing else.** "Field notes", "About", "Flow Rebuild", "Turning an AI chatbot into a trusted support channel". No brand suffix and no separator.
 
 They used to read "Field notes · Content Content". The interpunct went on 25 August 2026 for reading as an AI tell, and swapping the character was not the fix: a full stop works on a long title and clips badly on "About." and "Contact.", which is half the site. Dropping the suffix removed the need for a separator at all. A browser tab truncates before it reaches the suffix anyway, so the brand was invisible exactly where it was supposed to be doing work.
 
-**Barcelona appears in no title.** It is in the meta descriptions, where the following clause answers it: "Barcelona based, working with businesses everywhere." A place reassures someone who is already interested and filters someone who is not, so it belongs after the interest, not before it.
+**Barcelona appears in no title.** It is in the meta descriptions, where the following clause answers it: "Barcelona based, working with teams everywhere." (The footer line says "businesses"; the homepage description says "teams" because "businesses" is already in its first sentence.) A place reassures someone who is already interested and filters someone who is not, so it belongs after the interest, not before it.
 
 **A title lives in three places.** `<title>`, `og:title` and `twitter:title` all carry the same string so there is one thing to edit. Change all three together, then re-run the LinkedIn Post Inspector or the old one stays cached.
 
@@ -140,6 +140,22 @@ A tooltip or gloss attached to a list item is not a bullet and is not covered by
 ---
 
 ## Practice positioning
+
+**Locked 12 October 2026, Sam's call.**
+
+| | |
+|---|---|
+| **Label** | **An independent UX content practice.** Use it wherever the practice is named after "Content Content": the homepage title, the practice statement, meta descriptions, LinkedIn, introductions. |
+| **Accepted variations** | "a UX focused content practice", and the original "a content design practice". Use a variation where the main label reads awkwardly in the sentence, never to swap categories. |
+| **Brand line** | Content, Designed. |
+| **What the words mean** | "Practice" is a focus on the craft. The craft is content. The approach is content design, the method behind all of the work. Sam may refine the wording of this; the About page is where it gets explained. |
+| **What it does** | Helping businesses get the words and structure in their product right, so people can finish what they came to do. (Homepage hero.) |
+| **Who for** | Any business with a digital product or service. Startups are a focus, not a filter. |
+| **What you hire it for** | UX content, Content strategy, AI experiences. (`/services/` groups.) |
+| **What it isn't** | Marketing copy, SEO, content production at volume. |
+| **Differentiator** | Not yet locked. Candidate: the same practice that finds the problem fixes it, in your own tools. |
+
+Why "UX content": people know "UX" far better than "content design" or "product content", and it matches the first service group. "Content design" moves from the label to the method, so it is still named, just not as the thing being sold. "Practice" stays, decided 7 August 2026 and reconfirmed here.
 
 - **Not** a freelancer or contractor. An independent practice.
 - **Focus is startups, but the practice takes work from businesses of any size.** Most clients will be teams with no content design function. Teams that already have content designers are not the target; if they hire Content Content it is as extra capacity, through day-rate work.
