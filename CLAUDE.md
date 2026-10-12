@@ -67,11 +67,11 @@ These are non-negotiable and apply to all copy on the site:
 
 - **Never use em dashes.** Anywhere. No exceptions.
 - **UK English** throughout (colour, behaviour, organised, etc.)
-- **No "we" for the practice, ever.** Content Content is one person. It never speaks as a team.
+- **"We" is allowed for the practice.** Changed 12 October 2026 on Sam's call: "I" and "me" in offer copy make Content Content read as a freelancer, which the positioning rules out. The limit is that "we" must never imply a team. No "our team", "our designers", "one of us" or anything that suggests headcount. "We" speaks for the practice the way a studio's name does. Where a sentence works with "Content Content" as the subject, or with no pronoun at all, that is often cleaner than either.
 - **"Content Content" is the subject for structural claims** — what the practice offers, how it's built, its positioning, its scope. "Content Content has been built as a practice so...", not a claim that needs Sam's name attached. This is a deliberate choice (decided 7 August 2026, About page): "practice" is a category term like "studio", it describes how a business is organised, not something that has to be earned through track record before it's used.
-- **"I" is Sam's own voice**, reserved for genuinely personal register: opinions, process, the About page's "human in the loop" section, Field Notes, first-person asides. If a sentence is about Sam's judgement or experience rather than the practice's offer, it's "I".
-- **Never refer to Sam in the third person.** "Run by Sam", "Sam does the work" and similar constructions are off-brand, even inside otherwise entity-led copy. It's either "Content Content" (the entity) or "I" (Sam speaking), never "Sam" as a named third party in running copy.
-- **Collaborative "we" is allowed**, meaning Sam and the client together: "we'll work together to define the scope", "once we know what needs to change". This is the reading in use across the live site. If a "we" could be mistaken for a team inside Content Content, rewrite it as "I" or "Content Content" depending on register.
+- **"I" is narrow.** Keep it only where the copy is unmistakably Sam personally: Field notes and the About page's "human in the loop" section. Offer copy, CTAs, form copy and microcopy use "we", "Content Content" or no pronoun. Live pages still carry "I" and "me" from before this change and have not been swept.
+- **Never refer to Sam in the third person.** "Run by Sam", "Sam does the work" and similar constructions are off-brand, even inside otherwise entity-led copy. It's "Content Content" (the entity), "we", or "I" where the copy is personal, never "Sam" as a named third party in running copy.
+- **Collaborative "we" is allowed**, meaning Sam and the client together: "we'll work together to define the scope", "once we know what needs to change". This and the practice "we" can sit side by side. The only test for either is that it never implies a team.
 - **No "users"** except in genuinely technical contexts. Say "employees", "people", "founders".
 - **No three-part list rhythms** — "not just X, but Y and Z" is the clearest AI tell.
 - **No staccato drama** — avoid several short fragments in a row for effect.
@@ -209,7 +209,7 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 
 - Never modify image files that are part of live case studies without Sam confirming
 - Never introduce a third accent colour without discussion
-- Never use `we` in copy
+- Never use `we` in a way that implies a team
 - Never use em dashes
 - Never phrase a header as a question
 - Never call the offer "packages"
