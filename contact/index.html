@@ -91,11 +91,11 @@
     .hero .lede{max-width:600px;margin:32px 0 0;font-size:22px;line-height:1.45;color:#12222B;}
     .h2{font-family:'Work Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.1;margin:0;color:#003262;}
 
-    /* Cal.com inline embed. min-height stops the page reflowing as it loads; once
-       embed.js is in it injects its own stylesheet, resets this and self-sizes.
-       That reset also kills any margin set here, so the spacing above the embed
-       lives on the heading instead. */
-    .cal-embed{width:100%;min-height:720px;overflow:hidden;}
+    /* Calendly inline embed. The widget's iframe takes its parent's height, so the
+       height is fixed here: Calendly does not resize itself. Tall enough for the
+       month view and the time list on desktop; taller on a phone, where the times
+       stack under the calendar. */
+    .cal-embed{width:100%;height:720px;overflow:hidden;}
 
     /* Form */
     .btn-primary{display:inline-block;background:#B23A2E;color:#F6F5F3;font-family:'Work Sans',sans-serif;font-weight:600;font-size:16px;text-decoration:none;border:none;border-radius:6px;padding:14px 30px;cursor:pointer;transition:background .18s;}
@@ -123,7 +123,7 @@
       .nav-links .nav-contact{margin-top:12px;}
       .hero-pad{padding:56px 24px 48px !important;}
       .section-pad{padding:56px 24px !important;}
-      .cal-embed{min-height:920px;}
+      .cal-embed{height:960px;}
       .field-row{grid-template-columns:1fr;gap:0;}
       .footer-inner{padding:56px 24px 48px !important;}
       .footer-big{font-size:34px !important;}
@@ -360,45 +360,34 @@
 </script>
 
 <script>
-  /* Cal.com inline embed.
-     CAL_LINK is <cal.com username>/<event type slug>. Update it if either changes. */
-  (function (C, A, L) {
-    var p = function (a, ar) { a.q.push(ar); };
-    var d = C.document;
-    C.Cal = C.Cal || function () {
-      var cal = C.Cal; var ar = arguments;
-      if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; }
-      if (ar[0] === L) {
-        var api = function () { p(api, arguments); };
-        var namespace = ar[1];
-        api.q = api.q || [];
-        if (typeof namespace === 'string') { (cal.ns[namespace] = api) && p(api, ar); } else { p(cal, ar); }
-        return;
-      }
-      p(cal, ar);
-    };
-  })(window, 'https://app.cal.com/embed/embed.js', 'init');
+  /* Calendly inline embed, the Discovery call. Replaced the Cal.com embed on
+     13 October 2026 because Lisa.email books meetings through Calendly. To go back
+     to Cal.com, revert that commit.
 
+     The first-touch UTM tags are passed into the booking URL, so a Calendly booking
+     shows which channel it came from, the same job the attribution does for the
+     form. Read from sessionStorage, with the current URL as a fallback because the
+     attribution script further down has not run yet when someone lands here first. */
   (function () {
-    var CAL_LINK = 'content-content/discovery-call';
-    Cal('init', 'discovery', { origin: 'https://app.cal.com' });
-    Cal.ns.discovery('inline', {
-      elementOrSelector: '#cal-booking',
-      calLink: CAL_LINK,
-      config: { layout: 'month_view' }
-    });
-    Cal.ns.discovery('ui', {
-      layout: 'month_view',
-      hideEventTypeDetails: false,
-      cssVarsPerTheme: {
-        light: {
-          'cal-brand': '#B23A2E',
-          'cal-text': '#12222B',
-          'cal-text-emphasis': '#003262',
-          'cal-border': '#D3D9DD'
-        }
-      }
-    });
+    var BASE = 'https://calendly.com/sam-contentcontent/discovery-call';
+    var params = new URLSearchParams({ hide_gdpr_banner: '1' });
+    try {
+      var a = JSON.parse(sessionStorage.getItem('cc-attribution') || '{}');
+      var q = new URLSearchParams(location.search);
+      ['source', 'medium', 'campaign'].forEach(function (k) {
+        var v = a[k] || q.get('utm_' + k);
+        if (v) params.set('utm_' + k, v);
+      });
+    } catch (e) {}
+    var el = document.getElementById('cal-booking');
+    if (!el) return;
+    var s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    s.onload = function () {
+      window.Calendly.initInlineWidget({ url: BASE + '?' + params.toString(), parentElement: el });
+    };
+    document.head.appendChild(s);
   })();
 </script>
 
