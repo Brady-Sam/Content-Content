@@ -20,6 +20,8 @@ site/
   field-notes/index.html
   about/index.html
   contact/index.html
+  privacy/index.html    # Privacy policy (live 26 October 2026)
+  terms/index.html      # Terms of use, the website-level terms
   brand/                # Favicons, logo PNGs, and the og-image link preview card
   README.md
   CLAUDE.md
@@ -188,6 +190,15 @@ Rules that shape the copy:
 
 ---
 
+## Legal pages
+
+`/privacy/` and `/terms/` went live on 26 October 2026, linked from every footer after About, and from a line above the contact form's Send button. Both are built on the field-note shell with calmer Work Sans headings (`.legal`). Their drafts and reasoning are in `drafts/Legal/`.
+
+- They name Sam as the person responsible. That's a legal requirement, and the one allowed exception to the "never refer to Sam in the third person" rule.
+- They say nothing about autónomo status, NIF or address yet. Once Sam is registered, add the legal notice details (NIF, address) to `/terms/`, as Spanish law (LSSI) requires, and update both pages' dates.
+- Change these pages' wording only with the matching draft in `drafts/Legal/`. Every new tool that handles personal data needs a row in the privacy policy's provider table.
+- Offer-specific terms (the Clarity Check) live with the offer, not here.
+
 ## Nav
 
 In order, on every page:
@@ -210,7 +221,7 @@ The current page's link carries `aria-current="page"`. The 404 sets it on nothin
 - **The footer "Content counter" is derived, not written.** A `pre-commit` hook in `site/.git/hooks/` recounts the word "content" in the visible body copy of every published page (brand name included, so "Content Content" is two; `case-studies/knowledge-hub` excluded) and writes `content-count.json`, staging it into the commit. Each footer carries a baked-in fallback number and a script that swaps in the JSON value on load. The counter's own markup and script are wrapped in `<!-- content-counter -->` comments and stripped before counting, so it never counts itself. **Never hand-edit the number or `content-count.json`.** Same as `pre-push`: the hook swallows every error and exits 0, git does not version it, so after a fresh clone put it back from the copy kept at `../design-docs-mirror/pre-commit`. The count logic (an inline Python block) lives entirely in the hook, there is no separate script. The counter copy is documented in `drafts/Homepage.md` with the rest of the footer.
 - **HTML is cached at the Cloudflare edge and is not purged on deploy.** For several minutes after every push, requests return either the old or the new page depending on which edge node answers. Verify a deploy across a wide sample of requests, not one or two, or it will look live when it is not. A Cache Rule bypassing cache for `text/html` would fix this properly and has not been set up.
 - The contact form posts to `/api/contact`, handled by a separate Worker that lives outside this repo (`../contact-worker`) so its source is never served publicly. The same Worker handles `/api/booking`, which receives the Cal.com webhook and emails a briefing on whoever booked. Dormant since 13 October 2026: bookings now go through Calendly, whose free plan has no webhooks, so no briefing email is sent.
-- `/contact/` embeds the **Calendly** Discovery call (`calendly.com/sam-contentcontent/discovery-call`, 45 minutes, Google Meet), since 13 October 2026. Switched from Cal.com because Lisa.email books meetings through Calendly. The link is set once at the bottom of `contact/index.html`, and the first-touch UTM tags are passed into it so a booking records its channel. Free-plan limits: Calendly's colours and "Powered by Calendly" badge, no brand colours, no webhooks. To move back to Cal.com, revert the commit that made the switch; the Cal.com account and event still exist.
+- `/contact/` embeds the **Calendly** Discovery call (`calendly.com/sam-contentcontent/discovery-call`, 15 minutes since 26 October 2026, was 45, Google Meet), since 13 October 2026. Switched from Cal.com because Lisa.email books meetings through Calendly. The link is set once at the bottom of `contact/index.html`, and the first-touch UTM tags are passed into it so a booking records its channel. Free-plan limits: Calendly's colours and "Powered by Calendly" badge, no brand colours, no webhooks. To move back to Cal.com, revert the commit that made the switch; the Cal.com account and event still exist.
 - **Known limitation (written for Cal.com, recheck for Calendly):** the Google Calendar invite showed the personal Gmail address in its organiser field. Sam has since connected the Con Con Google account, so this may no longer apply.
 - `/book/` was retired on 12 October 2026 and 301s to `/contact/` (see `_redirects`). Every booking route already went to the embed on `/contact/`. Do not rebuild it as a separate page.
 - **Cloudflare Web Analytics is live**, enabled in the dashboard on the Pages project. **The beacon is injected at the edge, not committed to this repo**, and Cloudflare only injects it for requests that look like a real browser. A plain `curl` sends no browser `User-Agent` and no `Accept: text/html`, gets no beacon, and looks exactly like a site with no analytics. Check with browser headers, or in a browser, before concluding it is missing. Token `a61f4cf5…`, verified 25 August 2026.
