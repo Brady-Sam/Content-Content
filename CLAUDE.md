@@ -176,7 +176,7 @@ Sold as a sequence rather than a menu. Published prices are always "from", never
 | | Price | On the site |
 |---|---|---|
 | **Clarity Check** | €300, fixed, credited against follow-on work | `/services/` "Where to start", the only item since 27 October 2026. Own page at `/services/clarity-check/`, live 27 October 2026 |
-| **Flow Rebuild** | From €4,500 | Taken out of "Where to start" on 27 October 2026. Its page `/services/flow-rebuild/` stays live, but only Sam's field note still links to it. Services stopped mentioning it on 27 October 2026. About, Contact and the case studies point to the Clarity Check since 27 October 2026. Under review: Sam expects to retire it if no Clarity Check ends in a Rebuild-shaped stage |
+| **Flow Rebuild** | From €4,500 | Taken out of "Where to start" on 27 October 2026. Its page `/services/flow-rebuild/` stays live, but nothing on the site links to it any more (the last link, in a field note, moved to the Clarity Check on 27 October 2026). Retire it with a 301 to `/services/clarity-check/` if Sam decides to. About, Contact and the case studies point to the Clarity Check since 27 October 2026. Under review: Sam expects to retire it if no Clarity Check ends in a Rebuild-shaped stage |
 | **Embedded content design** | Day rate | Never published. Quoted when asked. |
 | **Content System** | From €7,500, four weeks | Own page, not yet built |
 
