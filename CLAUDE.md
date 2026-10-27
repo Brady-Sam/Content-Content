@@ -11,7 +11,8 @@ site/
   index.html            # Homepage
   404.html              # Site-wide not found
   services/index.html   # Services: The range, The approach, Where to start
-  services/flow-rebuild/           # The one fixed-scope piece of work
+  services/clarity-check/          # The entry offer, first step for new clients
+  services/flow-rebuild/           # Fixed-scope journey rebuild, under review
   case-studies/index.html          # Case studies index
   case-studies/benefits/           # Case study
   case-studies/knowledge-hub/      # Case study
@@ -174,11 +175,12 @@ Sold as a sequence rather than a menu. Published prices are always "from", never
 
 | | Price | On the site |
 |---|---|---|
-| **Flow Rebuild** | From €4,500 | `/services/` "Where to start", own page at `/services/flow-rebuild/` |
+| **Clarity Check** | €300, fixed, credited against follow-on work | `/services/` "Where to start", the only item since 27 October 2026. Own page at `/services/clarity-check/`, live 27 October 2026 |
+| **Flow Rebuild** | From €4,500 | Taken out of "Where to start" on 27 October 2026. Its page `/services/flow-rebuild/` stays live and is still linked from the Services FAQs, About, three case studies, Contact and a field note. Under review: Sam expects to retire it if no Clarity Check ends in a Rebuild-shaped stage |
 | **Embedded content design** | Day rate | Never published. Quoted when asked. |
 | **Content System** | From €7,500, four weeks | Own page, not yet built |
 
-**Flow Review was withdrawn on 21 August 2026** and its page pulled down, `_redirects` 301s the URL to `/services/`. Do not reintroduce it. The diagnostic work did not disappear, it folded into the Flow Rebuild, which now opens by auditing the journey. One reference survives on `/services/flow-rebuild/`, a precondition in "What I need from you" saying a completed Review is required, and it still needs rewriting.
+**Flow Review was withdrawn on 21 August 2026** and its page pulled down, `_redirects` 301s the URL to `/services/`. Do not reintroduce it. The **Clarity Check** (named 26 October 2026) is a separate offer, not the Review coming back: a smaller, cheaper check of one path (first visit to first real task), sold call-first, ending in a priced backlog, with its fee credited against the next step. It's the only published price that isn't "from", because its boundary is fixed. The diagnostic work did not disappear, it folded into the Flow Rebuild, which now opens by auditing the journey. One reference survives on `/services/flow-rebuild/`, a precondition in "What I need from you" saying a completed Review is required, and it still needs rewriting.
 
 Rules that shape the copy:
 
