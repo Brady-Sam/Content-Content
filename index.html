@@ -33,68 +33,52 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Sam Brady",
-    "jobTitle": "Founder & Content Designer",
-    "url": "https://contentcontent.design",
-    "email": "hello@contentcontent.design",
-    "image": "https://contentcontent.design/brand/CC_logo_180x180.png",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Content Content",
-      "url": "https://contentcontent.design"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Barcelona",
-      "addressCountry": "ES"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Content Content",
-    "url": "https://contentcontent.design",
-    "logo": "https://contentcontent.design/brand/CC_logo_1200x1200.png",
-    "description": "An independent UX content practice helping businesses get the words and structure in their product right.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Barcelona",
-      "addressCountry": "ES"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/srdbrady/",
-      "https://www.instagram.com/content.content.design/"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Content Design",
-    "description": "An independent UX content practice helping businesses get the words and structure in their product right. Barcelona based, working with teams everywhere.",
-    "url": "https://contentcontent.design",
-    "email": "hello@contentcontent.design",
-    "priceRange": "From €2,500",
-    "areaServed": [
+    "@graph": [
       {
-        "@type": "City",
-        "name": "Barcelona"
+        "@type": "WebSite",
+        "@id": "https://contentcontent.design/#website",
+        "name": "Content Content",
+        "url": "https://contentcontent.design/",
+        "publisher": { "@id": "https://contentcontent.design/#organization" }
       },
       {
-        "@type": "Country",
-        "name": "Worldwide"
+        "@type": "ProfessionalService",
+        "@id": "https://contentcontent.design/#organization",
+        "name": "Content Content",
+        "url": "https://contentcontent.design/",
+        "logo": "https://contentcontent.design/brand/CC_logo_1200x1200.png",
+        "image": "https://contentcontent.design/brand/CC_logo_1200x1200.png",
+        "description": "An independent UX content practice helping businesses get the words and structure in their product right. Barcelona based, working with teams everywhere.",
+        "email": "hello@contentcontent.design",
+        "priceRange": "From €2,500",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Barcelona",
+          "addressCountry": "ES"
+        },
+        "founder": { "@id": "https://contentcontent.design/#sam-brady" },
+        "sameAs": [
+          "https://www.instagram.com/content.content.design/"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://contentcontent.design/#sam-brady",
+        "name": "Sam Brady",
+        "jobTitle": "Founder & Content Designer",
+        "url": "https://contentcontent.design/about/",
+        "image": "https://contentcontent.design/about/sam-brady.jpg",
+        "worksFor": { "@id": "https://contentcontent.design/#organization" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Barcelona",
+          "addressCountry": "ES"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/srdbrady/"
+        ]
       }
-    ],
-    "provider": {
-      "@type": "Person",
-      "name": "Sam Brady",
-      "url": "https://contentcontent.design"
-    },
-    "image": "https://contentcontent.design/brand/CC_logo_180x180.png"
+    ]
   }
   </script>
   <style>

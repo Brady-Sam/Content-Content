@@ -1,0 +1,3 @@
+# Cloudflare adds its managed AI crawler rules above this line when it
+# serves the file. Only the sitemap lives in the repo.
+Sitemap: https://contentcontent.design/sitemap.xml
